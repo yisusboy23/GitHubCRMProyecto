@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="AuditoriaClieVISTAS\" />
     <Folder Include="AuditoriaVISTAS\" />
     <Folder Include="CarritoVISTAS\" />
     <Folder Include="ClienteVISTAS\" />
@@ -22,11 +23,9 @@
     <Folder Include="KitVISTAS\" />
     <Folder Include="KitProductoVISTAS\" />
     <Folder Include="UsuariosRolVISTAS\" />
-    <Folder Include="UsuariosVISTAS\" />
     <Folder Include="RolPermisoVISTAS\" />
     <Folder Include="RolVISTAS\" />
     <Folder Include="ProductoVISTAS\" />
-    <Folder Include="PersonaVISTAS\" />
     <Folder Include="PermisoVISTAS\" />
   </ItemGroup>
 
