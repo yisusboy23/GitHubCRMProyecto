@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BSS\BSS.csproj" />
+    <ProjectReference Include="..\MODELOS\MODELOS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AuditoriaVISTAS\" />
+    <Folder Include="AuditoriaClieVISTAS\" />
+    <Folder Include="CarritoVISTAS\" />
+    <Folder Include="ClienteVISTAS\" />
+    <Folder Include="DetalleCarritoKitVISTAS\" />
+    <Folder Include="DetalleCarritoProductoVISTAS\" />
+    <Folder Include="KitVISTAS\" />
+    <Folder Include="KitProductoVISTAS\" />
+    <Folder Include="UsuariosRolVISTAS\" />
+    <Folder Include="UsuariosVISTAS\" />
+    <Folder Include="RolPermisoVISTAS\" />
+    <Folder Include="RolVISTAS\" />
+    <Folder Include="ProductoVISTAS\" />
+    <Folder Include="PersonaVISTAS\" />
+    <Folder Include="PermisoVISTAS\" />
+  </ItemGroup>
+
+</Project>
