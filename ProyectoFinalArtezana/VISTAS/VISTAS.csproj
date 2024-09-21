@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <Folder Include="AuditoriaVISTAS\" />
-    <Folder Include="AuditoriaClieVISTAS\" />
     <Folder Include="CarritoVISTAS\" />
     <Folder Include="ClienteVISTAS\" />
     <Folder Include="DetalleCarritoKitVISTAS\" />
