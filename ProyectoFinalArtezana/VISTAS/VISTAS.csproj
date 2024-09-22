@@ -18,10 +18,6 @@
     <Folder Include="AuditoriaVISTAS\" />
     <Folder Include="DetalleCarritoKitVISTAS\" />
     <Folder Include="DetalleCarritoProductoVISTAS\" />
-    <Folder Include="UsuariosRolVISTAS\" />
-    <Folder Include="RolPermisoVISTAS\" />
-    <Folder Include="RolVISTAS\" />
-    <Folder Include="PermisoVISTAS\" />
   </ItemGroup>
 
 </Project>

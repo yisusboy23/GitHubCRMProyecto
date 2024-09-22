@@ -10,7 +10,7 @@ namespace MODELOS
     {
         public int IdRol { get; set; }
         public string NombreRol { get; set; }
-        public string Estado { get; set; }
+        public string Descripcion { get; set; }
         public bool Bloqueado { get; set; }
         public DateTime? FechaBloq { get; set; }
     }
