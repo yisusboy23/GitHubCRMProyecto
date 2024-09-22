@@ -11,48 +11,70 @@ namespace DAL
 {
     public class CarritoDAL
     {
-        public void InsertarCarritoDal(Carrito carrito)
+        // Método para listar todos los carritos
+        public DataTable ListarCarritoDal()
         {
-            string consulta = "INSERT INTO Carrito (IdCliente, Fecha, PrecioTotal) VALUES (" +
-                              carrito.IdCliente + ", '" + carrito.Fecha.ToString("yyyy-MM-dd") + "', " +
-                              carrito.PrecioTotal + ")";
+            string consulta = "SELECT * FROM Carrito";
+            return CONEXION.EjecutarDataTabla(consulta, "Carrito");
+        }
+
+        public void InsertarCarritoDal()
+        {
+            string consulta = "INSERT INTO Carrito (IdCliente, Fecha, Precio_Total, Estado) VALUES (" +
+                              "(SELECT MAX(IdCliente) FROM Cliente), " +
+                              "DEFAULT, " + // Esto utilizará la fecha por defecto (CURRENT_TIMESTAMP)
+                              "0.0, " + // PrecioTotal inicializado en 0
+                              "'Pendiente')"; // Estado inicializado en 'Pendiente'
+
             CONEXION.Ejecutar(consulta);
         }
 
-        public DataTable ListarCarritosDal()
-        {
-            string consulta = "SELECT * FROM Carrito";
-            return CONEXION.EjecutarDataTabla(consulta, "Carritos");
-        }
-
+        // Método para obtener un carrito por su Id
         public Carrito ObtenerCarritoPorIdDal(int id)
         {
-            string consulta = "SELECT * FROM Carrito WHERE IdCarrito = " + id;
+            string consulta = "SELECT * FROM Carrito WHERE Id_Carrito = " + id;
             DataTable tabla = CONEXION.EjecutarDataTabla(consulta, "Carrito");
-            Carrito carrito = new Carrito();
+
+            Carrito carrito = null;
             if (tabla.Rows.Count > 0)
             {
-                carrito.IdCarrito = Convert.ToInt32(tabla.Rows[0]["IdCarrito"]);
-                carrito.IdCliente = Convert.ToInt32(tabla.Rows[0]["IdCliente"]);
-                carrito.Fecha = Convert.ToDateTime(tabla.Rows[0]["Fecha"]);
-                carrito.PrecioTotal = Convert.ToDecimal(tabla.Rows[0]["PrecioTotal"]);
+                carrito = new Carrito
+                {
+                    IdCarrito = Convert.ToInt32(tabla.Rows[0]["Id_Carrito"]),
+                    IdCliente = Convert.ToInt32(tabla.Rows[0]["idCliente"]),
+                    Fecha = Convert.ToDateTime(tabla.Rows[0]["Fecha"]),
+                    PrecioTotal = Convert.ToDecimal(tabla.Rows[0]["Precio_Total"]),
+                    Estado = tabla.Rows[0]["Estado"].ToString()
+                };
             }
             return carrito;
         }
 
+        // Método para actualizar un carrito
         public void EditarCarritoDal(Carrito carrito)
         {
-            string consulta = "UPDATE Carrito SET IdCliente = " + carrito.IdCliente +
-                              ", Fecha = '" + carrito.Fecha.ToString("yyyy-MM-dd") +
-                              "', PrecioTotal = " + carrito.PrecioTotal +
-                              " WHERE IdCarrito = " + carrito.IdCarrito;
+            string consulta = "UPDATE Carrito SET " +
+                              "idCliente = " + carrito.IdCliente + ", " +
+                              "Fecha = '" + carrito.Fecha.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
+                              "Precio_Total = " + carrito.PrecioTotal + ", " +
+                              "Estado = '" + carrito.Estado + "' " +
+                              "WHERE Id_Carrito = " + carrito.IdCarrito;
             CONEXION.Ejecutar(consulta);
         }
 
+        // Método para eliminar un carrito
         public void EliminarCarritoDal(int id)
         {
-            string consulta = "DELETE FROM Carrito WHERE IdCarrito = " + id;
+            string consulta = "DELETE FROM Carrito WHERE Id_Carrito = " + id;
             CONEXION.Ejecutar(consulta);
+        }
+
+        // Método para obtener el último carrito creado
+        public int ObtenerUltimoCarritoDal()
+        {
+            string consulta = "SELECT MAX(Id_Carrito) FROM Carrito";
+            object resultado = CONEXION.EjecutarEscalar(consulta);
+            return resultado != DBNull.Value ? Convert.ToInt32(resultado) : 0;
         }
     }
 }

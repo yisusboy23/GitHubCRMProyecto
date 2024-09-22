@@ -13,14 +13,14 @@ namespace BSS
     {
         CarritoDAL dal = new CarritoDAL();
 
-        public void InsertarCarritoBss(Carrito carrito)
+        public void InsertarCarritoBss()
         {
-            dal.InsertarCarritoDal(carrito);
+            dal.InsertarCarritoDal(); // Llama al método DAL para insertar el carrito
         }
 
         public DataTable ListarCarritosBss()
         {
-            return dal.ListarCarritosDal();
+            return dal.ListarCarritoDal();
         }
 
         public Carrito ObtenerCarritoPorIdBss(int id)
@@ -36,6 +36,11 @@ namespace BSS
         public void EliminarCarritoBss(int id)
         {
             dal.EliminarCarritoDal(id);
+        }
+
+        public int ObtenerUltimoCarritoBss()
+        {
+            return dal.ObtenerUltimoCarritoDal();
         }
     }
 }

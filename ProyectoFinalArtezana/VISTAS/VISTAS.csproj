@@ -16,8 +16,6 @@
   <ItemGroup>
     <Folder Include="AuditoriaClieVISTAS\" />
     <Folder Include="AuditoriaVISTAS\" />
-    <Folder Include="DetalleCarritoKitVISTAS\" />
-    <Folder Include="DetalleCarritoProductoVISTAS\" />
   </ItemGroup>
 
 </Project>

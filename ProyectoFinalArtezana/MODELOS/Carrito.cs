@@ -12,5 +12,6 @@ namespace MODELOS
         public int IdCliente { get; set; }
         public DateTime Fecha { get; set; }
         public decimal PrecioTotal { get; set; }
+        public string Estado { get; set; }
     }
 }
