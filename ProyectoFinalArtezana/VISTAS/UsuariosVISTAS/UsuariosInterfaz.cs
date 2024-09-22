@@ -83,6 +83,7 @@ namespace VISTAS.UsuariosVISTAS
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
+            checkBox1.Checked = false;
         }
 
         private void button1_Click(object sender, EventArgs e)

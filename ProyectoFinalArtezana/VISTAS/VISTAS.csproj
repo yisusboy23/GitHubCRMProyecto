@@ -16,16 +16,11 @@
   <ItemGroup>
     <Folder Include="AuditoriaClieVISTAS\" />
     <Folder Include="AuditoriaVISTAS\" />
-    <Folder Include="CarritoVISTAS\" />
-    <Folder Include="ClienteVISTAS\" />
     <Folder Include="DetalleCarritoKitVISTAS\" />
     <Folder Include="DetalleCarritoProductoVISTAS\" />
-    <Folder Include="KitVISTAS\" />
-    <Folder Include="KitProductoVISTAS\" />
     <Folder Include="UsuariosRolVISTAS\" />
     <Folder Include="RolPermisoVISTAS\" />
     <Folder Include="RolVISTAS\" />
-    <Folder Include="ProductoVISTAS\" />
     <Folder Include="PermisoVISTAS\" />
   </ItemGroup>
 

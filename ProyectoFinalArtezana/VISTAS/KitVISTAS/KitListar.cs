@@ -8,27 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VISTAS.ClienteVISTAS;
 using VISTAS.UsuariosVISTAS;
 
-namespace VISTAS.PersonaVISTAS
+namespace VISTAS.KitVISTAS
 {
-    public partial class PersonaListar : Form
+    public partial class KitListar : Form
     {
-        public PersonaListar()
+        public KitListar()
         {
             InitializeComponent();
         }
-        PersonaBSS bss = new PersonaBSS();
-        private void PersonaListar_Load(object sender, EventArgs e)
+        KitBSS bss = new KitBSS();
+        private void KitListar_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = bss.ListarPersonasBss();
+            dataGridView1.DataSource = bss.ListarKitsBss();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UsuariosInterfaz.IdPersonaSeleccionada = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            ClientesInterfaz.IdPersonaSeleccionada = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            KitProductoVISTAS.KitProductoInterfaz.IdKitSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
         }
 
         private void button2_Click(object sender, EventArgs e)
