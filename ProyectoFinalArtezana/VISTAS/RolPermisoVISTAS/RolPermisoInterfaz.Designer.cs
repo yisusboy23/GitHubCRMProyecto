@@ -73,6 +73,7 @@
             button5.Size = new Size(57, 23);
             button5.TabIndex = 141;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // label8
             // 

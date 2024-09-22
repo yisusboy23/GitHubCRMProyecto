@@ -26,24 +26,7 @@ namespace VISTAS.RolPermisoVISTAS
         public static int IdPermisoSeleccionado = 0;
         private void RolPermisoInterfaz_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox3.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-            }
-            else
-            {
-                RolPermiso rp = new RolPermiso
-                {
-                    IdRol = IdRolSeleccionado,
-                    IdPermiso = IdPermisoSeleccionado,
-                    Descripcion = textBox3.Text,
-                    FechaAsignacion = DateTime.Now
-                };
-
-                bss.InsertarRolPermisoBss(rp);
-                MessageBox.Show("Rol-Permiso guardado correctamente.");
-                dataGridView1.DataSource = bss.ListarRolPermisosBss();
-            }
+            dataGridView1.DataSource = bss.ListarRolPermisosBss();
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -102,6 +85,8 @@ namespace VISTAS.RolPermisoVISTAS
                 editarRolPermiso.IdPermiso = IdPermisoSeleccionado;
                 editarRolPermiso.Descripcion = textBox3.Text;
                 editarRolPermiso.FechaAsignacion = DateTime.Now;
+                editarRolPermiso.Bloqueado = checkBox1.Checked;
+
 
                 bss.EditarRolPermisoBss(editarRolPermiso);
                 MessageBox.Show("Rol-Permiso actualizado correctamente.");
@@ -123,17 +108,22 @@ namespace VISTAS.RolPermisoVISTAS
         private void button6_Click(object sender, EventArgs e)
         {
             // Lógica para seleccionar un Rol
-            RolVISTAS.RolListar rolForm = new RolVISTAS.RolListar();
-            if (rolForm.ShowDialog() == DialogResult.OK)
-            {
-                IdRolSeleccionado = rolForm.IdRolSeleccionado; // Asume que tienes esta propiedad
-                textBox1.Text = rolBss.ObtenerRolPorIdBss(IdRolSeleccionado).NombreRol; // Asume que tienes la propiedad Nombre en Rol
-            }
             RolVISTAS.RolListar kitForm = new RolVISTAS.RolListar();
             if (kitForm.ShowDialog() == DialogResult.OK)
             {
                 Rol k = rolBss.ObtenerRolPorIdBss(IdRolSeleccionado);
                 textBox1.Text = k.NombreRol;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Lógica para seleccionar un Permiso
+            PermisoVISTAS.PermisoListar permisoForm = new PermisoVISTAS.PermisoListar();
+            if (permisoForm.ShowDialog() == DialogResult.OK)
+            {
+                Permiso p = permisoBss.ObtenerPermisoPorIdBss(IdPermisoSeleccionado); // Asume que tienes esta propiedad
+                textBox2.Text = permisoBss.ObtenerPermisoPorIdBss(IdPermisoSeleccionado).Nombre; // Asume que tienes la propiedad Nombre en Permiso
             }
         }
     }

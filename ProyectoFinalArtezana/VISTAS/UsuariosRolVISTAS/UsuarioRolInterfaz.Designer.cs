@@ -277,7 +277,6 @@
         private Button button5;
         private Label label9;
         private Label label8;
-        private Label label7;
         private Label label1;
         private TextBox textBox4;
         private TextBox textBox3;
