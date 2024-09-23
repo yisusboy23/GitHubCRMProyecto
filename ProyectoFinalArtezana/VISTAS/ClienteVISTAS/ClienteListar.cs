@@ -26,6 +26,7 @@ namespace VISTAS.ClienteVISTAS
         private void button1_Click(object sender, EventArgs e)
         {
             DetalleCarritoProductoVISTAS.DetalleCarritoProductoInterfaz.IdClienteSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            DetalleCarritoKitVISTAS.DetalleCarritoKitInterfaz.IdClienteSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
         }
     }
 }

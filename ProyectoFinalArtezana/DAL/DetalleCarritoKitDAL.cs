@@ -20,7 +20,7 @@ namespace DAL
         // Método para insertar un nuevo detalle de carrito de kits
         public void InsertarDetalleCarritoKitDal(DetalleCarritoKit detalle)
         {
-            string consulta = "INSERT INTO DetalleCarritoKit (IdCarrito, IdKitProducto, Cantidad, PrecioUnitario, Fecha) VALUES (" +
+            string consulta = "INSERT INTO DetalleCarritoKit (Id_Carrito, Id_KitProducto, Cantidad, Precio_Unitario, Fecha) VALUES (" +
                               detalle.IdCarrito + ", " +
                               detalle.IdKitProducto + ", " +
                               detalle.Cantidad + ", " +
@@ -32,7 +32,7 @@ namespace DAL
         // Método para obtener un detalle por su Id
         public DetalleCarritoKit ObtenerDetallePorIdDal(int id)
         {
-            string consulta = "SELECT * FROM DetalleCarritoKit WHERE IdDetalleCarritoK = " + id;
+            string consulta = "SELECT * FROM DetalleCarritoKit WHERE Id_DetalleCarritoK = " + id;
             DataTable tabla = CONEXION.EjecutarDataTabla(consulta, "DetalleCarritoKit");
 
             DetalleCarritoKit detalle = null;
@@ -40,11 +40,11 @@ namespace DAL
             {
                 detalle = new DetalleCarritoKit
                 {
-                    IdDetalleCarritoK = Convert.ToInt32(tabla.Rows[0]["IdDetalleCarritoK"]),
-                    IdCarrito = Convert.ToInt32(tabla.Rows[0]["IdCarrito"]),
-                    IdKitProducto = Convert.ToInt32(tabla.Rows[0]["IdKitProducto"]),
+                    IdDetalleCarritoK = Convert.ToInt32(tabla.Rows[0]["Id_DetalleCarritoK"]),
+                    IdCarrito = Convert.ToInt32(tabla.Rows[0]["Id_Carrito"]),
+                    IdKitProducto = Convert.ToInt32(tabla.Rows[0]["Id_KitProducto"]),
                     Cantidad = Convert.ToInt32(tabla.Rows[0]["Cantidad"]),
-                    PrecioUnitario = Convert.ToDecimal(tabla.Rows[0]["PrecioUnitario"]),
+                    PrecioUnitario = Convert.ToDecimal(tabla.Rows[0]["Precio_Unitario"]),
                     Fecha = Convert.ToDateTime(tabla.Rows[0]["Fecha"])
                 };
             }
@@ -55,20 +55,20 @@ namespace DAL
         public void EditarDetalleCarritoKitDal(DetalleCarritoKit detalle)
         {
             string consulta = "UPDATE DetalleCarritoKit SET " +
-                              "IdCarrito = " + detalle.IdCarrito + ", " +
-                              "IdKitProducto = " + detalle.IdKitProducto + ", " +
+                              "Id_Carrito = " + detalle.IdCarrito + ", " +
+                              "Id_KitProducto = " + detalle.IdKitProducto + ", " +
                               "Cantidad = " + detalle.Cantidad + ", " +
-                              "PrecioUnitario = " + detalle.PrecioUnitario + ", " +
+                              "Precio_Unitario = " + detalle.PrecioUnitario + ", " +
                               "Fecha = '" + detalle.Fecha.ToString("yyyy-MM-dd HH:mm:ss") + "' " +
-                              "WHERE IdDetalleCarritoK = " + detalle.IdDetalleCarritoK;
+                              "WHERE Id_DetalleCarritoK = " + detalle.IdDetalleCarritoK;
             CONEXION.Ejecutar(consulta);
         }
 
         // Método para eliminar un detalle de carrito de kits
         public void EliminarDetalleCarritoKitDal(int id)
         {
-            string consulta = "DELETE FROM DetalleCarritoKit WHERE IdDetalleCarritoK = " + id;
+            string consulta = "DELETE FROM DetalleCarritoKit WHERE Id_DetalleCarritoK = " + id;
             CONEXION.Ejecutar(consulta);
-        }
+        } 
     }
 }

@@ -64,7 +64,6 @@ namespace VISTAS.RolVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
