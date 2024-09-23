@@ -37,5 +37,11 @@ namespace BSS
         {
             dal.EliminarUsuarioDal(id);
         }
+
+        // Nuevo método para obtener las credenciales del usuario
+        public Usuarios ObtenerCredencialesBss(string nombreUsuario, string contrasena)
+        {
+            return dal.ObtenerCredenciales(nombreUsuario, contrasena);
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,50 @@ namespace DAL
         {
             string consulta = "DELETE FROM Usuarios WHERE IdUsuario = " + id;
             CONEXION.Ejecutar(consulta);
+        }
+
+        // Método para obtener las credenciales del usuario
+        // Método para obtener las credenciales del usuario
+        public Usuarios ObtenerCredenciales(string userName, string contraseña)
+        {
+            // Consulta SQL con parámetros
+            string consulta = "SELECT * FROM Usuarios WHERE UserName = @UserName AND Contraseña = @Contraseña";
+
+            // Crear el DataTable usando tu método existente
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("@UserName", userName),
+                new SqlParameter("@Contraseña", contraseña)
+            };
+
+            // Usar el método que acepta un DataTable para ejecutar la consulta
+            DataTable tabla = new DataTable();
+            using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
+            {
+                conectar.Open();
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.Parameters.AddRange(parametros); // Agregar los parámetros
+                    cmd.CommandTimeout = 5000;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+
+            // Procesar el DataTable y devolver el objeto Usuario
+            Usuarios usuario = null;
+            if (tabla.Rows.Count > 0)
+            {
+                DataRow fila = tabla.Rows[0];
+                usuario = new Usuarios
+                {
+                    IdUsuario = Convert.ToInt32(fila["IdUsuario"]),
+                    UserName = fila["UserName"].ToString(),
+                    Contraseña = fila["Contraseña"].ToString()
+                };
+            }
+
+            return usuario;
         }
     }
 }
