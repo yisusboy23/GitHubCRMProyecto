@@ -40,7 +40,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(459, 358);
+            button2.Location = new Point(81, 358);
             button2.Name = "button2";
             button2.Size = new Size(59, 41);
             button2.TabIndex = 8;
@@ -52,7 +52,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(579, 358);
+            button1.Location = new Point(323, 358);
             button1.Name = "button1";
             button1.Size = new Size(59, 41);
             button1.TabIndex = 7;
@@ -65,7 +65,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(155, 52);
+            dataGridView1.Location = new Point(28, 21);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
@@ -77,7 +77,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(547, 436);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);

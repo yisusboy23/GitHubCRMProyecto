@@ -63,14 +63,15 @@ namespace DAL
         }
 
         // Método para obtener las credenciales del usuario
-        // Método para obtener las credenciales del usuario
         public Usuarios ObtenerCredenciales(string userName, string contraseña)
         {
-            // Consulta SQL para obtener el usuario junto con su rol y si está bloqueado
+            // Consulta SQL para obtener el usuario, rol, y estado de bloqueos
             string consulta = @"
-    SELECT U.IdUsuario, U.UserName, U.Contraseña, UR.IdRol, U.Bloqueado 
+    SELECT U.IdUsuario, U.UserName, U.Contraseña, UR.IdRol, U.Bloqueado AS UsuarioBloqueado, 
+           UR.Bloqueado AS UsuarioRolBloqueado, R.Bloqueado AS RolBloqueado
     FROM Usuarios AS U
     INNER JOIN UsuarioRol AS UR ON U.IdUsuario = UR.IdUsuario 
+    INNER JOIN Rol AS R ON UR.IdRol = R.IdRol
     WHERE U.UserName = @UserName AND U.Contraseña = @Contraseña";
 
             SqlParameter[] parametros = new SqlParameter[]
@@ -101,17 +102,13 @@ namespace DAL
                     UserName = fila["UserName"].ToString(),
                     Contraseña = fila["Contraseña"].ToString(),
                     IdRol = Convert.ToInt32(fila["IdRol"]),
-                    Bloqueado = Convert.ToBoolean(fila["Bloqueado"]) // Se mantiene la asignación
+                    Bloqueado = Convert.ToBoolean(fila["UsuarioBloqueado"]),
+                    UsuarioRolBloqueado = Convert.ToBoolean(fila["UsuarioRolBloqueado"]),
+                    RolBloqueado = Convert.ToBoolean(fila["RolBloqueado"])
                 };
             }
 
-            // Considerar que Bloqueado es true (1) si el usuario está bloqueado
-            if (usuario != null && usuario.Bloqueado) // Si el usuario está bloqueado
-            {
-                usuario = null; // Devolvemos null para indicar que el inicio de sesión no debe continuar
-            }
-
-            return usuario; // Devuelve null si está bloqueado o el usuario si está activo
+            return usuario;
         }
     }
 }

@@ -97,7 +97,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(262, 467);
+            label6.Location = new Point(214, 396);
             label6.Name = "label6";
             label6.Size = new Size(94, 23);
             label6.TabIndex = 101;
@@ -107,7 +107,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(77, 467);
+            label5.Location = new Point(29, 396);
             label5.Name = "label5";
             label5.Size = new Size(114, 23);
             label5.TabIndex = 100;
@@ -117,7 +117,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(262, 383);
+            label4.Location = new Point(214, 312);
             label4.Name = "label4";
             label4.Size = new Size(81, 23);
             label4.TabIndex = 99;
@@ -127,7 +127,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(77, 383);
+            label3.Location = new Point(29, 312);
             label3.Name = "label3";
             label3.Size = new Size(93, 23);
             label3.TabIndex = 98;
@@ -137,7 +137,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(104, 415);
+            button3.Location = new Point(56, 344);
             button3.Name = "button3";
             button3.Size = new Size(59, 49);
             button3.TabIndex = 97;
@@ -149,7 +149,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.OK;
-            button4.Location = new Point(268, 502);
+            button4.Location = new Point(220, 431);
             button4.Name = "button4";
             button4.Size = new Size(59, 49);
             button4.TabIndex = 96;
@@ -161,7 +161,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.OK;
-            button2.Location = new Point(268, 415);
+            button2.Location = new Point(220, 344);
             button2.Name = "button2";
             button2.Size = new Size(59, 49);
             button2.TabIndex = 95;
@@ -173,7 +173,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(104, 502);
+            button1.Location = new Point(56, 431);
             button1.Name = "button1";
             button1.Size = new Size(59, 49);
             button1.TabIndex = 94;
@@ -186,12 +186,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(372, 151);
+            dataGridView1.Location = new Point(425, 108);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(402, 400);
+            dataGridView1.Size = new Size(461, 399);
             dataGridView1.TabIndex = 93;
             dataGridView1.Click += dataGridView1_Click;
             // 
@@ -199,9 +199,9 @@
             // 
             panel1.BackColor = Color.LightSkyBlue;
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(47, 12);
+            panel1.Location = new Point(2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 100);
+            panel1.Size = new Size(895, 100);
             panel1.TabIndex = 92;
             // 
             // label2
@@ -219,7 +219,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(861, 591);
+            ClientSize = new Size(914, 558);
             Controls.Add(label7);
             Controls.Add(label1);
             Controls.Add(textBox2);
@@ -235,6 +235,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "PermisoInterfaz";
             Text = "PermisoInterfaz";
             Load += PermisoInterfaz_Load;

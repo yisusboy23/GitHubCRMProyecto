@@ -56,9 +56,9 @@
             // 
             panel1.BackColor = Color.LightSkyBlue;
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(0, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 100);
+            panel1.Size = new Size(913, 100);
             panel1.TabIndex = 33;
             // 
             // label2
@@ -74,7 +74,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(141, 296);
+            textBox5.Location = new Point(122, 262);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(221, 23);
             textBox5.TabIndex = 59;
@@ -83,7 +83,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(35, 296);
+            label10.Location = new Point(16, 262);
             label10.Name = "label10";
             label10.Size = new Size(77, 23);
             label10.TabIndex = 58;
@@ -91,7 +91,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(141, 228);
+            textBox3.Location = new Point(122, 194);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(221, 23);
             textBox3.TabIndex = 55;
@@ -100,7 +100,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(35, 228);
+            label8.Location = new Point(16, 194);
             label8.Name = "label8";
             label8.Size = new Size(99, 23);
             label8.TabIndex = 54;
@@ -108,7 +108,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(141, 192);
+            textBox2.Location = new Point(122, 158);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(221, 23);
             textBox2.TabIndex = 53;
@@ -117,7 +117,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(35, 192);
+            label7.Location = new Point(16, 158);
             label7.Name = "label7";
             label7.Size = new Size(93, 23);
             label7.TabIndex = 52;
@@ -127,7 +127,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(262, 451);
+            label6.Location = new Point(245, 406);
             label6.Name = "label6";
             label6.Size = new Size(94, 23);
             label6.TabIndex = 51;
@@ -137,7 +137,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(77, 451);
+            label5.Location = new Point(60, 406);
             label5.Name = "label5";
             label5.Size = new Size(114, 23);
             label5.TabIndex = 50;
@@ -147,7 +147,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(262, 367);
+            label4.Location = new Point(245, 322);
             label4.Name = "label4";
             label4.Size = new Size(81, 23);
             label4.TabIndex = 49;
@@ -157,7 +157,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(77, 367);
+            label3.Location = new Point(60, 322);
             label3.Name = "label3";
             label3.Size = new Size(93, 23);
             label3.TabIndex = 48;
@@ -167,7 +167,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(104, 399);
+            button3.Location = new Point(87, 354);
             button3.Name = "button3";
             button3.Size = new Size(59, 49);
             button3.TabIndex = 47;
@@ -179,7 +179,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.OK;
-            button4.Location = new Point(268, 486);
+            button4.Location = new Point(251, 441);
             button4.Name = "button4";
             button4.Size = new Size(59, 49);
             button4.TabIndex = 46;
@@ -191,7 +191,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.OK;
-            button2.Location = new Point(268, 399);
+            button2.Location = new Point(251, 354);
             button2.Name = "button2";
             button2.Size = new Size(59, 49);
             button2.TabIndex = 45;
@@ -203,7 +203,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(104, 486);
+            button1.Location = new Point(87, 441);
             button1.Name = "button1";
             button1.Size = new Size(59, 49);
             button1.TabIndex = 44;
@@ -212,7 +212,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(141, 152);
+            textBox1.Location = new Point(122, 118);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(221, 23);
             textBox1.TabIndex = 43;
@@ -221,7 +221,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(35, 152);
+            label1.Location = new Point(16, 118);
             label1.Name = "label1";
             label1.Size = new Size(82, 23);
             label1.TabIndex = 42;
@@ -233,7 +233,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(368, 135);
+            dataGridView1.Location = new Point(484, 107);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
@@ -246,7 +246,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(825, 602);
+            ClientSize = new Size(914, 558);
             Controls.Add(textBox5);
             Controls.Add(label10);
             Controls.Add(textBox3);
@@ -265,6 +265,7 @@
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "PersonaInterfaz";
             Text = "Form1";
             Load += Form1_Load;

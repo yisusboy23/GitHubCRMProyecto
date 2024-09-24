@@ -241,7 +241,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(858, 563);
+            ClientSize = new Size(914, 558);
             Controls.Add(textBox5);
             Controls.Add(label10);
             Controls.Add(textBox3);
@@ -260,6 +260,7 @@
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "CarritoInterfaz";
             Text = "CarritoInterfaz";
             Load += CarritoInterfaz_Load;

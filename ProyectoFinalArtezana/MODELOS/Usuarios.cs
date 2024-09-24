@@ -16,5 +16,7 @@ namespace MODELOS
         public bool Bloqueado { get; set; }
         public DateTime? FechaBloq { get; set; }
         public int IdRol { get; set; } // Nueva propiedad para almacenar el ID de rol
+        public bool UsuarioRolBloqueado { get; set; } // Nuevo: Bloqueo de UsuarioRol
+        public bool RolBloqueado { get; set; } // Nuevo: Bloqueo de Rol
     }
 }

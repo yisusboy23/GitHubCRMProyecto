@@ -118,7 +118,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(225, 428);
+            label6.Location = new Point(228, 383);
             label6.Name = "label6";
             label6.Size = new Size(94, 23);
             label6.TabIndex = 84;
@@ -128,7 +128,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(40, 428);
+            label5.Location = new Point(43, 383);
             label5.Name = "label5";
             label5.Size = new Size(114, 23);
             label5.TabIndex = 83;
@@ -138,7 +138,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(225, 344);
+            label4.Location = new Point(228, 299);
             label4.Name = "label4";
             label4.Size = new Size(81, 23);
             label4.TabIndex = 82;
@@ -148,7 +148,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(40, 344);
+            label3.Location = new Point(43, 299);
             label3.Name = "label3";
             label3.Size = new Size(93, 23);
             label3.TabIndex = 81;
@@ -158,7 +158,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(67, 376);
+            button3.Location = new Point(70, 331);
             button3.Name = "button3";
             button3.Size = new Size(59, 49);
             button3.TabIndex = 80;
@@ -170,7 +170,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.OK;
-            button4.Location = new Point(231, 463);
+            button4.Location = new Point(234, 418);
             button4.Name = "button4";
             button4.Size = new Size(59, 49);
             button4.TabIndex = 79;
@@ -182,7 +182,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.OK;
-            button2.Location = new Point(231, 376);
+            button2.Location = new Point(234, 331);
             button2.Name = "button2";
             button2.Size = new Size(59, 49);
             button2.TabIndex = 78;
@@ -194,7 +194,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(67, 463);
+            button1.Location = new Point(70, 418);
             button1.Name = "button1";
             button1.Size = new Size(59, 49);
             button1.TabIndex = 77;
@@ -207,7 +207,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(370, 154);
+            dataGridView1.Location = new Point(484, 107);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
@@ -220,9 +220,9 @@
             // 
             panel1.BackColor = Color.LightSkyBlue;
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(14, 7);
+            panel1.Location = new Point(1, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 100);
+            panel1.Size = new Size(898, 100);
             panel1.TabIndex = 75;
             // 
             // label2
@@ -251,7 +251,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(818, 587);
+            ClientSize = new Size(914, 558);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label8);
@@ -270,6 +270,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "KitProductoInterfaz";
             Text = "KitProductoInterfaz";
             Load += KitProductoInterfaz_Load;

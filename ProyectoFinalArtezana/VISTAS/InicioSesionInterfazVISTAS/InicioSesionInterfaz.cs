@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VISTAS.MenuAdministradorVISTAS;
 
 namespace VISTAS.InicioSesionInterfazVISTAS
 {
@@ -39,6 +40,27 @@ namespace VISTAS.InicioSesionInterfazVISTAS
 
             if (usuario != null)
             {
+                // Verificar si el rol está bloqueado
+                if (usuario.RolBloqueado)
+                {
+                    MessageBox.Show("El rol asignado a esta cuenta está bloqueado. Por favor, contacte al administrador.");
+                    return;
+                }
+
+                // Verificar si la relación UsuarioRol está bloqueada
+                if (usuario.UsuarioRolBloqueado)
+                {
+                    TimeSpan tiempoRestante = proximoIntento - DateTime.Now;
+                    MessageBox.Show($"La cuenta está temporalmente bloqueada. Por favor, contacte al administrador.");
+                    return;
+                }
+
+                if (usuario.Bloqueado)
+                {
+                    MessageBox.Show("La cuenta de usuario está bloqueada. Por favor, contacte al administrador.");
+                    return; // Detenemos el flujo si el usuario está bloqueado
+                }
+
                 // Restablecer los intentos fallidos y el tiempo de bloqueo
                 intentosFallidos = 0;
                 proximoIntento = DateTime.Now; // El tiempo de bloqueo se restablece
@@ -52,7 +74,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 // Redirigir según el rol
                 if (usuario.IdRol == 1) // ID rol 1
                 {
-                    MenuForm menu = new MenuForm();
+                    MenuAdministradorInterfaz menu = new MenuAdministradorInterfaz();
                     menu.Show();
                 }
                 else if (usuario.IdRol == 2) // ID rol 2

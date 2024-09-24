@@ -195,9 +195,9 @@
             // 
             panel1.BackColor = Color.LightSkyBlue;
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(44, 7);
+            panel1.Location = new Point(12, 7);
             panel1.Name = "panel1";
-            panel1.Size = new Size(758, 100);
+            panel1.Size = new Size(890, 100);
             panel1.TabIndex = 75;
             // 
             // label2
@@ -244,7 +244,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(928, 593);
+            ClientSize = new Size(914, 558);
             Controls.Add(textBox5);
             Controls.Add(button6);
             Controls.Add(label10);
@@ -262,6 +262,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "UsuarioRolInterfaz";
             Text = "UsuarioRolInterfaz";
             Load += UsuarioRolInterfaz_Load;
