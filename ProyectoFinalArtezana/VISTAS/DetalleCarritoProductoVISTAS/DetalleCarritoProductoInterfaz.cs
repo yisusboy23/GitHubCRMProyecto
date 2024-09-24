@@ -154,12 +154,6 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Verifica que el cliente esté seleccionado y que el carrito no esté vacío
-            if (string.IsNullOrWhiteSpace(textBox1.Text) || detallesCarrito.Count == 0)
-            {
-                MessageBox.Show("Por favor, seleccione un cliente y agregue productos al carrito antes de realizar la compra.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
             // Obtener el último carrito creado (que se crea automáticamente al iniciar)
             int idCarrito = bssCarro.ObtenerUltimoCarritoBss();
@@ -168,11 +162,14 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
             decimal precioTotal = detallesCarrito.Sum(detalle => detalle.Cantidad * detalle.PrecioUnitario);
 
             // Cambiar el estado del carrito a "Compra realizada" (o el estado que prefieras)
-            string estado = "Compra realizada";
+            string estado = "Pendiente";
 
             // Actualizar el carrito con el cliente seleccionado, el precio total y el estado
             Carrito carritoActualizado = bssCarro.ObtenerCarritoPorIdBss(idCarrito);
-            carritoActualizado.IdCliente = IdClienteSeleccionado;  // Cliente seleccionado
+
+            // Usar el cliente que se inició sesión
+            carritoActualizado.IdCliente = Sesion.IdClienteSeleccionado;
+
             carritoActualizado.PrecioTotal = precioTotal;
             carritoActualizado.Estado = estado;
 

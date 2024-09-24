@@ -18,9 +18,16 @@ namespace BSS
             dal.InsertarCarritoDal(); // Llama al método DAL para insertar el carrito
         }
 
-        public DataTable ListarCarritosBss()
+        // Método para listar carritos pendientes
+        public DataTable ListarCarritoPendienteBss(int idCliente)
         {
-            return dal.ListarCarritoDal();
+            return dal.ListarCarritoPendienteDal(idCliente);
+        }
+
+        // Método para listar carritos completados o cancelados
+        public DataTable ListarCarritoCompletadoBss(int idCliente)
+        {
+            return dal.ListarCarritoCompletadoDal(idCliente);
         }
 
         public Carrito ObtenerCarritoPorIdBss(int id)
@@ -41,6 +48,11 @@ namespace BSS
         public int ObtenerUltimoCarritoBss()
         {
             return dal.ObtenerUltimoCarritoDal();
+        }
+
+        public void CancelarCarritoBss(int idCarrito)
+        {
+            dal.CancelarCarritoDal(idCarrito);
         }
     }
 }

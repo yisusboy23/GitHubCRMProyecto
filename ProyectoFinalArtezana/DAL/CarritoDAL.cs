@@ -11,12 +11,43 @@ namespace DAL
 {
     public class CarritoDAL
     {
-        // Método para listar todos los carritos
-        public DataTable ListarCarritoDal()
+        public DataTable ListarCarritoPendienteDal(int idCliente)
         {
-            string consulta = "SELECT * FROM Carrito";
-            return CONEXION.EjecutarDataTabla(consulta, "Carrito");
+            string consulta = "SELECT * FROM Carrito WHERE IdCliente = @IdCliente AND Estado = 'Pendiente'";
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("@IdCliente", idCliente)
+            };
+            return EjecutarDataTabla(consulta, "Carrito", parametros);
         }
+
+        public DataTable ListarCarritoCompletadoDal(int idCliente)
+        {
+            string consulta = "SELECT * FROM Carrito WHERE IdCliente = @IdCliente AND Estado IN ('Completado', 'Cancelado')";
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("@IdCliente", idCliente)
+            };
+            return EjecutarDataTabla(consulta, "Carrito", parametros);
+        }
+
+        private DataTable EjecutarDataTabla(string consulta, string tabla, SqlParameter[] parametros)
+        {
+            using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
+            {
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.Parameters.AddRange(parametros);
+                    cmd.CommandTimeout = 5000;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable(tabla);
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+
 
         public void InsertarCarritoDal()
         {
@@ -75,6 +106,17 @@ namespace DAL
             string consulta = "SELECT MAX(Id_Carrito) FROM Carrito";
             object resultado = CONEXION.EjecutarEscalar(consulta);
             return resultado != DBNull.Value ? Convert.ToInt32(resultado) : 0;
+        }
+
+
+        public void CancelarCarritoDal(int idCarrito)
+        {
+            string consulta = "UPDATE Carrito SET Estado = 'Cancelado' WHERE Id_Carrito = @IdCarrito";
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+        new SqlParameter("@IdCarrito", idCarrito)
+            };
+            CONEXION.Ejecutar2(consulta, parametros);
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VISTAS.MenuClienteVISTAS;
 
 namespace VISTAS.InicioSesionInterfazVISTAS
 {
@@ -55,7 +56,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 Sesion.NombreCliente = cliente.UserName;
 
                 MessageBox.Show("Inicio de sesión exitoso");
-                Menu3 menu = new Menu3(); // Cambia a tu interfaz correspondiente
+                MenuClienteInterfaz menu = new MenuClienteInterfaz(); // Cambia a tu interfaz correspondiente
                 menu.Show();
                 this.Hide();
             }

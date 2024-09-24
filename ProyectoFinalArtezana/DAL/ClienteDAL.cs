@@ -12,7 +12,7 @@ namespace DAL
     public class ClienteDAL
     {
         // Listar clientes
-    public DataTable ListarClientesDal()
+        public DataTable ListarClientesDal()
         {
             string consulta = "SELECT * FROM Cliente";
             return CONEXION.EjecutarDataTabla(consulta, "tablaClientes");

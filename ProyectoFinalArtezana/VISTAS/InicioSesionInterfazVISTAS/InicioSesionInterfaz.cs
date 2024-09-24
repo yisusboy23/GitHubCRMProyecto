@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VISTAS.MenuAdministradorVISTAS;
+using VISTAS.MenuGerenteTiendaVISTAS;
 
 namespace VISTAS.InicioSesionInterfazVISTAS
 {
@@ -79,7 +80,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 }
                 else if (usuario.IdRol == 2) // ID rol 2
                 {
-                    Menu2 otraInterfaz = new Menu2(); // Cambia a tu interfaz correspondiente
+                    MenuGerenteTiendaInterfaz otraInterfaz = new MenuGerenteTiendaInterfaz(); // Cambia a tu interfaz correspondiente
                     otraInterfaz.Show();
                 }
 

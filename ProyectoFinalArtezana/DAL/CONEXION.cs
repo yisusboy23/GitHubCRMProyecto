@@ -62,7 +62,7 @@ namespace DAL
             return dt;
         }
 
-        public static DataTable EjecutarDataTabla2(string consulta, SqlParameter[] parametros, string tabla)
+        public static DataTable EjecutarDataTabla2(string consulta, string tabla, SqlParameter[] parametros)
         {
             using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
             {
@@ -70,16 +70,28 @@ namespace DAL
                 {
                     cmd.CommandTimeout = 5000;
 
-                    // Agregamos los parámetros al comando
                     if (parametros != null)
                     {
-                        cmd.Parameters.AddRange(parametros);
+                        cmd.Parameters.AddRange(parametros); // Añade los parámetros a la consulta
                     }
 
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable(tabla);
                     da.Fill(dt);
                     return dt;
+                }
+            }
+        }
+
+        public static void Ejecutar2(string consulta, SqlParameter[] parametros)
+        {
+            using (SqlConnection conectar = new SqlConnection(CONECTAR))
+            {
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.Parameters.AddRange(parametros);
+                    conectar.Open();
+                    cmd.ExecuteNonQuery();
                 }
             }
         }

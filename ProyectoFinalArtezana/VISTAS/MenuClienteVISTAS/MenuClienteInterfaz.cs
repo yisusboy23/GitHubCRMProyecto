@@ -9,20 +9,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VISTAS.AuditoriaClieVISTAS;
+using VISTAS.CarritoVISTAS;
+using VISTAS.DetalleCarritoKitVISTAS;
+using VISTAS.DetalleCarritoProductoVISTAS;
 using VISTAS.InicioSesionInterfazVISTAS;
-using VISTAS.KitProductoVISTAS;
-using VISTAS.ProductoVISTAS;
 
-namespace VISTAS.MenuGerenteTiendaVISTAS
+namespace VISTAS.MenuClienteVISTAS
 {
-    public partial class MenuGerenteTiendaInterfaz : Form
+    public partial class MenuClienteInterfaz : Form
     {
-        public MenuGerenteTiendaInterfaz()
+        public MenuClienteInterfaz()
         {
             InitializeComponent();
         }
-
         private void AbrirFormHija(Object FormHija)
         {
             if (this.panel3.Controls.Count > 0)
@@ -35,36 +34,25 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
             fh.Show();
 
         }
-
-        private void MenuGerenteTiendaInterfaz_Load(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            pictureBox2_Click(null, e);
-            label1.Text = "Bienvenido, " + Sesion.NombreUsuario;
+            AbrirFormHija(new DetalleCarritoProductoInterfaz());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void MenuClienteInterfaz_Load(object sender, EventArgs e)
         {
-
+            label1.Text = "Bienvenido, " + Sesion.NombreCliente;
+            pictureBox2_Click(null, e);
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new MenuGerente2());
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            AbrirFormHija(new ProductoInterfaz());
+            AbrirFormHija(new MenuCliente());
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new KitVISTAS.KitInterfaz());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AbrirFormHija(new KitProductoInterfaz());
+            AbrirFormHija(new DetalleCarritoKitInterfaz());
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -72,10 +60,15 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
             DialogResult result = MessageBox.Show("Esta seguro que desea cerrar la sesion?", "CERRAR SESION", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                InicioSesionInterfaz abrir = new InicioSesionInterfaz();
+                InicoSesionClienteInterfaz abrir = new InicoSesionClienteInterfaz();
                 abrir.Show();
                 this.Hide();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new CarritoInterfaz());
         }
     }
 }
