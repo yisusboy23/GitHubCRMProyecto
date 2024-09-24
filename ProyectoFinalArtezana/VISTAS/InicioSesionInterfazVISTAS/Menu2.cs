@@ -11,22 +11,16 @@ using System.Windows.Forms;
 
 namespace VISTAS.InicioSesionInterfazVISTAS
 {
-    public partial class MenuForm : Form
+    public partial class Menu2 : Form
     {
-        public MenuForm()
+        public Menu2()
         {
             InitializeComponent();
         }
 
-        private void MenuForm_Load(object sender, EventArgs e)
+        private void Menu2_Load(object sender, EventArgs e)
         {
-            // Mostrar el nombre del usuario logueado en un solo Label
             label1.Text = "Bienvenido, " + Sesion.NombreUsuario;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

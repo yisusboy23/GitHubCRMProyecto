@@ -10,5 +10,8 @@ namespace MODELOS
     {
         public static int IdUsuarioSeleccionado { get; set; }
         public static string NombreUsuario { get; set; }
+
+        public static int IdClienteSeleccionado { get; set; }
+        public static string NombreCliente { get; set; }
     }
 }

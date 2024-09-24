@@ -6,6 +6,7 @@ using VISTAS.InicioSesionInterfazVISTAS;
 using VISTAS.PermisoVISTAS;
 using VISTAS.RolPermisoVISTAS;
 using VISTAS.RolVISTAS;
+using VISTAS.UsuariosRolVISTAS;
 using VISTAS.UsuariosVISTAS;
 
 namespace VISTAS
@@ -21,7 +22,7 @@ namespace VISTAS
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new InicioSesionInterfaz());
+            Application.Run(new InicoSesionClienteInterfaz());
         }
     }
 }

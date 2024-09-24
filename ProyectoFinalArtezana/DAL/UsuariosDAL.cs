@@ -66,31 +66,31 @@ namespace DAL
         // Método para obtener las credenciales del usuario
         public Usuarios ObtenerCredenciales(string userName, string contraseña)
         {
-            // Consulta SQL con parámetros
-            string consulta = "SELECT * FROM Usuarios WHERE UserName = @UserName AND Contraseña = @Contraseña";
+            // Consulta SQL para obtener el usuario junto con su rol y si está bloqueado
+            string consulta = @"
+    SELECT U.IdUsuario, U.UserName, U.Contraseña, UR.IdRol, U.Bloqueado 
+    FROM Usuarios AS U
+    INNER JOIN UsuarioRol AS UR ON U.IdUsuario = UR.IdUsuario 
+    WHERE U.UserName = @UserName AND U.Contraseña = @Contraseña";
 
-            // Crear el DataTable usando tu método existente
             SqlParameter[] parametros = new SqlParameter[]
             {
-                new SqlParameter("@UserName", userName),
-                new SqlParameter("@Contraseña", contraseña)
+        new SqlParameter("@UserName", userName),
+        new SqlParameter("@Contraseña", contraseña)
             };
 
-            // Usar el método que acepta un DataTable para ejecutar la consulta
             DataTable tabla = new DataTable();
             using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
             {
                 conectar.Open();
                 using (SqlCommand cmd = new SqlCommand(consulta, conectar))
                 {
-                    cmd.Parameters.AddRange(parametros); // Agregar los parámetros
-                    cmd.CommandTimeout = 5000;
+                    cmd.Parameters.AddRange(parametros);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(tabla);
                 }
             }
 
-            // Procesar el DataTable y devolver el objeto Usuario
             Usuarios usuario = null;
             if (tabla.Rows.Count > 0)
             {
@@ -99,11 +99,19 @@ namespace DAL
                 {
                     IdUsuario = Convert.ToInt32(fila["IdUsuario"]),
                     UserName = fila["UserName"].ToString(),
-                    Contraseña = fila["Contraseña"].ToString()
+                    Contraseña = fila["Contraseña"].ToString(),
+                    IdRol = Convert.ToInt32(fila["IdRol"]),
+                    Bloqueado = Convert.ToBoolean(fila["Bloqueado"]) // Se mantiene la asignación
                 };
             }
 
-            return usuario;
+            // Considerar que Bloqueado es true (1) si el usuario está bloqueado
+            if (usuario != null && usuario.Bloqueado) // Si el usuario está bloqueado
+            {
+                usuario = null; // Devolvemos null para indicar que el inicio de sesión no debe continuar
+            }
+
+            return usuario; // Devuelve null si está bloqueado o el usuario si está activo
         }
     }
 }

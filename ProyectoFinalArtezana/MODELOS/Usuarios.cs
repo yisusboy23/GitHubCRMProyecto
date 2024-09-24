@@ -15,5 +15,6 @@ namespace MODELOS
         public string Ci { get; set; }
         public bool Bloqueado { get; set; }
         public DateTime? FechaBloq { get; set; }
+        public int IdRol { get; set; } // Nueva propiedad para almacenar el ID de rol
     }
 }

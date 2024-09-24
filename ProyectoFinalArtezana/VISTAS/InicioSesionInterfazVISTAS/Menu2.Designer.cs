@@ -1,6 +1,6 @@
 ﻿namespace VISTAS.InicioSesionInterfazVISTAS
 {
-    partial class MenuForm
+    partial class Menu2
     {
         /// <summary>
         /// Required designer variable.
@@ -29,27 +29,37 @@
         private void InitializeComponent()
         {
             label1 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(224, 121);
+            label1.Location = new Point(381, 218);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
+            label1.TabIndex = 1;
             label1.Text = "label1";
-            label1.Click += label1_Click;
             // 
-            // MenuForm
+            // button1
+            // 
+            button1.Location = new Point(399, 150);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 2;
+            button1.Text = "GERENTE";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // Menu2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(label1);
-            Name = "MenuForm";
-            Text = "MenuForm";
-            Load += MenuForm_Load;
+            Name = "Menu2";
+            Text = "Menu2";
+            Load += Menu2_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -57,5 +67,6 @@
         #endregion
 
         private Label label1;
+        private Button button1;
     }
 }
