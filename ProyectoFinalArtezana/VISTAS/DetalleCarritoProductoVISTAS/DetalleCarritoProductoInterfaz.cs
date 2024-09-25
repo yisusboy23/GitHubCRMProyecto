@@ -1,4 +1,5 @@
-﻿using BSS;
+﻿
+using BSS;
 using MODELOS;
 using System;
 using System.Collections.Generic;
@@ -154,7 +155,6 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             // Obtener el último carrito creado (que se crea automáticamente al iniciar)
             int idCarrito = bssCarro.ObtenerUltimoCarritoBss();
 
@@ -169,7 +169,6 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
 
             // Usar el cliente que se inició sesión
             carritoActualizado.IdCliente = Sesion.IdClienteSeleccionado;
-
             carritoActualizado.PrecioTotal = precioTotal;
             carritoActualizado.Estado = estado;
 
@@ -177,6 +176,7 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
             bssCarro.EditarCarritoBss(carritoActualizado);
 
             // Insertar los detalles del carrito (productos seleccionados) en la tabla DetalleCarritoProducto
+            List<string> nombresProductos = new List<string>(); // Lista para almacenar nombres de productos
             foreach (var detalle in detallesCarrito)
             {
                 DetalleCarritoProducto nuevoDetalle = new DetalleCarritoProducto
@@ -190,7 +190,19 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
 
                 // Insertar cada detalle en la base de datos
                 bssCarrito.InsertarDetalleCarritoProductoBss(nuevoDetalle);
+
+                // Agregar el nombre del producto a la lista
+                string nombreProducto = bssProducto.ObtenerNombreProductoPorId(detalle.IdProducto); // Método para obtener el nombre del producto
+                nombresProductos.Add(nombreProducto);
             }
+
+            // Registrar la auditoría
+            string username = Sesion.NombreCliente; // Obtén el nombre de usuario desde la sesión
+            string productosComprados = string.Join(", ", nombresProductos); // Unir los nombres en una sola cadena
+            string accion = $"{username} realizó una compra de productos: {productosComprados}."; // Mensaje de acción
+
+            AuditoriaClieBSS auditoriaBss = new AuditoriaClieBSS();
+            auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accion); // Registrar auditoría
 
             // Mostrar mensaje de éxito
             MessageBox.Show("Compra realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

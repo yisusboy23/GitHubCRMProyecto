@@ -51,6 +51,13 @@ namespace VISTAS.CarritoVISTAS
                 // Llamar al método para cancelar el carrito
                 bss.CancelarCarritoBss(idCarritoSeleccionado);
 
+                // Registrar la auditoría
+                string username = Sesion.NombreCliente; // Obtén el nombre de usuario desde la sesión
+                string accion = $"{username} canceló el carrito con ID: {idCarritoSeleccionado}."; // Mensaje de acción
+
+                AuditoriaClieBSS auditoriaBss = new AuditoriaClieBSS();
+                auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accion); // Registrar auditoría
+
                 // Refrescar el DataGridView para mostrar los cambios
                 DataTable carritoPendiente = bss.ListarCarritoPendienteBss(Sesion.IdClienteSeleccionado);
                 dataGridView2.DataSource = carritoPendiente;

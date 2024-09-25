@@ -37,5 +37,13 @@ namespace BSS
         {
             dal.EliminarProductoDal(id);
         }
+
+
+        // Método para obtener el nombre del producto por ID
+        public string ObtenerNombreProductoPorId(int idProducto)
+        {
+            return dal.ObtenerNombreProductoPorId(idProducto);
+        }
+
     }
 }

@@ -37,5 +37,13 @@ namespace BSS
         {
             dal.EliminarPersonaDal(id);
         }
+
+
+        // Método para insertar persona y cliente al mismo tiempo
+        public Cliente InsertarPersonaYClienteBss(Persona persona, Cliente cliente)
+        {
+            // Llamar al método DAL y retornar el cliente con el nuevo IdCliente
+            return dal.InsertarPersonaYClienteDal(persona, cliente);
+        }
     }
 }

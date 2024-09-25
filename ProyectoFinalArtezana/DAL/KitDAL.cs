@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,34 @@ namespace DAL
         {
             string consulta = "DELETE FROM Kits WHERE Id_Kit=" + id;
             CONEXION.Ejecutar(consulta);
+        }
+
+
+        public string ObtenerNombreKitPorId(int idKit)
+        {
+            string nombreKit = string.Empty;
+            string consulta = "SELECT Nombre FROM Kits WHERE Id_Kit = @IdKit";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+            new SqlParameter("@IdKit", idKit)
+            };
+
+            using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
+            {
+                conectar.Open();
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.Parameters.AddRange(parametros);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        nombreKit = result.ToString();
+                    }
+                }
+            }
+
+            return nombreKit;
         }
     }
 }

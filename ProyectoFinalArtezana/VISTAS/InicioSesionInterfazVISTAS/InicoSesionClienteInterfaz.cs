@@ -78,5 +78,12 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 }
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            CrearCliente menu = new CrearCliente();
+            menu.Show();
+            this.Hide();
+        }
     }
 }

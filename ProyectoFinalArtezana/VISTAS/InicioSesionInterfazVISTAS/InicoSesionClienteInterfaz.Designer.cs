@@ -34,12 +34,14 @@
             button1 = new Button();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.LightBlue;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(button1);
@@ -99,6 +101,17 @@
             textBox1.Size = new Size(351, 23);
             textBox1.TabIndex = 9;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(100, 296);
+            label1.Name = "label1";
+            label1.Size = new Size(184, 21);
+            label1.TabIndex = 14;
+            label1.Text = "CREAR NUEVA CUENTA";
+            label1.Click += label1_Click;
+            // 
             // InicoSesionClienteInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -120,5 +133,6 @@
         private Button button1;
         private TextBox textBox2;
         private TextBox textBox1;
+        private Label label1;
     }
 }

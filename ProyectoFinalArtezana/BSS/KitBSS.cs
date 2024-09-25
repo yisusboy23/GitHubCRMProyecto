@@ -37,5 +37,11 @@ namespace BSS
         {
             dal.EliminarKitDal(id);
         }
+
+        // Método para obtener el nombre del kit por ID
+        public string ObtenerNombreKitPorId(int idKit)
+        {
+            return dal.ObtenerNombreKitPorId(idKit);
+        }
     }
 }

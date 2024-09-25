@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VISTAS.AuditoriaClieVISTAS;
+using VISTAS.CarritoVISTAS;
 using VISTAS.InicioSesionInterfazVISTAS;
 using VISTAS.KitProductoVISTAS;
 using VISTAS.ProductoVISTAS;
@@ -44,7 +45,7 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            AbrirFormHija(new CarritoGerenteInterfaz());
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

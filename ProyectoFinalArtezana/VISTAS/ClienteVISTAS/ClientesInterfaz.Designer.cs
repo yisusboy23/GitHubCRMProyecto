@@ -84,7 +84,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(21, 172);
+            label9.Location = new Point(22, 172);
             label9.Name = "label9";
             label9.Size = new Size(108, 23);
             label9.TabIndex = 126;

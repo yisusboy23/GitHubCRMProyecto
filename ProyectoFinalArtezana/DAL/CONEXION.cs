@@ -96,5 +96,24 @@ namespace DAL
             }
         }
 
+        public static object EjecutarEscalar2(string consulta, SqlParameter[] parametros)
+        {
+            using (SqlConnection conectar = new SqlConnection(CONECTAR))
+            {
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.CommandTimeout = 5000;
+
+                    if (parametros != null)
+                    {
+                        cmd.Parameters.AddRange(parametros); // Añade los parámetros a la consulta
+                    }
+
+                    conectar.Open();
+                    return cmd.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }

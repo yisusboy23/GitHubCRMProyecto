@@ -11,6 +11,11 @@ namespace DAL
 {
     public class CarritoDAL
     {
+        public DataTable ListarCarritosDal()
+        {
+            string consulta = "SELECT * FROM Carrito";
+            return CONEXION.EjecutarDataTabla(consulta, "Carrito");
+        }
         public DataTable ListarCarritoPendienteDal(int idCliente)
         {
             string consulta = "SELECT * FROM Carrito WHERE IdCliente = @IdCliente AND Estado = 'Pendiente'";

@@ -144,14 +144,13 @@ namespace VISTAS.DetalleCarritoKitVISTAS
 
         private void button2_Click(object sender, EventArgs e)
         {
-
             // Obtener el último carrito creado (que se crea automáticamente al iniciar)
             int idCarrito = bssCarro.ObtenerUltimoCarritoBss();
 
             // Calcular el precio total sumando el precio de cada detalle del carrito
             decimal precioTotal = detallesCarrito.Sum(detalle => detalle.Cantidad * detalle.PrecioUnitario);
 
-            // Cambiar el estado del carrito a "Compra realizada" (o el estado que prefieras)
+            // Cambiar el estado del carrito a "Pendiente"
             string estado = "Pendiente";
 
             // Actualizar el carrito con el cliente seleccionado, el precio total y el estado
@@ -159,20 +158,20 @@ namespace VISTAS.DetalleCarritoKitVISTAS
 
             // Usar el cliente que se inició sesión
             carritoActualizado.IdCliente = Sesion.IdClienteSeleccionado;
-
             carritoActualizado.PrecioTotal = precioTotal;
             carritoActualizado.Estado = estado;
 
             // Actualizar el carrito en la base de datos
             bssCarro.EditarCarritoBss(carritoActualizado);
 
-            // Insertar los detalles del carrito (productos seleccionados) en la tabla DetalleCarritoProducto
+            // Insertar los detalles del carrito (kits seleccionados) en la tabla DetalleCarritoKit
+            List<string> nombresKits = new List<string>(); // Lista para almacenar nombres de kits
             foreach (var detalle in detallesCarrito)
             {
                 DetalleCarritoKit nuevoDetalle = new DetalleCarritoKit
                 {
-                    IdCarrito = idCarrito,  // Se usa el ID del carrito actual
-                    IdKitProducto = detalle.IdProducto,  // Asegúrate de que IdProducto corresponde a un kit
+                    IdCarrito = idCarrito,
+                    IdKitProducto = detalle.IdProducto, // Asegúrate de que IdProducto corresponde a un kit
                     Cantidad = detalle.Cantidad,
                     PrecioUnitario = detalle.PrecioUnitario,
                     Fecha = DateTime.Now
@@ -180,10 +179,22 @@ namespace VISTAS.DetalleCarritoKitVISTAS
 
                 // Insertar cada detalle en la base de datos
                 bssCarrito.InsertarDetalleCarritoKitBss(nuevoDetalle);
+
+                // Agregar el nombre del kit a la lista
+                string nombreKit = bssKit.ObtenerNombreKitPorId(detalle.IdProducto); // Obtener el nombre del kit
+                nombresKits.Add(nombreKit);
             }
 
+            // Registrar la auditoría
+            string username = Sesion.NombreCliente; // Obtén el nombre de usuario desde la sesión
+            string kitsComprados = string.Join(", ", nombresKits); // Unir los nombres en una sola cadena
+            string accion = $"{username} realizó una compra de kits: {kitsComprados}."; // Mensaje de acción
+
+            AuditoriaClieBSS auditoriaBss = new AuditoriaClieBSS();
+            auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accion); // Registrar auditoría
+
             // Mostrar mensaje de éxito
-            MessageBox.Show("Compra realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Compra de kits realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Limpiar la lista de detalles y actualizar la interfaz
             detallesCarrito.Clear();

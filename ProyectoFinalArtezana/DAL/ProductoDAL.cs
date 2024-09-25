@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,35 @@ namespace DAL
         {
             string consulta = "DELETE FROM Productos WHERE Id_Producto=" + id;
             CONEXION.Ejecutar(consulta);
+        }
+
+
+        // Método para obtener el nombre del producto por ID
+        public string ObtenerNombreProductoPorId(int idProducto)
+        {
+            string nombreProducto = string.Empty;
+            string consulta = "SELECT Nombre FROM Productos WHERE Id_Producto = @IdProducto";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+                new SqlParameter("@IdProducto", idProducto)
+            };
+
+            using (SqlConnection conectar = new SqlConnection(CONEXION.CONECTAR))
+            {
+                conectar.Open();
+                using (SqlCommand cmd = new SqlCommand(consulta, conectar))
+                {
+                    cmd.Parameters.AddRange(parametros);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        nombreProducto = result.ToString();
+                    }
+                }
+            }
+
+            return nombreProducto;
         }
 
     }
