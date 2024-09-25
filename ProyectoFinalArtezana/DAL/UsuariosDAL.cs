@@ -106,9 +106,21 @@ namespace DAL
                     UsuarioRolBloqueado = Convert.ToBoolean(fila["UsuarioRolBloqueado"]),
                     RolBloqueado = Convert.ToBoolean(fila["RolBloqueado"])
                 };
+
+                // Registrar auditoría de inicio de sesión
+                Auditoria auditoria = new Auditoria
+                {
+                    Accion = $"{usuario.UserName} inició sesión.",
+                    Timestamp = DateTime.Now,
+                    UserId = usuario.IdUsuario
+                };
+
+                AuditoriaDAL auditoriaDal = new AuditoriaDAL();
+                auditoriaDal.InsertarAuditoria(auditoria);
             }
 
             return usuario;
         }
+
     }
 }

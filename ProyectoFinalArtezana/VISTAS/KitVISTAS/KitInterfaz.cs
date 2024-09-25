@@ -15,6 +15,8 @@ namespace VISTAS.KitVISTAS
     public partial class KitInterfaz : Form
     {
         KitBSS bss = new KitBSS();
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia de BSS para auditoría
+
         public KitInterfaz()
         {
             InitializeComponent();
@@ -49,6 +51,10 @@ namespace VISTAS.KitVISTAS
             bss.InsertarKitBss(kit);
             MessageBox.Show("Kit guardado correctamente.");
             dataGridView1.DataSource = bss.ListarKitsBss();
+
+            // Registrar auditoría
+            string accion = $"Kit creado: Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,7 +78,13 @@ namespace VISTAS.KitVISTAS
 
             bss.EditarKitBss(kit);
             MessageBox.Show("Kit actualizado.");
+
+            string accion = $"Kit actualizado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+
             dataGridView1.DataSource = bss.ListarKitsBss();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -86,8 +98,14 @@ namespace VISTAS.KitVISTAS
             // Si el usuario confirma la eliminación
             if (result == DialogResult.Yes)
             {
+                Kit kit = bss.ObtenerKitPorIdBss(idKitSeleccionado); // Obtener el kit para la auditoría
                 bss.EliminarKitBss(idKitSeleccionado);
                 MessageBox.Show("Kit eliminado.");
+
+                // Registrar auditoría
+                string accion = $"Kit eliminado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
                 dataGridView1.DataSource = bss.ListarKitsBss();
             }
         }

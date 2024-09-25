@@ -68,9 +68,9 @@ namespace DAL
         {
             // Consulta SQL para obtener el cliente
             string consulta = @"
-            SELECT IdCliente, UserName, Contraseña, Bloqueado 
-            FROM Cliente 
-            WHERE UserName = @UserName AND Contraseña = @Contraseña";
+    SELECT IdCliente, UserName, Contraseña, Bloqueado 
+    FROM Cliente 
+    WHERE UserName = @UserName AND Contraseña = @Contraseña";
 
             SqlParameter[] parametros = new SqlParameter[]
             {
@@ -101,6 +101,17 @@ namespace DAL
                     Contraseña = fila["Contraseña"].ToString(),
                     Bloqueado = Convert.ToBoolean(fila["Bloqueado"]) // Asegúrate de que el tipo coincida
                 };
+
+                // Registrar auditoría de inicio de sesión
+                AuditoriaClie auditoria = new AuditoriaClie
+                {
+                    Accion = $"{cliente.UserName} inició sesión.",
+                    Timestamp = DateTime.Now,
+                    IdCliente = cliente.IdCliente
+                };
+
+                AuditoriaClieDAL auditoriaDal = new AuditoriaClieDAL();
+                auditoriaDal.InsertarAuditoria(auditoria);
             }
 
             return cliente;
