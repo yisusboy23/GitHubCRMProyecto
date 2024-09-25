@@ -19,6 +19,7 @@ namespace VISTAS.KitProductoVISTAS
         ProductoBSS productoBss = new ProductoBSS();
         public static int IdProductoSeleccionado = 0;
         public static int IdKitSeleccionado = 0;
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public KitProductoInterfaz()
         {
             InitializeComponent();
@@ -54,6 +55,11 @@ namespace VISTAS.KitProductoVISTAS
 
                 bss.InsertarKitProductoBss(kp);
                 MessageBox.Show("Kit-Producto guardado correctamente.");
+
+                // Registrar auditoría
+                string accion = $"Gerende de tienda: KitProducto creado: IdKit={kp.IdKit}, IdProducto={kp.IdProducto}, Cantidad={kp.Cantidad}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
                 dataGridView1.DataSource = bss.ListarKitProductosBss();
             }
         }
@@ -93,6 +99,10 @@ namespace VISTAS.KitProductoVISTAS
 
                 // Actualizar el DataGridView con los nuevos datos
                 dataGridView1.DataSource = bss.ListarKitProductosBss();
+
+                // Registrar auditoría
+                string accion = $"Gerende de tienda: KitProducto actualizado: IdKitProducto={idKitProductoSeleccionado}, IdKit={editarKitProducto.IdKit}, IdProducto={editarKitProducto.IdProducto}, Cantidad={editarKitProducto.Cantidad}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 
@@ -102,8 +112,14 @@ namespace VISTAS.KitProductoVISTAS
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este Kit-Producto?", "ELIMINAR", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                KitProducto kp = bss.ObtenerKitProductoPorIdBss(idKitProductoSeleccionado); // Obtener el KitProducto para auditoría
                 bss.EliminarKitProductoBss(idKitProductoSeleccionado);
+                MessageBox.Show("KitProducto eliminado.");
                 dataGridView1.DataSource = bss.ListarKitProductosBss();
+
+                // Registrar auditoría
+                string accion = $"Gerende de tienda: KitProducto eliminado: IdKitProducto={idKitProductoSeleccionado}, IdKit={kp.IdKit}, IdProducto={kp.IdProducto}, Cantidad={kp.Cantidad}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 

@@ -44,7 +44,7 @@ namespace VISTAS.ProductoVISTAS
             dataGridView1.DataSource = bss.ListarProductosBss();
 
             // Registrar auditoría
-            string accion = $"Producto creado: Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
+            string accion = $"Gerende de tienda: Producto creado: Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
             auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
         }
@@ -70,7 +70,7 @@ namespace VISTAS.ProductoVISTAS
 
             bss.EditarProductoBss(producto);
             MessageBox.Show("Producto actualizado.");
-            string accion = $"Producto actualizado: Id={idProductoSeleccionado}, Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
+            string accion = $"Gerende de tienda: Producto actualizado: Id={idProductoSeleccionado}, Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
             auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
             dataGridView1.DataSource = bss.ListarProductosBss();
@@ -91,7 +91,7 @@ namespace VISTAS.ProductoVISTAS
                 bss.EliminarProductoBss(idProductoSeleccionado);
                 MessageBox.Show("Producto eliminado.");
 
-                string accion = $"Producto eliminado: Id={idProductoSeleccionado}, Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
+                string accion = $"Gerende de tienda: Producto eliminado: Id={idProductoSeleccionado}, Nombre={producto.Nombre}, Descripción={producto.Descripcion}, Precio={producto.Precio}, Cantidad={producto.Cantidad}, Estado={producto.Estado}";
                 auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = bss.ListarProductosBss();

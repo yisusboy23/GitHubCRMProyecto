@@ -53,7 +53,7 @@ namespace VISTAS.KitVISTAS
             dataGridView1.DataSource = bss.ListarKitsBss();
 
             // Registrar auditoría
-            string accion = $"Kit creado: Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+            string accion = $"Gerende de tienda: Kit creado: Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
             auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
@@ -79,7 +79,7 @@ namespace VISTAS.KitVISTAS
             bss.EditarKitBss(kit);
             MessageBox.Show("Kit actualizado.");
 
-            string accion = $"Kit actualizado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+            string accion = $"Gerende de tienda: Kit actualizado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
             auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
 
@@ -103,7 +103,7 @@ namespace VISTAS.KitVISTAS
                 MessageBox.Show("Kit eliminado.");
 
                 // Registrar auditoría
-                string accion = $"Kit eliminado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
+                string accion = $"Gerende de tienda: Kit eliminado: Id={idKitSeleccionado}, Nombre={kit.Nombre}, Descripción={kit.Descripcion}, Precio={kit.Precio}, Cantidad={kit.Cantidad}, Estado={kit.Estado}";
                 auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = bss.ListarKitsBss();

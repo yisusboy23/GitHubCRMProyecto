@@ -20,6 +20,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
             InitializeComponent();
         }
         private PersonaBSS personaBss = new PersonaBSS();
+        private AuditoriaClieBSS auditoriaBss = new AuditoriaClieBSS(); // Instancia para manejar la auditoría
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -64,6 +65,14 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 Sesion.NombreCliente = nuevoCliente.UserName; // Guardar el nombre en la sesión
 
                 MessageBox.Show("Cuenta creada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                string accionCrearCliente = $"Cliente creado: IdCliente={nuevoCliente.IdCliente}, NombreUsuario={nuevoCliente.UserName}";
+
+                auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accionCrearCliente);
+
+                string accionInicioSesion = $"{nuevoCliente.UserName} Inicio de sesión";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accionInicioSesion);
+
 
                 // Redirigir al menú del cliente y cerrar esta ventana
                 MenuClienteInterfaz menuCliente = new MenuClienteInterfaz();
