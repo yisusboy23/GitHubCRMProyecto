@@ -17,6 +17,7 @@ namespace VISTAS.UsuariosVISTAS
     {
         UsuarioBSS bss = new UsuarioBSS();
         PersonaBSS bssuser = new PersonaBSS();
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public static int IdPersonaSeleccionada = 0;
         public UsuariosInterfaz()
         {
@@ -64,6 +65,11 @@ namespace VISTAS.UsuariosVISTAS
                 bss.InsertarUsuarioBss(u);
                 MessageBox.Show("Se guardó correctamente el usuario");
                 dataGridView1.DataSource = bss.ListarUsuariosBss();
+                string accion = $"Usuario creado: Username={u.UserName}, CI={u.Ci}, Bloqueado={u.Bloqueado}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                dataGridView1.DataSource = bss.ListarUsuariosBss();
+
             }
         }
 
@@ -104,6 +110,11 @@ namespace VISTAS.UsuariosVISTAS
                 bss.EditarUsuarioBss(editarUsuario);
                 MessageBox.Show("Datos Actualizados");
                 dataGridView1.DataSource = bss.ListarUsuariosBss();
+
+                string accion = $"Usuario actualizado: Id={idUsuarioSeleccionado}, Username={editarUsuario.UserName}, Bloqueado={editarUsuario.Bloqueado}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                dataGridView1.DataSource = bss.ListarUsuariosBss();
             }
         }
 
@@ -113,8 +124,24 @@ namespace VISTAS.UsuariosVISTAS
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar a este usuario?", "ELIMINAR", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                bss.EliminarUsuarioBss(idUsuarioSeleccionado);
-                dataGridView1.DataSource = bss.ListarUsuariosBss();
+                try
+                {
+                    // Registrar auditoría antes de eliminar
+                    string accion = $"Usuario eliminado: Id={idUsuarioSeleccionado}, Username={dataGridView1.CurrentRow.Cells["UserName"].Value}";
+                    auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                    bss.EliminarUsuarioBss(idUsuarioSeleccionado);
+                    dataGridView1.DataSource = bss.ListarUsuariosBss();
+                    MessageBox.Show("Usuario eliminado correctamente.");
+                }
+                catch (InvalidOperationException ex) // Captura la excepción específica
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex) // Captura cualquier otra excepción
+                {
+                    MessageBox.Show("Error al eliminar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

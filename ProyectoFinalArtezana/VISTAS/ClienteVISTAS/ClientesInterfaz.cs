@@ -17,6 +17,7 @@ namespace VISTAS.ClienteVISTAS
         ClienteBSS bss = new ClienteBSS();
         PersonaBSS bssPersona = new PersonaBSS();
         public static int IdPersonaSeleccionada = 0;
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public ClientesInterfaz()
         {
             InitializeComponent();
@@ -55,6 +56,10 @@ namespace VISTAS.ClienteVISTAS
                 bss.InsertarClienteBss(cliente);
                 MessageBox.Show("Cliente guardado correctamente.");
                 dataGridView1.DataSource = bss.ListarClientesBss();
+
+                // Registrar auditoría de inserción
+                string accion = $"Cliente creado: UserName={cliente.UserName}, Bloqueado={cliente.Bloqueado}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 
@@ -70,6 +75,10 @@ namespace VISTAS.ClienteVISTAS
             bss.EditarClienteBss(editarCliente);
             MessageBox.Show("Datos actualizados.");
             dataGridView1.DataSource = bss.ListarClientesBss();
+
+            // Registrar auditoría de actualización
+            string accion = $"Cliente actualizado: Id={idClienteSeleccionado}, UserName={editarCliente.UserName}, Bloqueado={editarCliente.Bloqueado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -78,8 +87,24 @@ namespace VISTAS.ClienteVISTAS
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este cliente?", "Eliminar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                bss.EliminarClienteBss(idClienteSeleccionado);
-                dataGridView1.DataSource = bss.ListarClientesBss();
+                try
+                {
+                    // Registrar auditoría antes de eliminar
+                    string accion = $"Cliente eliminado: Id={idClienteSeleccionado}, UserName={dataGridView1.CurrentRow.Cells["UserName"].Value}";
+                    auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                    bss.EliminarClienteBss(idClienteSeleccionado);
+                    MessageBox.Show("Cliente eliminado correctamente.");
+                    dataGridView1.DataSource = bss.ListarClientesBss();
+                }
+                catch (InvalidOperationException ex) // Captura la excepción específica
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex) // Captura cualquier otra excepción
+                {
+                    MessageBox.Show("Error al eliminar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

@@ -60,9 +60,37 @@ namespace DAL
         // Eliminar cliente
         public void EliminarClienteDal(int id)
         {
-            string consulta = "DELETE FROM Cliente WHERE IdCliente = " + id;
-            CONEXION.Ejecutar(consulta);
+            // Verificar si existen registros en Carrito que referencian a este Cliente
+            string verificacionConsulta = "SELECT COUNT(*) FROM Carrito WHERE IdCliente = @IdCliente";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(verificacionConsulta, connection);
+                command.Parameters.AddWithValue("@IdCliente", id);
+
+                connection.Open();
+                int conteoCarritos = (int)command.ExecuteScalar();
+
+                // Si hay carritos asociados, lanzar excepción
+                if (conteoCarritos > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar el cliente porque tiene carritos asociados.");
+                }
+            }
+
+            // Proceder a eliminar el cliente si no hay dependencias
+            string consulta = "DELETE FROM Cliente WHERE IdCliente = @IdCliente";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdCliente", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
+
 
         public Cliente ObtenerCredenciales(string userName, string contraseña)
         {

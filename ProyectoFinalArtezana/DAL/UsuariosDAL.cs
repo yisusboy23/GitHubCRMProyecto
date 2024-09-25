@@ -58,21 +58,49 @@ namespace DAL
 
         public void EliminarUsuarioDal(int id)
         {
-            string consulta = "DELETE FROM Usuarios WHERE IdUsuario = " + id;
-            CONEXION.Ejecutar(consulta);
+            // Verificar si existen registros en Rol que referencian a este Usuario
+            string verificacionConsulta = "SELECT COUNT(*) FROM UsuarioRol WHERE IdUsuario = @IdUsuario";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(verificacionConsulta, connection);
+                command.Parameters.AddWithValue("@IdUsuario", id);
+
+                connection.Open();
+                int conteoRoles = (int)command.ExecuteScalar();
+
+                // Si hay roles asociados, lanzar excepción
+                if (conteoRoles > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar el usuario porque tiene roles asociados.");
+                }
+            }
+
+            // Proceder a eliminar el usuario si no hay dependencias
+            string consulta = "DELETE FROM Usuarios WHERE IdUsuario = @IdUsuario";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdUsuario", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
+
 
         // Método para obtener las credenciales del usuario
         public Usuarios ObtenerCredenciales(string userName, string contraseña)
         {
             // Consulta SQL para obtener el usuario, rol, y estado de bloqueos
             string consulta = @"
-    SELECT U.IdUsuario, U.UserName, U.Contraseña, UR.IdRol, U.Bloqueado AS UsuarioBloqueado, 
-           UR.Bloqueado AS UsuarioRolBloqueado, R.Bloqueado AS RolBloqueado
-    FROM Usuarios AS U
-    INNER JOIN UsuarioRol AS UR ON U.IdUsuario = UR.IdUsuario 
-    INNER JOIN Rol AS R ON UR.IdRol = R.IdRol
-    WHERE U.UserName = @UserName AND U.Contraseña = @Contraseña";
+            SELECT U.IdUsuario, U.UserName, U.Contraseña, UR.IdRol, U.Bloqueado AS UsuarioBloqueado, 
+            UR.Bloqueado AS UsuarioRolBloqueado, R.Bloqueado AS RolBloqueado
+            FROM Usuarios AS U
+            INNER JOIN UsuarioRol AS UR ON U.IdUsuario = UR.IdUsuario 
+            INNER JOIN Rol AS R ON UR.IdRol = R.IdRol
+            WHERE U.UserName = @UserName AND U.Contraseña = @Contraseña";
 
             SqlParameter[] parametros = new SqlParameter[]
             {

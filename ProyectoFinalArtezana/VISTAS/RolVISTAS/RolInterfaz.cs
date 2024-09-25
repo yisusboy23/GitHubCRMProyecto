@@ -15,6 +15,7 @@ namespace VISTAS.RolVISTAS
     public partial class RolInterfaz : Form
     {
         RolBSS bss = new RolBSS();
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public RolInterfaz()
         {
             InitializeComponent();
@@ -52,6 +53,11 @@ namespace VISTAS.RolVISTAS
 
             bss.InsertarRolBss(rol);
             MessageBox.Show("Rol agregado correctamente.");
+
+            // Registrar auditoría
+            string accion = $"Rol creado: NombreRol={rol.NombreRol}, Descripcion={rol.Descripcion}, Bloqueado={rol.Bloqueado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
             dataGridView1.DataSource = bss.ListarRolesBss();
         }
 
@@ -79,17 +85,39 @@ namespace VISTAS.RolVISTAS
 
             bss.EditarRolBss(rol);
             MessageBox.Show("Datos actualizados correctamente.");
+
+            // Registrar auditoría
+            string accion = $"Rol actualizado: Id={idRolSeleccionado}, NombreRol={rol.NombreRol}, Bloqueado={rol.Bloqueado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
             dataGridView1.DataSource = bss.ListarRolesBss();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdRol"].Value);
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este rol?", "Eliminar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                bss.EliminarRolBss(idRolSeleccionado);
-                MessageBox.Show("Rol eliminado correctamente.");
+                try
+                {
+                    // Registrar auditoría antes de eliminar
+                    string accion = $"Rol eliminado: Id={idRolSeleccionado}, NombreRol={dataGridView1.CurrentRow.Cells["NombreRol"].Value}";
+                    auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                    bss.EliminarRolBss(idRolSeleccionado);
+                    MessageBox.Show("Rol eliminado correctamente.");
+                }
+                catch (InvalidOperationException ex) // Captura la excepción específica
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex) // Captura cualquier otra excepción
+                {
+                    MessageBox.Show("Error al eliminar el rol: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 dataGridView1.DataSource = bss.ListarRolesBss();
             }
         }

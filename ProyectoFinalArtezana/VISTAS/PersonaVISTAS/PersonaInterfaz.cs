@@ -16,6 +16,7 @@ namespace VISTAS.AuditoriaClieVISTAS
     public partial class PersonaInterfaz : Form
     {
         PersonaBSS BSS = new PersonaBSS();
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public PersonaInterfaz()
         {
             InitializeComponent();
@@ -63,6 +64,10 @@ namespace VISTAS.AuditoriaClieVISTAS
                 BSS.InsertarPersonaBss(p);
                 MessageBox.Show("Se guardó correctamente");
 
+                // Registrar auditoría
+                string accion = $"Persona creada: Nombre={p.Nombre}, Apellido={p.Apellido}, Telefono={p.Telefono}, Correo={p.Correo}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
                 dataGridView1.DataSource = BSS.ListarPersonasBss();
             }
         }
@@ -107,6 +112,8 @@ namespace VISTAS.AuditoriaClieVISTAS
                 BSS.EditarPersonaBss(editarPersona);
                 MessageBox.Show("Datos Actualizados");
 
+                string accion = $"Persona actualizada: Id={IdPersonaSeleccionada}, Nombre={editarPersona.Nombre}, Apellido={editarPersona.Apellido}, Telefono={editarPersona.Telefono}, Correo={editarPersona.Correo}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = BSS.ListarPersonasBss();
             }
@@ -114,12 +121,33 @@ namespace VISTAS.AuditoriaClieVISTAS
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int IdPersonaSeleccionada = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            DialogResult result = MessageBox.Show("Esta seguro que desea eliminar a esta persona?", "ELIMINAR", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            // Asegúrate de que haya una fila seleccionada en el DataGridView
+            if (dataGridView1.CurrentRow != null)
             {
-                BSS.EliminarPersonaBss(IdPersonaSeleccionada);
-                dataGridView1.DataSource = BSS.ListarPersonasBss();
+                int idPersonaSeleccionada = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar a esta persona?", "ELIMINAR", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        BSS.EliminarPersonaBss(idPersonaSeleccionada);
+                        dataGridView1.DataSource = BSS.ListarPersonasBss(); // Actualiza el DataGridView
+                        MessageBox.Show("Persona eliminada correctamente.");
+                    }
+                    catch (InvalidOperationException ex) // Captura la excepción específica
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex) // Captura cualquier otra excepción
+                    {
+                        MessageBox.Show("Error al eliminar la persona: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione una persona para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

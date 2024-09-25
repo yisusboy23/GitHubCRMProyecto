@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,8 +55,35 @@ namespace DAL
 
         public void EliminarPermisoDal(int id)
         {
-            string consulta = "DELETE FROM Permiso WHERE IdPermiso = " + id;
-            CONEXION.Ejecutar(consulta);
+            // Verificar si existen registros en RolPermiso que referencian a este Permiso
+            string verificacionConsulta = "SELECT COUNT(*) FROM RolPermiso WHERE IdPermiso = @IdPermiso";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                SqlCommand command = new SqlCommand(verificacionConsulta, connection);
+                command.Parameters.AddWithValue("@IdPermiso", id);
+
+                connection.Open();
+                int conteoRolesPermisos = (int)command.ExecuteScalar();
+
+                // Si hay roles asociados, lanzar excepción
+                if (conteoRolesPermisos > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar el permiso porque tiene roles asociados.");
+                }
+            }
+
+            // Proceder a eliminar el permiso si no hay dependencias
+            string consulta = "DELETE FROM Permiso WHERE IdPermiso = @IdPermiso";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdPermiso", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

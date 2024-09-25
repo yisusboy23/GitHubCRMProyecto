@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,8 +55,48 @@ namespace DAL
 
         public void EliminarRolDal(int id)
         {
-            string consulta = "DELETE FROM Rol WHERE IdRol = " + id;
-            CONEXION.Ejecutar(consulta);
+            // Verificar si existen registros en UsuarioRol que referencian a este Rol
+            string verificacionUsuarioRolConsulta = "SELECT COUNT(*) FROM UsuarioRol WHERE IdRol = @IdRol";
+            string verificacionRolPermisoConsulta = "SELECT COUNT(*) FROM RolPermiso WHERE IdRol = @IdRol";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                // Verificación en UsuarioRol
+                SqlCommand command = new SqlCommand(verificacionUsuarioRolConsulta, connection);
+                command.Parameters.AddWithValue("@IdRol", id);
+
+                connection.Open();
+                int conteoUsuarioRol = (int)command.ExecuteScalar();
+
+                // Si hay usuarios asociados, lanzar excepción
+                if (conteoUsuarioRol > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar el rol porque tiene usuarios asociados.");
+                }
+
+                // Verificación en RolPermiso
+                command.CommandText = verificacionRolPermisoConsulta;
+                int conteoRolPermiso = (int)command.ExecuteScalar();
+
+                // Si hay permisos asociados, lanzar excepción
+                if (conteoRolPermiso > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar el rol porque tiene permisos asociados.");
+                }
+            }
+
+            // Proceder a eliminar el rol si no hay dependencias
+            string consulta = "DELETE FROM Rol WHERE IdRol = @IdRol";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdRol", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
+
     }
 }

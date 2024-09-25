@@ -20,6 +20,8 @@ namespace VISTAS.UsuariosRolVISTAS
         RolBSS rolBss = new RolBSS(); // Para obtener la lista de roles
         public static int IdUsuarioSeleccionado = 0;
         public static int IdRolSeleccionado = 0;
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
+
         public UsuarioRolInterfaz()
         {
             InitializeComponent();
@@ -58,6 +60,10 @@ namespace VISTAS.UsuariosRolVISTAS
             bss.InsertarUsuarioRolBss(ur);
             MessageBox.Show("Usuario-Rol guardado correctamente.");
             dataGridView1.DataSource = bss.ListarUsuarioRolesBss();
+
+            // Registrar auditoría de inserción
+            string accion = $"Usuario-Rol creado: IdUsuario={ur.IdUsuario}, IdRol={ur.IdRol}, FechaAsignacion={ur.FechaAsignacion}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -81,6 +87,10 @@ namespace VISTAS.UsuariosRolVISTAS
                 bss.EditarUsuarioRolBss(editarUsuarioRol);
                 MessageBox.Show("Usuario-Rol actualizado correctamente.");
                 dataGridView1.DataSource = bss.ListarUsuarioRolesBss();
+
+                // Registrar auditoría de actualización
+                string accion = $"Usuario-Rol actualizado: IdUsuarioRol={idUsuarioRolSeleccionado}, IdUsuario={editarUsuarioRol.IdUsuario}, IdRol={editarUsuarioRol.IdRol}, Bloqueado={editarUsuarioRol.Bloqueado}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 
@@ -92,6 +102,9 @@ namespace VISTAS.UsuariosRolVISTAS
                 DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este Usuario-Rol?", "ELIMINAR", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    string accion = $"Usuario-Rol eliminado: IdUsuarioRol={idUsuarioRolSeleccionado}, IdUsuario={dataGridView1.CurrentRow.Cells["IdUsuario"].Value}, IdRol={dataGridView1.CurrentRow.Cells["IdRol"].Value}";
+                    auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
                     bss.EliminarUsuarioRolBss(idUsuarioRolSeleccionado);
                     dataGridView1.DataSource = bss.ListarUsuarioRolesBss();
                 }

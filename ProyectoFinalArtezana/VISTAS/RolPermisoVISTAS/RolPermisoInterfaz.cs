@@ -24,6 +24,7 @@ namespace VISTAS.RolPermisoVISTAS
         PermisoBSS permisoBss = new PermisoBSS(); // Para obtener la lista de permisos
         public static int IdRolSeleccionado = 0;
         public static int IdPermisoSeleccionado = 0;
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         private void RolPermisoInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bss.ListarRolPermisosBss();
@@ -57,6 +58,8 @@ namespace VISTAS.RolPermisoVISTAS
                 bss.InsertarRolPermisoBss(rp);
                 MessageBox.Show("Rol-Permiso guardado correctamente.");
                 dataGridView1.DataSource = bss.ListarRolPermisosBss();
+                string accion = $"Rol-Permiso creado: IdRol={rp.IdRol}, IdPermiso={rp.IdPermiso}, Descripción={rp.Descripcion}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 
@@ -91,6 +94,8 @@ namespace VISTAS.RolPermisoVISTAS
                 bss.EditarRolPermisoBss(editarRolPermiso);
                 MessageBox.Show("Rol-Permiso actualizado correctamente.");
                 dataGridView1.DataSource = bss.ListarRolPermisosBss();
+                string accion = $"Rol-Permiso actualizado: IdRolPermiso={idRolPermisoSeleccionado}, IdRol={editarRolPermiso.IdRol}, IdPermiso={editarRolPermiso.IdPermiso}, Descripción={editarRolPermiso.Descripcion}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 
@@ -102,6 +107,8 @@ namespace VISTAS.RolPermisoVISTAS
             {
                 bss.EliminarRolPermisoBss(idRolPermisoSeleccionado);
                 dataGridView1.DataSource = bss.ListarRolPermisosBss();
+                string accion = $"Rol-Permiso eliminado: IdRolPermiso={idRolPermisoSeleccionado}, IdRol={dataGridView1.CurrentRow.Cells["IdRol"].Value}, IdPermiso={dataGridView1.CurrentRow.Cells["IdPermiso"].Value}";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
             }
         }
 

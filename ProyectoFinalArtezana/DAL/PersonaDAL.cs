@@ -54,9 +54,38 @@ namespace DAL
 
         public void EliminarPersonaDal(int id)
         {
-            string consulta = "DELETE FROM Persona WHERE IdPersona=" + id;
-            CONEXION.Ejecutar(consulta);
+            // Verificar si existen registros en Cliente que referencian a esta Persona
+            string verificacionConsulta = "SELECT COUNT(*) FROM Cliente WHERE IdPersona = @IdPersona";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                SqlCommand command = new SqlCommand(verificacionConsulta, connection);
+                command.Parameters.AddWithValue("@IdPersona", id);
+
+                connection.Open();
+                int conteoClientes = (int)command.ExecuteScalar();
+
+                // Si hay clientes asociados, lanzar excepción
+                if (conteoClientes > 0)
+                {
+                    throw new InvalidOperationException("No se puede eliminar la persona porque tiene clientes asociados.");
+                }
+            }
+
+            // Proceder a eliminar la persona si no hay dependencias
+            string consulta = "DELETE FROM Persona WHERE IdPersona = @IdPersona";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdPersona", id);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
+
+
 
         public Cliente InsertarPersonaYClienteDal(Persona persona, Cliente cliente)
         {

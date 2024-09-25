@@ -15,6 +15,7 @@ namespace VISTAS.PermisoVISTAS
     public partial class PermisoInterfaz : Form
     {
         PermisoBSS bss = new PermisoBSS();
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
         public PermisoInterfaz()
         {
             InitializeComponent();
@@ -52,6 +53,10 @@ namespace VISTAS.PermisoVISTAS
             bss.InsertarPermisoBss(permiso);
             MessageBox.Show("Permiso agregado correctamente.");
             dataGridView1.DataSource = bss.ListarPermisosBss();
+
+            // Registrar auditoría de inserción
+            string accion = $"Permiso creado: Nombre={permiso.Nombre}, Descripción={permiso.Descripcion}, Bloqueado={permiso.Bloqueado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -79,6 +84,10 @@ namespace VISTAS.PermisoVISTAS
             bss.EditarPermisoBss(permiso);
             MessageBox.Show("Datos actualizados correctamente.");
             dataGridView1.DataSource = bss.ListarPermisosBss();
+
+            // Registrar auditoría de actualización
+            string accion = $"Permiso actualizado: Id={idPermisoSeleccionado}, Nombre={permiso.Nombre}, Bloqueado={permiso.Bloqueado}";
+            auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -87,9 +96,24 @@ namespace VISTAS.PermisoVISTAS
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este permiso?", "Eliminar", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                bss.EliminarPermisoBss(idPermisoSeleccionado);
-                MessageBox.Show("Permiso eliminado correctamente.");
-                dataGridView1.DataSource = bss.ListarPermisosBss();
+                try
+                {
+                    // Registrar auditoría antes de eliminar
+                    string accion = $"Permiso eliminado: Id={idPermisoSeleccionado}, Nombre={dataGridView1.CurrentRow.Cells["Nombre"].Value}";
+                    auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+                    bss.EliminarPermisoBss(idPermisoSeleccionado);
+                    MessageBox.Show("Permiso eliminado correctamente.");
+                    dataGridView1.DataSource = bss.ListarPermisosBss();
+                }
+                catch (InvalidOperationException ex) // Captura la excepción específica
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex) // Captura cualquier otra excepción
+                {
+                    MessageBox.Show("Error al eliminar el permiso: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
