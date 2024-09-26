@@ -48,6 +48,10 @@
             textBox1 = new TextBox();
             label1 = new Label();
             dataGridView1 = new DataGridView();
+            comboBox1 = new ComboBox();
+            textBox4 = new TextBox();
+            label9 = new Label();
+            label11 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -74,7 +78,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(122, 262);
+            textBox5.Location = new Point(122, 230);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(221, 23);
             textBox5.TabIndex = 59;
@@ -83,7 +87,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(16, 262);
+            label10.Location = new Point(16, 230);
             label10.Name = "label10";
             label10.Size = new Size(77, 23);
             label10.TabIndex = 58;
@@ -242,11 +246,52 @@
             dataGridView1.TabIndex = 41;
             dataGridView1.Click += dataGridView1_Click;
             // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Masculino ", "Femenino" });
+            comboBox1.Location = new Point(122, 259);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(221, 23);
+            comboBox1.TabIndex = 174;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(122, 288);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(221, 23);
+            textBox4.TabIndex = 175;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Location = new Point(16, 259);
+            label9.Name = "label9";
+            label9.Size = new Size(54, 23);
+            label9.TabIndex = 176;
+            label9.Text = "SEXO";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(16, 288);
+            label11.Name = "label11";
+            label11.Size = new Size(56, 23);
+            label11.TabIndex = 177;
+            label11.Text = "EDAD";
+            // 
             // PersonaInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(label11);
+            Controls.Add(label9);
+            Controls.Add(textBox4);
+            Controls.Add(comboBox1);
             Controls.Add(textBox5);
             Controls.Add(label10);
             Controls.Add(textBox3);
@@ -297,5 +342,9 @@
         private TextBox textBox1;
         private Label label1;
         private DataGridView dataGridView1;
+        private ComboBox comboBox1;
+        private TextBox textBox4;
+        private Label label9;
+        private Label label11;
     }
 }

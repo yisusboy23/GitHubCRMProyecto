@@ -20,25 +20,49 @@ namespace DAL
 
         public void InsertarPersonaDal(Persona persona)
         {
-            string consulta = "INSERT INTO Persona (Nombre, Apellido, Telefono, Correo, Estado) " +
-                              "VALUES ('" + persona.Nombre + "', '" + persona.Apellido + "', '" + persona.Telefono + "', '" + persona.Correo + "', 'Activo')";
-            CONEXION.Ejecutar(consulta);
+            string consulta = "INSERT INTO Persona (nombre, apellido, telefono, correo, estado, Edad, Sexo) " +
+                              "VALUES (@Nombre, @Apellido, @Telefono, @Correo, 'Activo', @Edad, @Sexo)";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@Nombre", persona.Nombre);
+                command.Parameters.AddWithValue("@Apellido", persona.Apellido);
+                command.Parameters.AddWithValue("@Telefono", persona.Telefono);
+                command.Parameters.AddWithValue("@Correo", persona.Correo);
+                command.Parameters.AddWithValue("@Edad", (object)persona.Edad ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Sexo", (object)persona.Sexo ?? DBNull.Value);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public Persona ObtenerPersonaIdDal(int id)
         {
-            string consulta = "SELECT * FROM Persona WHERE IdPersona = " + id;
-            DataTable tabla = CONEXION.EjecutarDataTabla(consulta, "Persona");
+            string consulta = "SELECT * FROM Persona WHERE idPersona = @IdPersona";
             Persona persona = new Persona();
 
-            if (tabla.Rows.Count > 0)
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
             {
-                persona.IdPersona = Convert.ToInt32(tabla.Rows[0]["IdPersona"]);
-                persona.Nombre = tabla.Rows[0]["Nombre"].ToString();
-                persona.Apellido = tabla.Rows[0]["Apellido"].ToString();
-                persona.Telefono = tabla.Rows[0]["Telefono"].ToString();
-                persona.Correo = tabla.Rows[0]["Correo"].ToString();
-                persona.Estado = tabla.Rows[0]["Estado"].ToString();
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@IdPersona", id);
+
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        persona.IdPersona = Convert.ToInt32(reader["idPersona"]);
+                        persona.Nombre = reader["nombre"].ToString();
+                        persona.Apellido = reader["apellido"].ToString();
+                        persona.Telefono = reader["telefono"].ToString();
+                        persona.Correo = reader["correo"].ToString();
+                        persona.Estado = reader["estado"].ToString();
+                        persona.Edad = reader["Edad"] != DBNull.Value ? (int?)Convert.ToInt32(reader["Edad"]) : null;
+                        persona.Sexo = reader["Sexo"] != DBNull.Value ? reader["Sexo"].ToString() : null;
+                    }
+                }
             }
 
             return persona;
@@ -46,21 +70,37 @@ namespace DAL
 
         public void EditarPersonaDal(Persona persona)
         {
-            string consulta = "UPDATE Persona SET Nombre='" + persona.Nombre + "', Apellido='" + persona.Apellido + "', " +
-                              "Telefono='" + persona.Telefono + "', Correo='" + persona.Correo + "', Estado='" + persona.Estado + "' " +
-                              "WHERE IdPersona=" + persona.IdPersona;
-            CONEXION.Ejecutar(consulta);
+            string consulta = "UPDATE Persona SET nombre=@Nombre, apellido=@Apellido, " +
+                              "telefono=@Telefono, correo=@Correo, estado=@Estado, " +
+                              "Edad=@Edad, Sexo=@Sexo " +
+                              "WHERE idPersona=@IdPersona";
+
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
+            {
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@Nombre", persona.Nombre);
+                command.Parameters.AddWithValue("@Apellido", persona.Apellido);
+                command.Parameters.AddWithValue("@Telefono", persona.Telefono);
+                command.Parameters.AddWithValue("@Correo", persona.Correo);
+                command.Parameters.AddWithValue("@Estado", persona.Estado);
+                command.Parameters.AddWithValue("@Edad", (object)persona.Edad ?? DBNull.Value);
+                command.Parameters.AddWithValue("@Sexo", (object)persona.Sexo ?? DBNull.Value);
+                command.Parameters.AddWithValue("@IdPersona", persona.IdPersona);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
 
         public void EliminarPersonaDal(int id)
         {
             // Verificar si existen registros en Cliente que referencian a esta Persona
-            string verificacionConsulta = "SELECT COUNT(*) FROM Cliente WHERE IdPersona = @IdPersona";
+            string verificacionConsulta = "SELECT COUNT(*) FROM Cliente WHERE idPersona = @idPersona";
 
-            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
             {
                 SqlCommand command = new SqlCommand(verificacionConsulta, connection);
-                command.Parameters.AddWithValue("@IdPersona", id);
+                command.Parameters.AddWithValue("@idPersona", id);
 
                 connection.Open();
                 int conteoClientes = (int)command.ExecuteScalar();
@@ -73,34 +113,34 @@ namespace DAL
             }
 
             // Proceder a eliminar la persona si no hay dependencias
-            string consulta = "DELETE FROM Persona WHERE IdPersona = @IdPersona";
+            string consulta = "DELETE FROM Persona WHERE idPersona = @idPersona";
 
-            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR)) // Cambiar ConnectionString por CONECTAR
+            using (SqlConnection connection = new SqlConnection(CONEXION.CONECTAR))
             {
                 SqlCommand command = new SqlCommand(consulta, connection);
-                command.Parameters.AddWithValue("@IdPersona", id);
+                command.Parameters.AddWithValue("@idPersona", id);
 
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
 
-
-
         public Cliente InsertarPersonaYClienteDal(Persona persona, Cliente cliente)
         {
-            // Insertar persona
+            // Insertar persona con los nuevos parámetros
             string consultaPersona = @"
-        INSERT INTO Persona (Nombre, Apellido, Telefono, Correo, Estado) 
-        VALUES (@Nombre, @Apellido, @Telefono, @Correo, 'Activo'); 
-        SELECT SCOPE_IDENTITY();"; // Para obtener el último IdPersona creado
+    INSERT INTO Persona (Nombre, Apellido, Telefono, Correo, Estado, Edad, Sexo) 
+    VALUES (@Nombre, @Apellido, @Telefono, @Correo, 'Activo', @Edad, @Sexo); 
+    SELECT SCOPE_IDENTITY();"; // Para obtener el último IdPersona creado
 
             SqlParameter[] parametrosPersona = new SqlParameter[]
             {
         new SqlParameter("@Nombre", persona.Nombre),
         new SqlParameter("@Apellido", persona.Apellido),
         new SqlParameter("@Telefono", persona.Telefono),
-        new SqlParameter("@Correo", persona.Correo)
+        new SqlParameter("@Correo", persona.Correo),
+        new SqlParameter("@Edad", persona.Edad), // Nuevo parámetro para Edad
+        new SqlParameter("@Sexo", persona.Sexo)  // Nuevo parámetro para Sexo
             };
 
             // Ejecutar la consulta e insertar la persona
@@ -112,9 +152,9 @@ namespace DAL
 
             // Insertar cliente usando el IdPersona obtenido
             string consultaCliente = @"
-        INSERT INTO Cliente (IdPersona, UserName, Contraseña, Bloqueado, FechaBloq) 
-        VALUES (@IdPersona, @UserName, @Contraseña, @Bloqueado, @FechaBloq);
-        SELECT SCOPE_IDENTITY();"; // Para obtener el último IdCliente creado
+    INSERT INTO Cliente (IdPersona, UserName, Contraseña, Bloqueado, FechaBloq) 
+    VALUES (@IdPersona, @UserName, @Contraseña, @Bloqueado, @FechaBloq);
+    SELECT SCOPE_IDENTITY();"; // Para obtener el último IdCliente creado
 
             SqlParameter[] parametrosCliente = new SqlParameter[]
             {
@@ -133,5 +173,8 @@ namespace DAL
             cliente.IdCliente = nuevoIdCliente; // Asignar el nuevo IdCliente
             return cliente; // Retornar el cliente completo con el nuevo ID
         }
+
+
+
     }
 }

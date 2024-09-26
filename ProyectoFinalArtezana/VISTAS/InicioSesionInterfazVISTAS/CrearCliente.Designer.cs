@@ -45,6 +45,8 @@
             textBox7 = new TextBox();
             label4 = new Label();
             button3 = new Button();
+            label5 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // textBox5
@@ -136,7 +138,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(71, 278);
+            label3.Location = new Point(72, 358);
             label3.Name = "label3";
             label3.Size = new Size(121, 23);
             label3.TabIndex = 133;
@@ -144,7 +146,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(205, 281);
+            textBox6.Location = new Point(222, 358);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(194, 23);
             textBox6.TabIndex = 132;
@@ -153,7 +155,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(72, 237);
+            label9.Location = new Point(72, 312);
             label9.Name = "label9";
             label9.Size = new Size(108, 23);
             label9.TabIndex = 131;
@@ -161,7 +163,7 @@
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(203, 237);
+            textBox7.Location = new Point(220, 312);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(196, 23);
             textBox7.TabIndex = 130;
@@ -170,7 +172,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(158, 324);
+            label4.Location = new Point(203, 505);
             label4.Name = "label4";
             label4.Size = new Size(93, 23);
             label4.TabIndex = 135;
@@ -180,18 +182,40 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(185, 356);
+            button3.Location = new Point(220, 443);
             button3.Name = "button3";
             button3.Size = new Size(59, 49);
             button3.TabIndex = 134;
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(72, 233);
+            label5.Name = "label5";
+            label5.Size = new Size(54, 23);
+            label5.TabIndex = 178;
+            label5.Text = "SEXO";
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Masculino ", "Femenino" });
+            comboBox1.Location = new Point(178, 233);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(221, 23);
+            comboBox1.TabIndex = 177;
+            // 
             // CrearCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(500, 449);
+            ClientSize = new Size(574, 551);
+            Controls.Add(label5);
+            Controls.Add(comboBox1);
             Controls.Add(label4);
             Controls.Add(button3);
             Controls.Add(label3);
@@ -232,5 +256,7 @@
         private TextBox textBox7;
         private Label label4;
         private Button button3;
+        private Label label5;
+        private ComboBox comboBox1;
     }
 }

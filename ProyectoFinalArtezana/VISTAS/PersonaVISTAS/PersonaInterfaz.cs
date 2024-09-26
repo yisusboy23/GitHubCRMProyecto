@@ -29,10 +29,14 @@ namespace VISTAS.AuditoriaClieVISTAS
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBox5.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            textBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString(); // Nombre
+            textBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString(); // Apellido
+            textBox3.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString(); // Teléfono
+            textBox5.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString(); // Correo
+
+            // Cargar Edad y Sexo
+            textBox4.Text = dataGridView1.CurrentRow.Cells[6].Value != DBNull.Value ? dataGridView1.CurrentRow.Cells[5].Value.ToString() : ""; // Edad
+            comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells[7].Value != DBNull.Value ? dataGridView1.CurrentRow.Cells[6].Value.ToString() : ""; // Sexo
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -53,19 +57,31 @@ namespace VISTAS.AuditoriaClieVISTAS
             {
                 MessageBox.Show("El campo Correo está vacío.");
             }
+            else if (!int.TryParse(textBox4.Text, out int edad))
+            {
+                MessageBox.Show("La Edad debe ser un número válido.");
+            }
+            else if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un Sexo.");
+            }
             else
             {
-                Persona p = new Persona();
-                p.Nombre = textBox1.Text;
-                p.Apellido = textBox2.Text;
-                p.Telefono = textBox3.Text;
-                p.Correo = textBox5.Text;
+                Persona p = new Persona
+                {
+                    Nombre = textBox1.Text,
+                    Apellido = textBox2.Text,
+                    Telefono = textBox3.Text,
+                    Correo = textBox5.Text,
+                    Edad = edad,
+                    Sexo = comboBox1.SelectedItem.ToString()
+                };
 
                 BSS.InsertarPersonaBss(p);
                 MessageBox.Show("Se guardó correctamente");
 
                 // Registrar auditoría
-                string accion = $"Persona creada: Nombre={p.Nombre}, Apellido={p.Apellido}, Telefono={p.Telefono}, Correo={p.Correo}";
+                string accion = $"Persona creada: Nombre={p.Nombre}, Apellido={p.Apellido}, Telefono={p.Telefono}, Correo={p.Correo}, Edad={p.Edad}, Sexo={p.Sexo}";
                 auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = BSS.ListarPersonasBss();
@@ -78,6 +94,8 @@ namespace VISTAS.AuditoriaClieVISTAS
             textBox2.Clear();
             textBox3.Clear();
             textBox5.Clear();
+            textBox4.Clear();
+            comboBox1.SelectedIndex = -1; // Limpiar el ComboBox
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -99,20 +117,29 @@ namespace VISTAS.AuditoriaClieVISTAS
             {
                 MessageBox.Show("El campo Correo está vacío.");
             }
+            else if (!int.TryParse(textBox4.Text, out int edad))
+            {
+                MessageBox.Show("La Edad debe ser un número válido.");
+            }
+            else if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor, seleccione un Sexo.");
+            }
             else
             {
-
                 int IdPersonaSeleccionada = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 Persona editarPersona = BSS.ObtenerPersonaIdBss(IdPersonaSeleccionada);
                 editarPersona.Nombre = textBox1.Text;
                 editarPersona.Apellido = textBox2.Text;
                 editarPersona.Telefono = textBox3.Text;
                 editarPersona.Correo = textBox5.Text;
+                editarPersona.Edad = edad;
+                editarPersona.Sexo = comboBox1.SelectedItem.ToString();
 
                 BSS.EditarPersonaBss(editarPersona);
                 MessageBox.Show("Datos Actualizados");
 
-                string accion = $"Persona actualizada: Id={IdPersonaSeleccionada}, Nombre={editarPersona.Nombre}, Apellido={editarPersona.Apellido}, Telefono={editarPersona.Telefono}, Correo={editarPersona.Correo}";
+                string accion = $"Persona actualizada: Id={IdPersonaSeleccionada}, Nombre={editarPersona.Nombre}, Apellido={editarPersona.Apellido}, Telefono={editarPersona.Telefono}, Correo={editarPersona.Correo}, Edad={editarPersona.Edad}, Sexo={editarPersona.Sexo}";
                 auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = BSS.ListarPersonasBss();

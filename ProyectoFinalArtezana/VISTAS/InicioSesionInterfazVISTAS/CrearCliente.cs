@@ -24,14 +24,15 @@ namespace VISTAS.InicioSesionInterfazVISTAS
 
         private void button3_Click(object sender, EventArgs e)
         {
-
             // Validar que todos los campos estén completos
             if (string.IsNullOrWhiteSpace(textBox1.Text) || // Nombre
                 string.IsNullOrWhiteSpace(textBox2.Text) || // Apellido
                 string.IsNullOrWhiteSpace(textBox3.Text) || // Teléfono
                 string.IsNullOrWhiteSpace(textBox5.Text) || // Correo
                 string.IsNullOrWhiteSpace(textBox7.Text) || // UserName
-                string.IsNullOrWhiteSpace(textBox6.Text))   // Contraseña
+                string.IsNullOrWhiteSpace(textBox6.Text) || // Contraseña
+                string.IsNullOrWhiteSpace(textBox4.Text) || // Edad
+                comboBox1.SelectedItem == null)            // Sexo
             {
                 MessageBox.Show("Por favor, completa todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -43,7 +44,9 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 Nombre = textBox1.Text,
                 Apellido = textBox2.Text,
                 Telefono = textBox3.Text,
-                Correo = textBox5.Text
+                Correo = textBox5.Text,
+                Edad = int.Parse(textBox4.Text), // Asignar Edad
+                Sexo = comboBox1.SelectedItem.ToString() // Asignar Sexo
             };
 
             // Crear un nuevo cliente
@@ -67,12 +70,10 @@ namespace VISTAS.InicioSesionInterfazVISTAS
                 MessageBox.Show("Cuenta creada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 string accionCrearCliente = $"Cliente creado: IdCliente={nuevoCliente.IdCliente}, NombreUsuario={nuevoCliente.UserName}";
-
                 auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accionCrearCliente);
 
                 string accionInicioSesion = $"{nuevoCliente.UserName} Inicio de sesión";
                 auditoriaBss.RegistrarAuditoria(Sesion.IdClienteSeleccionado, accionInicioSesion);
-
 
                 // Redirigir al menú del cliente y cerrar esta ventana
                 MenuClienteInterfaz menuCliente = new MenuClienteInterfaz();

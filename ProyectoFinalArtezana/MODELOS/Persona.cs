@@ -14,5 +14,7 @@ namespace MODELOS
         public string Telefono { get; set; }
         public string Correo { get; set; }
         public string Estado { get; set; }
+        public int? Edad { get; set; }  // El tipo int permite valores nulos con el operador ?
+        public string Sexo { get; set; } // Sexo puede ser "Masculino", "Femenino", etc.
     }
 }
