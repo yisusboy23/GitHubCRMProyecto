@@ -20,6 +20,7 @@ namespace VISTAS.CarritoVISTAS
             InitializeComponent();
         }
         CarritoBSS bss = new CarritoBSS();
+        PermisoBSS permisosBss = new PermisoBSS(); // Instancia de PermisosDAL
         private void CarritoGerenteInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bss.ListarCarritoBss();
@@ -27,6 +28,14 @@ namespace VISTAS.CarritoVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Cambiar Estado Venta"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
+
             int idProductoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             Carrito carrito = bss.ObtenerCarritoPorIdBss(idProductoSeleccionado);
 

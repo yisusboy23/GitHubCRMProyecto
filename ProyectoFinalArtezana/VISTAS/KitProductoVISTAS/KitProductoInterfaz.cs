@@ -17,6 +17,7 @@ namespace VISTAS.KitProductoVISTAS
         KitProductoBSS bss = new KitProductoBSS();
         KitBSS kitBss = new KitBSS(); // Para obtener la lista de kits
         ProductoBSS productoBss = new ProductoBSS();
+        PermisoBSS permisosBss = new PermisoBSS();
         public static int IdProductoSeleccionado = 0;
         public static int IdKitSeleccionado = 0;
         AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
@@ -39,6 +40,13 @@ namespace VISTAS.KitProductoVISTAS
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Insertar KitProducto"))
+            {
+                MessageBox.Show("El permiso está bloqueado.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(textBox3.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
@@ -73,6 +81,14 @@ namespace VISTAS.KitProductoVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Editar KitProducto"))
+            {
+                MessageBox.Show("El permiso está bloqueado.");
+                return;
+            }
+
             if (string.IsNullOrWhiteSpace(textBox1.Text) ||
        string.IsNullOrWhiteSpace(textBox2.Text) ||
        string.IsNullOrWhiteSpace(textBox3.Text))
@@ -108,6 +124,15 @@ namespace VISTAS.KitProductoVISTAS
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Eliminar KitProducto"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
+
+
             int idKitProductoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id_KitProducto"].Value);
             DialogResult result = MessageBox.Show("¿Está seguro que desea eliminar este Kit-Producto?", "ELIMINAR", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)

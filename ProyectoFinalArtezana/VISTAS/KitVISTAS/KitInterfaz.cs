@@ -1,4 +1,5 @@
 ﻿using BSS;
+using DAL;
 using MODELOS;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace VISTAS.KitVISTAS
     {
         KitBSS bss = new KitBSS();
         AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia de BSS para auditoría
+        PermisoBSS permisosBss = new PermisoBSS(); // Instancia de PermisosDAL
 
         public KitInterfaz()
         {
@@ -38,6 +40,14 @@ namespace VISTAS.KitVISTAS
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Insertar Kit"))
+            {
+                MessageBox.Show("El permiso para insertar kits está bloqueado.");
+                return;
+            }
+
             Kit kit = new Kit
             {
                 Nombre = textBox1.Text,
@@ -68,6 +78,14 @@ namespace VISTAS.KitVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Editar Kit"))
+            {
+                MessageBox.Show("El permiso para insertar kits está bloqueado.");
+                return;
+            }
+
             int idKitSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             Kit kit = bss.ObtenerKitPorIdBss(idKitSeleccionado);
             kit.Nombre = textBox1.Text;
@@ -89,6 +107,14 @@ namespace VISTAS.KitVISTAS
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Eliminar Kit"))
+            {
+                MessageBox.Show("El permiso para insertar kits está bloqueado.");
+                return;
+            }
+
             // Obtener el ID del kit seleccionado
             int idKitSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 

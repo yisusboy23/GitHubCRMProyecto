@@ -85,5 +85,45 @@ namespace DAL
                 command.ExecuteNonQuery();
             }
         }
+
+        public bool VerificarPermisoBloqueoDAL(string nombrePermiso)
+        {
+            bool estaBloqueado = false;
+
+            string consulta = @"
+            SELECT P.Bloqueado AS PermisoBloqueado, 
+           RP.Bloqueado AS RolPermisoBloqueado
+            FROM Permiso P
+            JOIN RolPermiso RP ON P.IdPermiso = RP.IdPermiso
+            WHERE P.Nombre = @NombrePermiso";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+        new SqlParameter("@NombrePermiso", nombrePermiso)
+            };
+
+            try
+            {
+                // Ejecutar la consulta y obtener el DataTable
+                DataTable resultado = CONEXION.EjecutarDataTabla2(consulta, "PermisoRol", parametros);
+
+                if (resultado.Rows.Count > 0)
+                {
+                    // Obtener los valores de bloqueo
+                    bool permisoBloqueado = Convert.ToBoolean(resultado.Rows[0]["PermisoBloqueado"]);
+                    bool rolPermisoBloqueado = Convert.ToBoolean(resultado.Rows[0]["RolPermisoBloqueado"]);
+
+                    // Si el permiso o el rol permiso están bloqueados, se establece la variable
+                    estaBloqueado = permisoBloqueado || rolPermisoBloqueado;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al verificar el permiso: " + ex.Message);
+            }
+
+            return estaBloqueado;
+        }
+
     }
 }

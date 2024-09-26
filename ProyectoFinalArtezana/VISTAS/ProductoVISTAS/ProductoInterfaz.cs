@@ -20,7 +20,7 @@ namespace VISTAS.ProductoVISTAS
         }
         ProductoBSS bss = new ProductoBSS();
         AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia de BSS para auditoría
-
+        PermisoBSS permisosBss = new PermisoBSS();
         private void ProductoInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bss.ListarProductosBss();
@@ -28,6 +28,14 @@ namespace VISTAS.ProductoVISTAS
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Insertar Producto"))
+            {
+                MessageBox.Show("El permiso está bloqueado.");
+                return;
+            }
+
             Producto producto = new Producto
             {
                 Nombre = textBox1.Text,
@@ -60,6 +68,14 @@ namespace VISTAS.ProductoVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Editar Producto"))
+            {
+                MessageBox.Show("El permiso está bloqueado.");
+                return;
+            }
+
             int idProductoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             Producto producto = bss.ObtenerProductoPorIdBss(idProductoSeleccionado);
             producto.Nombre = textBox1.Text;
@@ -78,6 +94,14 @@ namespace VISTAS.ProductoVISTAS
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Eliminar Producto"))
+            {
+                MessageBox.Show("El permiso está bloqueado.");
+                return;
+            }
+
             // Obtener el ID del producto seleccionado
             int idProductoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 

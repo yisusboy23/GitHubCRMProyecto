@@ -37,5 +37,12 @@ namespace BSS
         {
             dal.EliminarPermisoDal(id);
         }
+
+        public bool VerificarPermisoBloqueoBss(string nombrePermiso)
+        {
+            // Llamar al método en la DAL para verificar el estado del permiso
+            return dal.VerificarPermisoBloqueoDAL(nombrePermiso);
+        }
+
     }
 }

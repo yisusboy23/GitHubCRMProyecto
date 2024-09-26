@@ -1,4 +1,5 @@
-﻿using MODELOS;
+﻿using BSS;
+using MODELOS;
 using SistemasVentas.VISTA.InterfazGerenteVista;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
         {
             InitializeComponent();
         }
+        PermisoBSS permisosBss = new PermisoBSS(); // Instancia de PermisosDAL
 
         private void AbrirFormHija(Object FormHija)
         {
@@ -45,6 +47,12 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Ver Ventas"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
             AbrirFormHija(new CarritoGerenteInterfaz());
         }
 
@@ -55,17 +63,35 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
 
         private void button6_Click(object sender, EventArgs e)
         {
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Gestionar Productos"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
             AbrirFormHija(new ProductoInterfaz());
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Gestionar Kit"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
             AbrirFormHija(new KitVISTAS.KitInterfaz());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new KitProductoInterfaz());
+            // Verificar permiso para insertar
+            if (permisosBss.VerificarPermisoBloqueoBss("Gestionar KitProductos"))
+            {
+                MessageBox.Show("El permiso bloqueado.");
+                return;
+            }
+            AbrirFormHija(new KitProductoInterfaz());  
         }
 
         private void button15_Click(object sender, EventArgs e)
