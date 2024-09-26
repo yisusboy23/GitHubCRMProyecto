@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonaInterfaz));
             panel1 = new Panel();
             label2 = new Label();
@@ -52,8 +53,12 @@
             textBox4 = new TextBox();
             label9 = new Label();
             label11 = new Label();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -82,6 +87,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(221, 23);
             textBox5.TabIndex = 59;
+            textBox5.Validating += textBox5_Validating;
             // 
             // label10
             // 
@@ -99,6 +105,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(221, 23);
             textBox3.TabIndex = 55;
+            textBox3.KeyPress += textBox3_KeyPress;
             // 
             // label8
             // 
@@ -262,6 +269,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(221, 23);
             textBox4.TabIndex = 175;
+            textBox4.Validating += textBox4_Validating;
             // 
             // label9
             // 
@@ -282,6 +290,14 @@
             label11.Size = new Size(56, 23);
             label11.TabIndex = 177;
             label11.Text = "EDAD";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
             // 
             // PersonaInterfaz
             // 
@@ -317,6 +333,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -346,5 +364,7 @@
         private TextBox textBox4;
         private Label label9;
         private Label label11;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

@@ -42,6 +42,10 @@ namespace VISTAS.UsuariosVISTAS
         private void UsuariosInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bss.ListarUsuariosBss();
+            textBox2.Validating += textBox2_Validating; // Validación para Nombre de Usuario
+            textBox3.Validating += textBox3_Validating; // Validación para Contraseña
+            textBox4.KeyPress += textBox4_KeyPress;      // Validación para CI
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -142,6 +146,53 @@ namespace VISTAS.UsuariosVISTAS
                 {
                     MessageBox.Show("Error al eliminar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void textBox2_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBox2.Text.Length < 3)
+            {
+                errorProvider1.SetError(textBox2, "El nombre de usuario debe tener al menos 3 caracteres.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox2, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void textBox3_Validating(object sender, CancelEventArgs e)
+        {
+            string password = textBox3.Text;
+            if (password.Length < 8)
+            {
+                errorProvider1.SetError(textBox3, "La contraseña debe tener al menos 8 caracteres.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else if (!password.Any(char.IsUpper) || !password.Any(char.IsLower) || !password.Any(char.IsDigit) || !password.Any(ch => "!@#$%^&*()".Contains(ch)))
+            {
+                errorProvider1.SetError(textBox3, "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un símbolo especial.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y controlar la longitud
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // No permitir caracteres que no sean dígitos
+            }
+
+            // Limitar a 7 caracteres
+            if (textBox4.Text.Length >= 7 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // No permitir más caracteres
             }
         }
     }

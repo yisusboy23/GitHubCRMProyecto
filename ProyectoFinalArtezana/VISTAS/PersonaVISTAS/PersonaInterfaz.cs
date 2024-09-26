@@ -25,6 +25,10 @@ namespace VISTAS.AuditoriaClieVISTAS
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = BSS.ListarPersonasBss();
+            textBox3.MaxLength = 8;
+            textBox3.KeyPress += textBox3_KeyPress;
+            textBox5.Validating += textBox5_Validating;
+            textBox4.Validating += textBox4_Validating;
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -175,6 +179,54 @@ namespace VISTAS.AuditoriaClieVISTAS
             else
             {
                 MessageBox.Show("Por favor, seleccione una persona para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permitir números y controlar la longitud
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Evitar entrada si no es número
+            }
+            else if (textBox3.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Evitar si ya hay 8 caracteres
+            }
+        }
+
+        private void textBox5_Validating(object sender, CancelEventArgs e)
+        {
+            string correo = textBox5.Text;
+            if (!correo.Contains("@") || (!correo.EndsWith("@gmail.com") && !correo.EndsWith("@hotmail.com") && !correo.EndsWith("@yahoo.com")))
+            {
+                errorProvider1.SetError(textBox5, "El correo debe finalizar en un dominio válido (ej. @gmail.com, @hotmail.com, @yahoo.com).");
+                e.Cancel = true; // Evitar perder el foco si es inválido
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
+        }
+
+        private void textBox4_Validating(object sender, CancelEventArgs e)
+        {
+            if (int.TryParse(textBox4.Text, out int edad))
+            {
+                if (edad < 16 || edad > 130)
+                {
+                    errorProvider2.SetError(textBox4, "La edad debe estar entre 16 y 130 años.");
+                    e.Cancel = true; // Evitar perder el foco si es inválido
+                }
+                else
+                {
+                    errorProvider2.Clear();
+                }
+            }
+            else
+            {
+                errorProvider2.SetError(textBox4, "Debe ingresar una edad válida.");
+                e.Cancel = true; // Evitar perder el foco si no es un número válido
             }
         }
     }

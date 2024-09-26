@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuariosInterfaz));
             panel1 = new Panel();
             label2 = new Label();
@@ -50,8 +51,12 @@
             label8 = new Label();
             label9 = new Label();
             button5 = new Button();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -200,6 +205,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(192, 23);
             textBox2.TabIndex = 63;
+            textBox2.Validating += textBox2_Validating;
             // 
             // textBox3
             // 
@@ -207,6 +213,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(192, 23);
             textBox3.TabIndex = 64;
+            textBox3.Validating += textBox3_Validating;
             // 
             // textBox4
             // 
@@ -214,6 +221,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(192, 23);
             textBox4.TabIndex = 65;
+            textBox4.KeyPress += textBox4_KeyPress;
             // 
             // label1
             // 
@@ -266,6 +274,14 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            // 
             // UsuariosInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,6 +314,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -325,5 +343,7 @@
         private Label label8;
         private Label label9;
         private Button button5;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

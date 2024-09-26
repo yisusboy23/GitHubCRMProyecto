@@ -18,6 +18,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
         public CrearCliente()
         {
             InitializeComponent();
+
         }
         private PersonaBSS personaBss = new PersonaBSS();
         private AuditoriaClieBSS auditoriaBss = new AuditoriaClieBSS(); // Instancia para manejar la auditoría
@@ -83,6 +84,97 @@ namespace VISTAS.InicioSesionInterfazVISTAS
             catch (Exception ex)
             {
                 MessageBox.Show("Hubo un error al crear la cuenta: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CrearCliente_Load(object sender, EventArgs e)
+        {
+            textBox3.KeyPress += textBox3_KeyPress;
+            textBox5.Validating += textBox5_Validating;
+            textBox4.Validating += textBox4_Validating;
+            textBox7.Validating += textBox7_Validating;
+            textBox6.Validating += textBox6_Validating;
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo números y controlar la longitud
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // No permitir caracteres que no sean dígitos
+            }
+
+            // Limitar a 8 caracteres
+            if (textBox3.Text.Length >= 8 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // No permitir más caracteres
+            }
+        }
+
+        private void textBox5_Validating(object sender, CancelEventArgs e)
+        {
+            string email = textBox5.Text;
+            if (!email.EndsWith("@gmail.com") && !email.EndsWith("@hotmail.com") && !email.EndsWith("@yahoo.com"))
+            {
+                errorProvider1.SetError(textBox5, "El correo debe terminar con @gmail.com, @hotmail.com o @yahoo.com.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox5, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void textBox4_Validating(object sender, CancelEventArgs e)
+        {
+            if (int.TryParse(textBox4.Text, out int edad))
+            {
+                if (edad < 16 || edad > 130)
+                {
+                    errorProvider1.SetError(textBox4, "La edad debe estar entre 16 y 130 años.");
+                    e.Cancel = true; // Cancelar el evento si la validación falla
+                }
+                else
+                {
+                    errorProvider1.SetError(textBox4, string.Empty); // Limpiar el error
+                }
+            }
+            else
+            {
+                errorProvider1.SetError(textBox4, "La edad debe ser un número válido.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+        }
+
+        private void textBox7_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBox7.Text.Length < 3)
+            {
+                errorProvider1.SetError(textBox7, "El nombre de usuario debe tener al menos 3 caracteres.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox7, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void textBox6_Validating(object sender, CancelEventArgs e)
+        {
+            string password = textBox6.Text;
+            if (password.Length < 8)
+            {
+                errorProvider1.SetError(textBox6, "La contraseña debe tener al menos 8 caracteres.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else if (!password.Any(char.IsUpper) || !password.Any(char.IsLower) || !password.Any(char.IsDigit) || !password.Any(ch => "!@#$%^&*()".Contains(ch)))
+            {
+                errorProvider1.SetError(textBox6, "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un símbolo especial.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox6, string.Empty); // Limpiar el error
             }
         }
     }

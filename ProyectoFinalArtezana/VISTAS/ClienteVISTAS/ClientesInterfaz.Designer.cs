@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesInterfaz));
             label1 = new Label();
             textBox3 = new TextBox();
@@ -48,8 +49,12 @@
             panel1 = new Panel();
             label2 = new Label();
             checkBox1 = new CheckBox();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -68,6 +73,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(194, 23);
             textBox3.TabIndex = 128;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // button5
             // 
@@ -96,6 +102,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(196, 23);
             textBox2.TabIndex = 125;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label8
             // 
@@ -246,6 +253,14 @@
             checkBox1.Text = "BLOQUEAR CLIENTE";
             checkBox1.UseVisualStyleBackColor = true;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            // 
             // ClientesInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -276,6 +291,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -301,5 +318,7 @@
         private Panel panel1;
         private Label label2;
         private CheckBox checkBox1;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

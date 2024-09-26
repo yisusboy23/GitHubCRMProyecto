@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearCliente));
             textBox5 = new TextBox();
             label10 = new Label();
@@ -47,6 +48,10 @@
             button3 = new Button();
             label5 = new Label();
             comboBox1 = new ComboBox();
+            errorProvider1 = new ErrorProvider(components);
+            errorProvider2 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).BeginInit();
             SuspendLayout();
             // 
             // textBox5
@@ -55,6 +60,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(221, 23);
             textBox5.TabIndex = 67;
+            textBox5.Validating += textBox5_Validating;
             // 
             // label10
             // 
@@ -72,6 +78,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(221, 23);
             textBox3.TabIndex = 65;
+            textBox3.KeyPress += textBox3_KeyPress;
             // 
             // label8
             // 
@@ -133,6 +140,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(221, 23);
             textBox4.TabIndex = 69;
+            textBox4.Validating += textBox4_Validating;
             // 
             // label3
             // 
@@ -150,6 +158,7 @@
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(194, 23);
             textBox6.TabIndex = 132;
+            textBox6.Validating += textBox6_Validating;
             // 
             // label9
             // 
@@ -167,6 +176,7 @@
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(196, 23);
             textBox7.TabIndex = 130;
+            textBox7.Validating += textBox7_Validating;
             // 
             // label4
             // 
@@ -209,6 +219,14 @@
             comboBox1.Size = new Size(221, 23);
             comboBox1.TabIndex = 177;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            errorProvider2.ContainerControl = this;
+            // 
             // CrearCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -234,6 +252,9 @@
             Controls.Add(label1);
             Name = "CrearCliente";
             Text = "CrearCliente";
+            Load += CrearCliente_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -258,5 +279,7 @@
         private Button button3;
         private Label label5;
         private ComboBox comboBox1;
+        private ErrorProvider errorProvider1;
+        private ErrorProvider errorProvider2;
     }
 }

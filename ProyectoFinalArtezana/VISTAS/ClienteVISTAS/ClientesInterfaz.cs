@@ -25,6 +25,13 @@ namespace VISTAS.ClienteVISTAS
         private void ClientesInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bss.ListarClientesBss();
+
+            // Configuración del UserName
+            textBox2.MaxLength = 30; // Máximo de 30 caracteres
+
+            // Configuración de la contraseña
+            textBox3.MaxLength = 64; // Máximo de 64 caracteres
+
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
@@ -123,6 +130,35 @@ namespace VISTAS.ClienteVISTAS
             {
                 Persona p = bssPersona.ObtenerPersonaIdBss(IdPersonaSeleccionada);
                 textBox1.Text = p.Nombre + " " + p.Apellido;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string password = textBox3.Text;
+            if (password.Length < 8)
+            {
+                errorProvider2.SetError(textBox3, "La contraseña debe tener al menos 8 caracteres.");
+            }
+            else if (!password.Any(char.IsUpper) || !password.Any(char.IsLower) || !password.Any(char.IsDigit) || !password.Any(ch => "!@#$%^&*()".Contains(ch)))
+            {
+                errorProvider2.SetError(textBox3, "La contraseña debe tener al menos una mayúscula, una minúscula, un número y un símbolo especial.");
+            }
+            else
+            {
+                errorProvider2.Clear();
+            }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox2.Text.Length < 6)
+    {
+                errorProvider1.SetError(textBox2, "El nombre de usuario debe tener al menos 6 caracteres.");
+            }
+            else
+            {
+                errorProvider1.Clear();
             }
         }
     }
