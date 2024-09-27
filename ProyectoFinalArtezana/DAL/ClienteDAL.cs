@@ -144,5 +144,31 @@ namespace DAL
 
             return cliente;
         }
+
+        public void CambiarContraseña(int idCliente, string nuevaContraseña)
+        {
+            string consulta = "UPDATE Cliente SET Contraseña = @NuevaContraseña WHERE IdCliente = @IdCliente";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+        new SqlParameter("@NuevaContraseña", nuevaContraseña),
+        new SqlParameter("@IdCliente", idCliente)
+            };
+
+            CONEXION.Ejecutar2(consulta, parametros);
+
+            // Registrar auditoría de cambio de contraseña
+            AuditoriaClie auditoria = new AuditoriaClie
+            {
+                Accion = $"El cliente con ID {idCliente} cambió su contraseña.",
+                Timestamp = DateTime.Now,
+                IdCliente = idCliente
+            };
+
+            AuditoriaClieDAL auditoriaDal = new AuditoriaClieDAL();
+            auditoriaDal.InsertarAuditoria(auditoria);
+        }
+
     }
+
 }

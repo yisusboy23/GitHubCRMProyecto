@@ -43,5 +43,18 @@ namespace BSS
         {
             return dal.ObtenerCredenciales(nombreUsuario, contrasena); // Asegúrate de que llame al método correcto en DAL
         }
+
+        public void CambiarContraseñaBss(int idCliente, string nuevaContraseña)
+        {
+            // Valida la longitud y contenido de la nueva contraseña (puedes agregar más reglas)
+            if (string.IsNullOrEmpty(nuevaContraseña) || nuevaContraseña.Length < 6)
+            {
+                throw new Exception("La contraseña debe tener al menos 6 caracteres.");
+            }
+
+            // Llama al método en la capa DAL para cambiar la contraseña
+            dal.CambiarContraseña(idCliente, nuevaContraseña);
+        }
+
     }
 }

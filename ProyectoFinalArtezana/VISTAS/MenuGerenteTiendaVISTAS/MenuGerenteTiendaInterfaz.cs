@@ -113,12 +113,12 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            AbrirFormHija(new FiltroAuditoriaClieInterfaz());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            AbrirFormHija(new AuditoriaClieInterfaz());
         }
     }
 }

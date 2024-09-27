@@ -240,6 +240,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FiltroAuditoriaInterfaz";
             Text = "FiltroAuditoriaInterfaz";
+            Load += FiltroAuditoriaInterfaz_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

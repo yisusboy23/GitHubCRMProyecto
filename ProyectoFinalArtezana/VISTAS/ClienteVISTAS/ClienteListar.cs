@@ -27,6 +27,7 @@ namespace VISTAS.ClienteVISTAS
         {
             DetalleCarritoProductoVISTAS.DetalleCarritoProductoInterfaz.IdClienteSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
             DetalleCarritoKitVISTAS.DetalleCarritoKitInterfaz.IdClienteSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            AuditoriaClieVISTAS.FiltroAuditoriaClieInterfaz.IdClienteSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
         }
     }
 }

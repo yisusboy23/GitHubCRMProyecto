@@ -186,6 +186,7 @@
             button2.TabIndex = 1;
             button2.Text = "INFORMACION DE CUENTA";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button15
             // 

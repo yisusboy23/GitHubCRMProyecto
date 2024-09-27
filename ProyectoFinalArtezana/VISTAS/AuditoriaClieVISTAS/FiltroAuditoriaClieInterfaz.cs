@@ -10,31 +10,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VISTAS.AuditoriaVISTAS
+namespace VISTAS.AuditoriaClieVISTAS
 {
-    public partial class FiltroAuditoriaInterfaz : Form
+    public partial class FiltroAuditoriaClieInterfaz : Form
     {
-        public FiltroAuditoriaInterfaz()
+        public FiltroAuditoriaClieInterfaz()
         {
             InitializeComponent();
         }
-        UsuarioBSS usuarioBss = new UsuarioBSS(); // Para obtener la lista de usuarios
-        AuditoriaBSS bss = new AuditoriaBSS();
-        public static int IdUsuarioSeleccionado = 0;
-
+        ClienteBSS usuarioBss = new ClienteBSS(); // Para obtener la lista de usuarios
+        AuditoriaClieBSS bss = new AuditoriaClieBSS();
+        public static int IdClienteSeleccionado = 0;
         private void button1_Click(object sender, EventArgs e)
-        { // Verificar si se aplicarán filtros por fecha
+        {
+            // Verificar si se aplicarán filtros por fecha
             DateTime? fechaInicio = checkBox1.Checked ? (DateTime?)null : dateTimePicker1.Value;
             DateTime? fechaFin = checkBox1.Checked ? (DateTime?)null : dateTimePicker2.Value;
 
-            // Verificar si se aplicarán filtros por usuario
-            int? idUsuario = checkBox2.Checked ? (int?)null : IdUsuarioSeleccionado;
+            // Verificar si se aplicarán filtros por cliente
+            int? idCliente = checkBox2.Checked ? (int?)null : IdClienteSeleccionado;
 
             // Obtener la acción seleccionada
             string accionSeleccionada = comboBox1.SelectedItem?.ToString();
 
             // Llamar a la capa BSS para obtener los registros de auditoría filtrados
-            DataTable auditoriaFiltrada = bss.FiltrarAuditorias(fechaInicio, fechaFin, idUsuario, accionSeleccionada);
+            DataTable auditoriaFiltrada = bss.FiltrarAuditoriasClie(fechaInicio, fechaFin, idCliente, accionSeleccionada);
 
             // Mostrar los datos en un DataGridView
             dataGridView1.DataSource = auditoriaFiltrada;
@@ -42,10 +42,10 @@ namespace VISTAS.AuditoriaVISTAS
 
         private void button5_Click(object sender, EventArgs e)
         {
-            UsuariosVISTAS.UsuarioListar usuarioForm = new UsuariosVISTAS.UsuarioListar();
+            ClienteVISTAS.ClienteListar usuarioForm = new ClienteVISTAS.ClienteListar();
             if (usuarioForm.ShowDialog() == DialogResult.OK)
             {
-                Usuarios u = usuarioBss.ObtenerUsuarioPorIdBss(IdUsuarioSeleccionado);
+                Cliente u = usuarioBss.ObtenerClientePorIdBss(IdClienteSeleccionado);
                 textBox1.Text = u.UserName; // Asumiendo que quieres mostrar el nombre de usuario
             }
         }
@@ -64,12 +64,7 @@ namespace VISTAS.AuditoriaVISTAS
             bool sinUsuario = checkBox2.Checked;
             textBox1.Enabled = !sinUsuario;
             button5.Enabled = !sinUsuario; // Botón para seleccionar usuario
-            IdUsuarioSeleccionado = sinUsuario ? 0 : IdUsuarioSeleccionado;
-        }
-
-        private void FiltroAuditoriaInterfaz_Load(object sender, EventArgs e)
-        {
-
+            IdClienteSeleccionado = sinUsuario ? 0 : IdClienteSeleccionado;
         }
     }
 }

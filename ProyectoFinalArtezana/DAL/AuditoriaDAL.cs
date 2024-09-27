@@ -44,10 +44,10 @@ namespace DAL
         public DataTable FiltrarAuditoriasConFechaYUsuario(DateTime? fechaInicio, DateTime? fechaFin, int userId)
         {
             string consulta = @"
-    SELECT * FROM Auditoria
-    WHERE Timestamp >= @FechaInicio
-    AND Timestamp <= @FechaFin
-    AND UserId = @UserId";
+            SELECT * FROM Auditoria
+            WHERE Timestamp >= @FechaInicio
+            AND Timestamp <= @FechaFin
+            AND UserId = @UserId";
 
             SqlParameter[] parametros = new SqlParameter[]
             {

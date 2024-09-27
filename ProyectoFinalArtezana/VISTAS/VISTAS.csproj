@@ -13,8 +13,4 @@
     <ProjectReference Include="..\MODELOS\MODELOS.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AuditoriaClieVISTAS\" />
-  </ItemGroup>
-
 </Project>

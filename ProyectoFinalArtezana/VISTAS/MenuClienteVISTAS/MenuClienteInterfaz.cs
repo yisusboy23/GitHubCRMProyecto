@@ -70,5 +70,10 @@ namespace VISTAS.MenuClienteVISTAS
         {
             AbrirFormHija(new CarritoInterfaz());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new EditarCuenta());
+        }
     }
 }
