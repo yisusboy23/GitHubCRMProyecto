@@ -1,5 +1,6 @@
 using DAL;
 using VISTAS.AuditoriaClieVISTAS;
+using VISTAS.AuditoriaVISTAS;
 using VISTAS.ClienteVISTAS;
 using VISTAS.DetalleCarritoProductoVISTAS;
 using VISTAS.InicioSesionInterfazVISTAS;
@@ -22,7 +23,7 @@ namespace VISTAS
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new InicoSesionClienteInterfaz());
+            Application.Run(new FiltroAuditoriaInterfaz());
         }
     }
 }

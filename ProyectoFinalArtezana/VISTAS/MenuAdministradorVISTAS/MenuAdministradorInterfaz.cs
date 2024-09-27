@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VISTAS.AuditoriaClieVISTAS;
+using VISTAS.AuditoriaVISTAS;
 using VISTAS.ClienteVISTAS;
 using VISTAS.InicioSesionInterfazVISTAS;
 using VISTAS.PermisoVISTAS;
@@ -98,6 +99,16 @@ namespace VISTAS.MenuAdministradorVISTAS
                 abrir.Show();
                 this.Hide();
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new AuditoriaInterfaz());
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FiltroAuditoriaInterfaz());
         }
     }
 }

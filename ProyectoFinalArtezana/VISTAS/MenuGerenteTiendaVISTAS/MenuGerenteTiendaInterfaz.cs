@@ -91,7 +91,7 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
                 MessageBox.Show("El permiso bloqueado.");
                 return;
             }
-            AbrirFormHija(new KitProductoInterfaz());  
+            AbrirFormHija(new KitProductoInterfaz());
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -103,6 +103,22 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
                 abrir.Show();
                 this.Hide();
             }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

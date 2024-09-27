@@ -252,6 +252,7 @@
             button5.TabIndex = 4;
             button5.Text = "AUDITORIAS";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button14
             // 
@@ -262,8 +263,9 @@
             button14.Name = "button14";
             button14.Size = new Size(254, 36);
             button14.TabIndex = 13;
-            button14.Text = "PARAMETROS DE SEGURIDAD";
+            button14.Text = "FILTROS DE AUDITORIAS";
             button14.UseVisualStyleBackColor = true;
+            button14.Click += button14_Click;
             // 
             // button15
             // 

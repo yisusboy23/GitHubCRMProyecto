@@ -44,7 +44,8 @@ namespace VISTAS.UsuariosVISTAS
             dataGridView1.DataSource = bss.ListarUsuariosBss();
             textBox2.Validating += textBox2_Validating; // Validación para Nombre de Usuario
             textBox3.Validating += textBox3_Validating; // Validación para Contraseña
-            textBox4.KeyPress += textBox4_KeyPress;      // Validación para CI
+            textBox4.KeyPress += textBox4_KeyPress;
+            textBox4.Validating += textBox4_Validating;// Validación para CI
 
         }
 
@@ -193,6 +194,20 @@ namespace VISTAS.UsuariosVISTAS
             if (textBox4.Text.Length >= 7 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true; // No permitir más caracteres
+            }
+        }
+
+        private void textBox4_Validating(object sender, CancelEventArgs e)
+        {
+            // Validar que el teléfono tenga exactamente 8 dígitos
+            if (textBox4.Text.Length != 7)
+            {
+                errorProvider1.SetError(textBox3, "El CI debe tener exactamente 8 dígitos.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
             }
         }
     }

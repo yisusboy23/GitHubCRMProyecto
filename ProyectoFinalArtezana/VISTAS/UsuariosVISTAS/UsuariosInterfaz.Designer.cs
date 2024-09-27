@@ -222,6 +222,7 @@
             textBox4.Size = new Size(192, 23);
             textBox4.TabIndex = 65;
             textBox4.KeyPress += textBox4_KeyPress;
+            textBox4.Validating += textBox4_Validating;
             // 
             // label1
             // 

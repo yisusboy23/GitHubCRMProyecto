@@ -182,12 +182,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(400, 140);
+            dataGridView1.Location = new Point(415, 131);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(402, 400);
+            dataGridView1.Size = new Size(487, 400);
             dataGridView1.TabIndex = 76;
             dataGridView1.Click += dataGridView1_Click;
             // 

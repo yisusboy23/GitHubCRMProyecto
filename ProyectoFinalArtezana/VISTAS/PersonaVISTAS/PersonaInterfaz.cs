@@ -229,5 +229,19 @@ namespace VISTAS.AuditoriaClieVISTAS
                 e.Cancel = true; // Evitar perder el foco si no es un número válido
             }
         }
+
+        private void textBox3_Validating(object sender, CancelEventArgs e)
+        {
+            // Validar que el teléfono tenga exactamente 8 dígitos
+            if (textBox3.Text.Length != 8)
+            {
+                errorProvider1.SetError(textBox3, "El teléfono debe tener exactamente 8 dígitos.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
+            }
+        }
     }
 }

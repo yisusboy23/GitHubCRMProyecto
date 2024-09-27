@@ -94,6 +94,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
             textBox4.Validating += textBox4_Validating;
             textBox7.Validating += textBox7_Validating;
             textBox6.Validating += textBox6_Validating;
+            textBox3.Validating += textBox3_Validating;
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
@@ -175,6 +176,20 @@ namespace VISTAS.InicioSesionInterfazVISTAS
             else
             {
                 errorProvider1.SetError(textBox6, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void textBox3_Validating(object sender, CancelEventArgs e)
+        {
+            // Validar que el teléfono tenga exactamente 8 dígitos
+            if (textBox3.Text.Length != 8)
+            {
+                errorProvider1.SetError(textBox3, "El teléfono debe tener exactamente 8 dígitos.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
             }
         }
     }

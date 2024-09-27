@@ -27,6 +27,7 @@ namespace VISTAS.UsuariosVISTAS
         private void button1_Click(object sender, EventArgs e)
         {
             UsuariosRolVISTAS.UsuarioRolInterfaz.IdUsuarioSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            AuditoriaVISTAS.FiltroAuditoriaInterfaz.IdUsuarioSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
         }
 
         private void button2_Click(object sender, EventArgs e)

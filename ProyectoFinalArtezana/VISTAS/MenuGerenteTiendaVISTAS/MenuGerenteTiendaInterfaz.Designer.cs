@@ -37,6 +37,8 @@
             button8 = new Button();
             button2 = new Button();
             button15 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             panel1 = new Panel();
             label3 = new Label();
             pictureBox2 = new PictureBox();
@@ -74,11 +76,14 @@
             flowLayoutPanel1.Controls.Add(button6);
             flowLayoutPanel1.Controls.Add(button8);
             flowLayoutPanel1.Controls.Add(button2);
+            flowLayoutPanel1.Controls.Add(button3);
+            flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Controls.Add(button15);
             flowLayoutPanel1.Location = new Point(14, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(274, 549);
             flowLayoutPanel1.TabIndex = 0;
+            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // button1
             // 
@@ -92,7 +97,7 @@
             button1.Name = "button1";
             button1.Size = new Size(254, 34);
             button1.TabIndex = 0;
-            button1.Text = "VENTAS";
+            button1.Text = "ADMINISTRAR VENTAS";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -141,13 +146,39 @@
             button15.FlatAppearance.BorderSize = 0;
             button15.FlatStyle = FlatStyle.Flat;
             button15.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
-            button15.Location = new Point(3, 169);
+            button15.Location = new Point(3, 253);
             button15.Name = "button15";
             button15.Size = new Size(254, 36);
             button15.TabIndex = 14;
             button15.Text = "CERRAR SESION";
             button15.UseVisualStyleBackColor = true;
             button15.Click += button15_Click;
+            // 
+            // button3
+            // 
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.Location = new Point(3, 169);
+            button3.Name = "button3";
+            button3.Size = new Size(254, 36);
+            button3.TabIndex = 15;
+            button3.Text = "AUDITORIAS CLIENTE";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(3, 211);
+            button4.Name = "button4";
+            button4.Size = new Size(254, 36);
+            button4.TabIndex = 16;
+            button4.Text = "REPORTES DE AUDITORIAS";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // panel1
             // 
@@ -250,5 +281,7 @@
         private Label label2;
         private Label label1;
         private PictureBox pictureBox1;
+        private Button button3;
+        private Button button4;
     }
 }

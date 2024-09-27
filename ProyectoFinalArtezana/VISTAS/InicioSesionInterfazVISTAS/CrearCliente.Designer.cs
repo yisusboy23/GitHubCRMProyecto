@@ -79,6 +79,7 @@
             textBox3.Size = new Size(221, 23);
             textBox3.TabIndex = 65;
             textBox3.KeyPress += textBox3_KeyPress;
+            textBox3.Validating += textBox3_Validating;
             // 
             // label8
             // 
