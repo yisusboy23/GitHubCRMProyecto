@@ -135,7 +135,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(335, 43);
+            label6.Location = new Point(251, 43);
             label6.Name = "label6";
             label6.Size = new Size(94, 23);
             label6.TabIndex = 140;
@@ -145,7 +145,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(215, 43);
+            label5.Location = new Point(111, 43);
             label5.Name = "label5";
             label5.Size = new Size(114, 23);
             label5.TabIndex = 139;
@@ -155,7 +155,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(128, 43);
+            label4.Location = new Point(351, 43);
             label4.Name = "label4";
             label4.Size = new Size(81, 23);
             label4.TabIndex = 138;
@@ -165,7 +165,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(13, 43);
+            label3.Location = new Point(3, 43);
             label3.Name = "label3";
             label3.Size = new Size(93, 23);
             label3.TabIndex = 137;
@@ -175,7 +175,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(37, 69);
+            button3.Location = new Point(21, 69);
             button3.Name = "button3";
             button3.Size = new Size(45, 45);
             button3.TabIndex = 136;
@@ -187,7 +187,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.OK;
-            button4.Location = new Point(352, 69);
+            button4.Location = new Point(269, 69);
             button4.Name = "button4";
             button4.Size = new Size(45, 45);
             button4.TabIndex = 135;
@@ -199,7 +199,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.OK;
-            button2.Location = new Point(143, 69);
+            button2.Location = new Point(367, 69);
             button2.Name = "button2";
             button2.Size = new Size(45, 45);
             button2.TabIndex = 134;
@@ -211,7 +211,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(249, 69);
+            button1.Location = new Point(153, 69);
             button1.Name = "button1";
             button1.Size = new Size(45, 45);
             button1.TabIndex = 133;
@@ -298,6 +298,7 @@
             button5.TabIndex = 180;
             button5.Text = "VER DETALLES";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // panel2
             // 

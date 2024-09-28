@@ -98,5 +98,39 @@ namespace DAL
             }
         }
 
+        // Método para obtener la lista de usuarios asociados a un rol específico
+        public DataTable ObtenerUsuariosPorRol(int idRol)
+        {
+            string consulta = @"SELECT U.IdUsuario, U.UserName   
+                            FROM Usuarios U
+                            INNER JOIN UsuarioRol UR ON U.IdUsuario = UR.IdUsuario
+                            WHERE UR.IdRol = @IdRol";
+
+            SqlParameter[] parametros = {
+                new SqlParameter("@IdRol", idRol)
+            };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "UsuariosRol", parametros);
+        }
+
+        // Método para obtener los permisos asociados a un rol
+        public DataTable ObtenerPermisosPorRol(int idRol)
+        {
+            string consulta = @"SELECT P.IdPermiso, 
+                            P.Nombre, 
+                            RP.Descripcion, 
+                            RP.Bloqueado, 
+                            RP.FechaBloq 
+                     FROM Permiso P
+                     INNER JOIN RolPermiso RP ON P.IdPermiso = RP.IdPermiso
+                     WHERE RP.IdRol = @IdRol";
+
+            SqlParameter[] parametros = {
+                new SqlParameter("@IdRol", idRol)
+            };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "PermisosRol", parametros);
+        }
+
     }
 }

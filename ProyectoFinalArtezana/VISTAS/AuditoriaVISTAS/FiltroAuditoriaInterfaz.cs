@@ -69,7 +69,7 @@ namespace VISTAS.AuditoriaVISTAS
 
         private void FiltroAuditoriaInterfaz_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

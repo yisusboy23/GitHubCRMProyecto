@@ -16,6 +16,7 @@ namespace VISTAS.RolVISTAS
     {
         RolBSS bss = new RolBSS();
         AuditoriaBSS auditoriaBss = new AuditoriaBSS(); // Instancia para manejar la auditoría
+
         public RolInterfaz()
         {
             InitializeComponent();
@@ -119,6 +120,26 @@ namespace VISTAS.RolVISTAS
                 }
 
                 dataGridView1.DataSource = bss.ListarRolesBss();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Verifica que se haya seleccionado un rol en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtiene el ID del rol seleccionado
+                int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdRol"].Value);
+
+                // Crea una nueva instancia de RolDetalleInterfaz pasando el ID del rol
+                RolDetalleInterfaz detalleForm = new RolDetalleInterfaz(idRolSeleccionado);
+
+                // Muestra el formulario como un diálogo
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un rol para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

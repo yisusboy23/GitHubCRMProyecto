@@ -37,6 +37,7 @@
             label1 = new Label();
             label3 = new Label();
             dataGridView2 = new DataGridView();
+            button5 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -66,7 +67,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(790, 382);
+            label6.Location = new Point(790, 428);
             label6.Name = "label6";
             label6.Size = new Size(112, 23);
             label6.TabIndex = 70;
@@ -77,7 +78,7 @@
             button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button4.DialogResult = DialogResult.OK;
-            button4.Location = new Point(813, 408);
+            button4.Location = new Point(811, 468);
             button4.Name = "button4";
             button4.Size = new Size(59, 49);
             button4.TabIndex = 65;
@@ -112,7 +113,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(22, 320);
+            label3.Location = new Point(19, 339);
             label3.Name = "label3";
             label3.Size = new Size(201, 23);
             label3.TabIndex = 72;
@@ -124,19 +125,33 @@
             dataGridView2.AllowUserToDeleteRows = false;
             dataGridView2.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(22, 346);
+            dataGridView2.Location = new Point(22, 365);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.ReadOnly = true;
             dataGridView2.RowTemplate.Height = 25;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.Size = new Size(757, 200);
+            dataGridView2.Size = new Size(757, 181);
             dataGridView2.TabIndex = 73;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(127, 212, 249);
+            button5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(790, 131);
+            button5.Name = "button5";
+            button5.Size = new Size(119, 231);
+            button5.TabIndex = 183;
+            button5.Text = "VER DETALLE DE LA VENTA";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // CarritoInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(button5);
             Controls.Add(dataGridView2);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -166,5 +181,6 @@
         private Label label1;
         private Label label3;
         private DataGridView dataGridView2;
+        private Button button5;
     }
 }

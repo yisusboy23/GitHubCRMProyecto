@@ -125,7 +125,7 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView1.BackgroundColor = Color.FromArgb(0, 86, 157);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(486, 122);
             dataGridView1.Name = "dataGridView1";
@@ -137,13 +137,14 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(127, 212, 249);
             button1.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
             button1.Location = new Point(188, 492);
             button1.Name = "button1";
             button1.Size = new Size(124, 39);
             button1.TabIndex = 180;
             button1.Text = "BUSCAR";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // comboBox1
@@ -198,7 +199,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightSkyBlue;
+            panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(label2);
             panel1.Location = new Point(0, -1);
             panel1.Name = "panel1";
@@ -220,6 +221,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(914, 558);
             Controls.Add(button5);
             Controls.Add(label7);

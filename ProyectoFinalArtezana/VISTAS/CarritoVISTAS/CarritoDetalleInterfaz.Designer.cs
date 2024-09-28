@@ -1,6 +1,6 @@
-﻿namespace VISTAS.AuditoriaVISTAS
+﻿namespace VISTAS.CarritoVISTAS
 {
-    partial class AuditoriaInterfaz
+    partial class CarritoDetalleInterfaz
     {
         /// <summary>
         /// Required designer variable.
@@ -39,24 +39,24 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = Color.FromArgb(0, 86, 157);
+            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 118);
+            dataGridView1.Location = new Point(12, 103);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(860, 405);
-            dataGridView1.TabIndex = 155;
+            dataGridView1.Size = new Size(764, 329);
+            dataGridView1.TabIndex = 177;
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(1, 1);
+            panel1.Location = new Point(1, -5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(913, 100);
-            panel1.TabIndex = 156;
+            panel1.Size = new Size(775, 102);
+            panel1.TabIndex = 178;
             // 
             // label2
             // 
@@ -65,22 +65,20 @@
             label2.ForeColor = SystemColors.Menu;
             label2.Location = new Point(33, 20);
             label2.Name = "label2";
-            label2.Size = new Size(454, 47);
+            label2.Size = new Size(217, 47);
             label2.TabIndex = 0;
-            label2.Text = "REGISTRO DE AUDITORIAS";
+            label2.Text = "PRODUCTOS";
             // 
-            // AuditoriaInterfaz
+            // CarritoDetalleInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(914, 558);
+            ClientSize = new Size(788, 440);
             Controls.Add(panel1);
             Controls.Add(dataGridView1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "AuditoriaInterfaz";
-            Text = "AuditoriaInterfaz";
-            Load += AuditoriaInterfaz_Load;
+            Name = "CarritoDetalleInterfaz";
+            Text = "CarritoDetalleInterfaz";
+            Load += CarritoDetalleInterfaz_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

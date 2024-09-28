@@ -45,6 +45,7 @@
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
             label2 = new Label();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -186,12 +187,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(466, 120);
+            dataGridView1.Location = new Point(465, 111);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(402, 400);
+            dataGridView1.Size = new Size(437, 400);
             dataGridView1.TabIndex = 123;
             dataGridView1.Click += dataGridView1_Click;
             // 
@@ -215,11 +216,25 @@
             label2.TabIndex = 0;
             label2.Text = "ROLES";
             // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(127, 212, 249);
+            button5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(465, 517);
+            button5.Name = "button5";
+            button5.Size = new Size(437, 34);
+            button5.TabIndex = 181;
+            button5.Text = "VER DETALLES";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // RolInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(button5);
             Controls.Add(label7);
             Controls.Add(label1);
             Controls.Add(textBox2);
@@ -264,5 +279,6 @@
         private DataGridView dataGridView1;
         private Panel panel1;
         private Label label2;
+        private Button button5;
     }
 }

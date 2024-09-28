@@ -1,6 +1,6 @@
-﻿namespace VISTAS.AuditoriaVISTAS
+﻿namespace VISTAS.RolVISTAS
 {
-    partial class AuditoriaInterfaz
+    partial class RolDetalleInterfaz
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            dataGridView2 = new DataGridView();
             panel1 = new Panel();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,24 +41,38 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.BackgroundColor = Color.FromArgb(0, 86, 157);
+            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 118);
+            dataGridView1.Location = new Point(3, 109);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(860, 405);
-            dataGridView1.TabIndex = 155;
+            dataGridView1.Size = new Size(391, 329);
+            dataGridView1.TabIndex = 124;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(409, 109);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.ReadOnly = true;
+            dataGridView2.RowTemplate.Height = 25;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(370, 329);
+            dataGridView2.TabIndex = 125;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(128, 221, 236);
+            panel1.BackColor = Color.LightSkyBlue;
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(1, 1);
+            panel1.Location = new Point(3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(913, 100);
-            panel1.TabIndex = 156;
+            panel1.Size = new Size(776, 101);
+            panel1.TabIndex = 126;
             // 
             // label2
             // 
@@ -65,23 +81,23 @@
             label2.ForeColor = SystemColors.Menu;
             label2.Location = new Point(33, 20);
             label2.Name = "label2";
-            label2.Size = new Size(454, 47);
+            label2.Size = new Size(244, 47);
             label2.TabIndex = 0;
-            label2.Text = "REGISTRO DE AUDITORIAS";
+            label2.Text = "DETALLE ROL";
             // 
-            // AuditoriaInterfaz
+            // RolDetalleInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(914, 558);
+            ClientSize = new Size(788, 444);
             Controls.Add(panel1);
+            Controls.Add(dataGridView2);
             Controls.Add(dataGridView1);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "AuditoriaInterfaz";
-            Text = "AuditoriaInterfaz";
-            Load += AuditoriaInterfaz_Load;
+            Name = "RolDetalleInterfaz";
+            Text = "RolDetalleInterfaz";
+            Load += RolDetalleInterfaz_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -90,6 +106,7 @@
         #endregion
 
         private DataGridView dataGridView1;
+        private DataGridView dataGridView2;
         private Panel panel1;
         private Label label2;
     }

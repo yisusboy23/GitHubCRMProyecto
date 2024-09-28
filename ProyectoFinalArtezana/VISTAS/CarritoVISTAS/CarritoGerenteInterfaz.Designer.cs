@@ -36,6 +36,7 @@
             label10 = new Label();
             button1 = new Button();
             label5 = new Label();
+            button5 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -117,11 +118,25 @@
             label5.TabIndex = 179;
             label5.Text = "ACTUALIZAR";
             // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(127, 212, 249);
+            button5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(550, 487);
+            button5.Name = "button5";
+            button5.Size = new Size(322, 34);
+            button5.TabIndex = 183;
+            button5.Text = "VER DETALLE DE LA VENTA";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // CarritoGerenteInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(button5);
             Controls.Add(label5);
             Controls.Add(button1);
             Controls.Add(label10);
@@ -148,5 +163,6 @@
         private Label label10;
         private Button button1;
         private Label label5;
+        private Button button5;
     }
 }

@@ -123,5 +123,40 @@ namespace DAL
             };
             CONEXION.Ejecutar2(consulta, parametros);
         }
+
+
+        public DataTable ObtenerDetallesCarrito(int idCarrito)
+        {
+            string consulta = @"
+    SELECT 
+    DCP.Id_DetalleCarritoP AS IdDetalle, 
+    P.Nombre AS NombreProductoKit, 
+    DCP.Cantidad, 
+    DCP.Precio_Unitario, 
+    'Productos' AS Tipo
+FROM DetalleCarritoProducto DCP
+LEFT JOIN Productos P ON DCP.Id_Producto = P.Id_Producto
+WHERE DCP.Id_Carrito = @IdCarrito
+
+UNION ALL
+
+SELECT 
+    DCK.Id_DetalleCarritoK AS IdDetalle, 
+    K.Nombre AS NombreProductoKit, 
+    DCK.Cantidad, 
+    DCK.Precio_Unitario, 
+    'Kits' AS Tipo
+FROM DetalleCarritoKit DCK
+LEFT JOIN Kits K ON DCK.Id_KitProducto = K.Id_Kit
+WHERE DCK.Id_Carrito = @IdCarrito;";
+
+            SqlParameter[] parametros = {
+        new SqlParameter("@IdCarrito", idCarrito)
+    };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "DetallesCarrito", parametros);
+        }
+
+
     }
 }

@@ -59,5 +59,18 @@ namespace BSS
         {
             dal.CancelarCarritoDal(idCarrito);
         }
+        // Método para obtener los detalles del carrito
+        public DataTable ObtenerDetallesCarritoBss(int idCarrito)
+        {
+            try
+            {
+                return dal.ObtenerDetallesCarrito(idCarrito);
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones aquí si es necesario
+                throw new Exception("Error al obtener detalles del carrito: " + ex.Message);
+            }
+        }
     }
 }

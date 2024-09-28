@@ -48,7 +48,7 @@ namespace VISTAS.ProductoVISTAS
 
             bss.InsertarProductoBss(producto);
             MessageBox.Show("Producto guardado correctamente.");
-           
+
             dataGridView1.DataSource = bss.ListarProductosBss();
 
             // Registrar auditoría
@@ -129,6 +129,11 @@ namespace VISTAS.ProductoVISTAS
             textBox3.Text = dataGridView1.CurrentRow.Cells["Precio"].Value.ToString();
             textBox4.Text = dataGridView1.CurrentRow.Cells["Cantidad"].Value.ToString();
             comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells["Estado"].Value.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

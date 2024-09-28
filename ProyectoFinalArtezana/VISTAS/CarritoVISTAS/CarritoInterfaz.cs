@@ -69,5 +69,26 @@ namespace VISTAS.CarritoVISTAS
                 MessageBox.Show("El carrito ha sido cancelado.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            // Verifica que se haya seleccionado un rol en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtiene el ID del rol seleccionado
+                int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id_Carrito"].Value);
+
+                // Crea una nueva instancia de RolDetalleInterfaz pasando el ID del rol
+                CarritoDetalleInterfaz detalleForm = new CarritoDetalleInterfaz(idRolSeleccionado);
+
+                // Muestra el formulario como un diálogo
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un rol para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

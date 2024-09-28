@@ -37,5 +37,15 @@ namespace BSS
         {
             rolDAL.EliminarRolDal(id);
         }
+
+        public DataTable ObtenerUsuariosPorRol(int idRol)
+        {
+            return rolDAL.ObtenerUsuariosPorRol(idRol);
+        }
+
+        public DataTable ObtenerPermisosPorRol(int idRol)
+        {
+            return rolDAL.ObtenerPermisosPorRol(idRol);
+        }
     }
 }

@@ -21,6 +21,8 @@ namespace VISTAS.AuditoriaVISTAS
         private void AuditoriaInterfaz_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = auditoriaBss.ListarAuditoriaBSS();
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
     }
 }

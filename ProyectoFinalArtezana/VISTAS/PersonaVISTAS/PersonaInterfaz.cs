@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VISTAS.PersonaVISTAS;
+using VISTAS.RolVISTAS;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VISTAS.AuditoriaClieVISTAS
@@ -241,6 +243,26 @@ namespace VISTAS.AuditoriaClieVISTAS
             else
             {
                 errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Verifica que se haya seleccionado un rol en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtiene el ID del rol seleccionado
+                int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["idPersona"].Value);
+
+                // Crea una nueva instancia de RolDetalleInterfaz pasando el ID del rol
+                PersonaDetalliInterfaz detalleForm = new PersonaDetalliInterfaz(idRolSeleccionado);
+
+                // Muestra el formulario como un diálogo
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un rol para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

@@ -173,8 +173,22 @@ namespace DAL
             cliente.IdCliente = nuevoIdCliente; // Asignar el nuevo IdCliente
             return cliente; // Retornar el cliente completo con el nuevo ID
         }
+        public DataTable ObtenerCuentasPorPersona(int idPersona)
+        {
+            string consulta = @"
+                SELECT U.idUsuario AS IdCuenta, U.UserName AS NombreCuenta, 'Usuario' AS TipoCuenta
+                FROM Usuarios U
+                WHERE U.IdPersona = @IdPersona
 
+                 UNION ALL
 
+                    SELECT C.idCliente AS IdCuenta, C.UserName AS NombreCuenta, 'Cliente' AS TipoCuenta
+                    FROM Cliente C
+                WHERE C.IdPersona = @IdPersona";
+
+            SqlParameter[] parametros = { new SqlParameter("@IdPersona", idPersona) };
+            return CONEXION.EjecutarDataTabla2(consulta, "CuentasPorPersona", parametros);
+        }
 
     }
 }

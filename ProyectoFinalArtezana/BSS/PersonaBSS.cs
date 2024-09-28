@@ -45,5 +45,12 @@ namespace BSS
             // Llamar al método DAL y retornar el cliente con el nuevo IdCliente
             return dal.InsertarPersonaYClienteDal(persona, cliente);
         }
+
+
+        public DataTable ObtenerCuentasPorPersonaBss(int idPersona)
+        {
+            return dal.ObtenerCuentasPorPersona(idPersona);
+        }
+
     }
 }
