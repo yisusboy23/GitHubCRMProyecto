@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VISTAS.PersonaVISTAS;
 
 namespace VISTAS.KitVISTAS
 {
@@ -133,6 +134,26 @@ namespace VISTAS.KitVISTAS
                 auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
 
                 dataGridView1.DataSource = bss.ListarKitsBss();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Verifica que se haya seleccionado un rol en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtiene el ID del rol seleccionado
+                int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id_Kit"].Value);
+
+                // Crea una nueva instancia de RolDetalleInterfaz pasando el ID del rol
+                KitDetalleInterfaz detalleForm = new KitDetalleInterfaz(idRolSeleccionado);
+
+                // Muestra el formulario como un diálogo
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un Kit para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

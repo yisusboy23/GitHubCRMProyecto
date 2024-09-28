@@ -46,6 +46,7 @@
             label1 = new Label();
             button1 = new Button();
             dataGridView1 = new DataGridView();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -230,11 +231,25 @@
             dataGridView1.Size = new Size(265, 416);
             dataGridView1.TabIndex = 123;
             // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(127, 212, 249);
+            button6.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button6.ForeColor = SystemColors.ActiveCaptionText;
+            button6.Location = new Point(12, 512);
+            button6.Name = "button6";
+            button6.Size = new Size(265, 34);
+            button6.TabIndex = 185;
+            button6.Text = "VER DETALLE DE LA VENTA";
+            button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
+            // 
             // DetalleCarritoKitInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(button6);
             Controls.Add(button3);
             Controls.Add(button5);
             Controls.Add(label7);
@@ -282,5 +297,6 @@
         private Label label1;
         private Button button1;
         private DataGridView dataGridView1;
+        private Button button6;
     }
 }

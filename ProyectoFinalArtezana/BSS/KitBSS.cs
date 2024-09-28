@@ -43,5 +43,12 @@ namespace BSS
         {
             return dal.ObtenerNombreKitPorId(idKit);
         }
+
+        public DataTable ObtenerDetallesKitBSS(int idKit)
+        {
+            return dal.ObtenerDetallesKit(idKit);
+        }
+
+
     }
 }

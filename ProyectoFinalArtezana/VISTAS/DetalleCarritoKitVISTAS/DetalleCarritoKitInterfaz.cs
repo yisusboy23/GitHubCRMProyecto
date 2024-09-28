@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VISTAS.KitVISTAS;
 
 namespace VISTAS.DetalleCarritoKitVISTAS
 {
@@ -200,6 +201,26 @@ namespace VISTAS.DetalleCarritoKitVISTAS
             detallesCarrito.Clear();
             dataGridView2.DataSource = null;
             textBox3.Text = "0.00";  // Reiniciar el total a 0
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // Verifica que se haya seleccionado un rol en el DataGridView
+            if (dataGridView1.CurrentRow != null)
+            {
+                // Obtiene el ID del rol seleccionado
+                int idRolSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id_Kit"].Value);
+
+                // Crea una nueva instancia de RolDetalleInterfaz pasando el ID del rol
+                KitDetalleInterfaz detalleForm = new KitDetalleInterfaz(idRolSeleccionado);
+
+                // Muestra el formulario como un diálogo
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, selecciona un Kit para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -50,6 +50,7 @@
             button2 = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
+            button5 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -264,11 +265,25 @@
             dataGridView1.TabIndex = 154;
             dataGridView1.Click += dataGridView1_Click;
             // 
+            // button5
+            // 
+            button5.BackColor = Color.FromArgb(127, 212, 249);
+            button5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(488, 512);
+            button5.Name = "button5";
+            button5.Size = new Size(403, 34);
+            button5.TabIndex = 184;
+            button5.Text = "VER DETALLE DE LA VENTA";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
+            // 
             // KitInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 558);
+            Controls.Add(button5);
             Controls.Add(comboBox1);
             Controls.Add(label10);
             Controls.Add(label7);
@@ -323,5 +338,6 @@
         private Button button2;
         private Button button1;
         private DataGridView dataGridView1;
+        private Button button5;
     }
 }

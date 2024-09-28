@@ -88,5 +88,26 @@ namespace DAL
 
             return nombreKit;
         }
+
+
+        public DataTable ObtenerDetallesKit(int idKit)
+        {
+            string consulta = @"
+              SELECT 
+                KP.Id_KitProducto AS IdDetalle, 
+                P.Nombre AS NombreProducto, 
+                KP.Cantidad, 
+                P.Precio AS PrecioUnitario,
+                K.Precio AS PrecioKit,
+                SUM(P.Precio) OVER() AS SumaPreciosProductos
+            FROM KitProductos KP
+            INNER JOIN Productos P ON KP.Id_Producto = P.Id_Producto
+            INNER JOIN Kits K ON KP.Id_Kit = K.Id_Kit
+            WHERE KP.Id_Kit = @IdKit;";
+
+            SqlParameter[] parametros = { new SqlParameter("@IdKit", idKit) };
+            return CONEXION.EjecutarDataTabla2(consulta, "DetallesKit", parametros);
+        }
+
     }
 }
