@@ -132,16 +132,7 @@ namespace VISTAS.DetalleCarritoKitVISTAS
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // Lógica para seleccionar un Rol
-            ClienteVISTAS.ClienteListar kitForm = new ClienteVISTAS.ClienteListar();
-            if (kitForm.ShowDialog() == DialogResult.OK)
-            {
-                Cliente k = bssCliente.ObtenerClientePorIdBss(IdClienteSeleccionado);
-                textBox1.Text = k.UserName;
-            }
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {

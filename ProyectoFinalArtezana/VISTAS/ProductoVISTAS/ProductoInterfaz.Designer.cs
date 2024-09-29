@@ -174,7 +174,7 @@
             // 
             button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
             button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.Location = new Point(21, 69);
+            button3.Location = new Point(37, 69);
             button3.Name = "button3";
             button3.Size = new Size(45, 45);
             button3.TabIndex = 136;

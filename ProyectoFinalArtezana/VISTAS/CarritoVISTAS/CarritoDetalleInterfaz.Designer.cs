@@ -65,9 +65,9 @@
             label2.ForeColor = SystemColors.Menu;
             label2.Location = new Point(33, 20);
             label2.Name = "label2";
-            label2.Size = new Size(217, 47);
+            label2.Size = new Size(398, 47);
             label2.TabIndex = 0;
-            label2.Text = "PRODUCTOS";
+            label2.Text = "DETALLE DEL CARRITO";
             // 
             // CarritoDetalleInterfaz
             // 
