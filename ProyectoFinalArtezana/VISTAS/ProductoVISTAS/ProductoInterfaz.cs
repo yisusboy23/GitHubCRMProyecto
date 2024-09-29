@@ -131,9 +131,5 @@ namespace VISTAS.ProductoVISTAS
             comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells["Estado"].Value.ToString();
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

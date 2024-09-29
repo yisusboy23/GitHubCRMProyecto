@@ -51,11 +51,12 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.RoyalBlue;
+            panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
+            panel1.ForeColor = SystemColors.Control;
             panel1.Location = new Point(4, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(1247, 186);
@@ -65,9 +66,9 @@
             // 
             pictureBox2.ErrorImage = null;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(17, 12);
+            pictureBox2.Location = new Point(17, 3);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(152, 109);
+            pictureBox2.Size = new Size(410, 109);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
@@ -77,7 +78,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(830, 46);
+            label2.Location = new Point(649, 62);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -104,7 +105,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.LightBlue;
+            panel3.BackColor = Color.FromArgb(192, 255, 192);
             panel3.Location = new Point(334, 195);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
@@ -113,7 +114,7 @@
             // panel2
             // 
             panel2.AutoScroll = true;
-            panel2.BackColor = Color.RoyalBlue;
+            panel2.BackColor = Color.FromArgb(128, 221, 236);
             panel2.Controls.Add(flowLayoutPanel1);
             panel2.Location = new Point(4, 192);
             panel2.Name = "panel2";
@@ -134,7 +135,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.RoyalBlue;
+            button1.BackColor = Color.FromArgb(128, 221, 236);
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -205,7 +206,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightBlue;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(1260, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);

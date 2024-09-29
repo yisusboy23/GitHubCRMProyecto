@@ -52,7 +52,6 @@
             comboBox1 = new ComboBox();
             textBox5 = new TextBox();
             button7 = new Button();
-            button5 = new Button();
             panel2 = new Panel();
             button6 = new Button();
             panel1.SuspendLayout();
@@ -229,7 +228,7 @@
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(437, 357);
+            dataGridView1.Size = new Size(437, 397);
             dataGridView1.TabIndex = 132;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -287,19 +286,6 @@
             button7.TabIndex = 178;
             button7.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            button5.BackColor = Color.FromArgb(127, 212, 249);
-            button5.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.ForeColor = SystemColors.ActiveCaptionText;
-            button5.Location = new Point(12, 512);
-            button5.Name = "button5";
-            button5.Size = new Size(437, 34);
-            button5.TabIndex = 180;
-            button5.Text = "VER DETALLES";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(128, 221, 236);
@@ -334,7 +320,6 @@
             ClientSize = new Size(914, 558);
             Controls.Add(button6);
             Controls.Add(panel2);
-            Controls.Add(button5);
             Controls.Add(textBox5);
             Controls.Add(dataGridView1);
             Controls.Add(button7);
@@ -387,7 +372,6 @@
         private ComboBox comboBox1;
         private TextBox textBox5;
         private Button button7;
-        private Button button5;
         private Panel panel2;
         private Button button6;
     }

@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetalleCarritoKitInterfaz));
             button3 = new Button();
             button5 = new Button();
-            label7 = new Label();
             numericUpDown1 = new NumericUpDown();
             button4 = new Button();
             label6 = new Label();
@@ -74,16 +73,6 @@
             button5.TabIndex = 138;
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(321, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(106, 23);
-            label7.TabIndex = 137;
-            label7.Text = "ID CLIENTE";
             // 
             // numericUpDown1
             // 
@@ -252,7 +241,6 @@
             Controls.Add(button6);
             Controls.Add(button3);
             Controls.Add(button5);
-            Controls.Add(label7);
             Controls.Add(numericUpDown1);
             Controls.Add(button4);
             Controls.Add(label6);
@@ -282,7 +270,6 @@
 
         private Button button3;
         private Button button5;
-        private Label label7;
         private NumericUpDown numericUpDown1;
         private Button button4;
         private Label label6;

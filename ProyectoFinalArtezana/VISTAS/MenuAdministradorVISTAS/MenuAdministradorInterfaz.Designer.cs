@@ -30,8 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuAdministradorInterfaz));
             panel1 = new Panel();
-            label3 = new Label();
+            label4 = new Label();
             pictureBox2 = new PictureBox();
+            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
@@ -57,16 +58,40 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.RoyalBlue;
-            panel1.Controls.Add(label3);
+            panel1.BackColor = Color.FromArgb(128, 221, 236);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
+            panel1.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
+            panel1.ForeColor = SystemColors.Control;
             panel1.Location = new Point(1, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1247, 186);
+            panel1.Size = new Size(1259, 197);
             panel1.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(481, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(128, 50);
+            label4.TabIndex = 5;
+            label4.Text = "label4";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.ErrorImage = null;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(3, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(436, 109);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // label3
             // 
@@ -78,23 +103,11 @@
             label3.TabIndex = 4;
             label3.Text = "ADMINISTRADOR";
             // 
-            // pictureBox2
-            // 
-            pictureBox2.ErrorImage = null;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(14, 11);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(152, 109);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(758, 35);
+            label2.Location = new Point(764, 35);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -114,7 +127,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 88);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1241, 95);
+            pictureBox1.Size = new Size(1253, 98);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -122,8 +135,9 @@
             // panel2
             // 
             panel2.AutoScroll = true;
-            panel2.BackColor = Color.RoyalBlue;
+            panel2.BackColor = Color.FromArgb(127, 212, 249);
             panel2.Controls.Add(flowLayoutPanel1);
+            panel2.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
             panel2.Location = new Point(4, 192);
             panel2.Name = "panel2";
             panel2.Size = new Size(324, 561);
@@ -148,7 +162,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.RoyalBlue;
+            button1.BackColor = Color.FromArgb(127, 212, 249);
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -282,7 +296,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.LightBlue;
+            panel3.BackColor = Color.FromArgb(192, 255, 192);
             panel3.Location = new Point(334, 195);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
@@ -293,7 +307,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightBlue;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(1260, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -331,5 +345,6 @@
         private Button button15;
         private Panel panel3;
         private Button button14;
+        private Label label4;
     }
 }

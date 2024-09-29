@@ -42,7 +42,7 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
         private void MenuGerenteTiendaInterfaz_Load(object sender, EventArgs e)
         {
             pictureBox2_Click(null, e);
-            label1.Text = "Bienvenido, " + Sesion.NombreUsuario;
+            label4.Text = Sesion.NombreUsuario;
         }
 
         private void button1_Click(object sender, EventArgs e)

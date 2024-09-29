@@ -36,10 +36,11 @@
             button6 = new Button();
             button8 = new Button();
             button2 = new Button();
-            button15 = new Button();
             button3 = new Button();
             button4 = new Button();
+            button15 = new Button();
             panel1 = new Panel();
+            label4 = new Label();
             label3 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
@@ -54,7 +55,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.LightBlue;
+            panel3.BackColor = Color.FromArgb(192, 255, 192);
             panel3.Location = new Point(335, 195);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
@@ -63,7 +64,7 @@
             // panel2
             // 
             panel2.AutoScroll = true;
-            panel2.BackColor = Color.RoyalBlue;
+            panel2.BackColor = Color.FromArgb(127, 212, 249);
             panel2.Controls.Add(flowLayoutPanel1);
             panel2.Location = new Point(5, 192);
             panel2.Name = "panel2";
@@ -87,7 +88,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.RoyalBlue;
+            button1.BackColor = Color.FromArgb(127, 212, 249);
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -141,19 +142,6 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // button15
-            // 
-            button15.FlatAppearance.BorderSize = 0;
-            button15.FlatStyle = FlatStyle.Flat;
-            button15.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
-            button15.Location = new Point(3, 253);
-            button15.Name = "button15";
-            button15.Size = new Size(254, 36);
-            button15.TabIndex = 14;
-            button15.Text = "CERRAR SESION";
-            button15.UseVisualStyleBackColor = true;
-            button15.Click += button15_Click;
-            // 
             // button3
             // 
             button3.FlatAppearance.BorderSize = 0;
@@ -180,24 +168,49 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // button15
+            // 
+            button15.FlatAppearance.BorderSize = 0;
+            button15.FlatStyle = FlatStyle.Flat;
+            button15.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            button15.Location = new Point(3, 253);
+            button15.Name = "button15";
+            button15.Size = new Size(254, 36);
+            button15.TabIndex = 14;
+            button15.Text = "CERRAR SESION";
+            button15.UseVisualStyleBackColor = true;
+            button15.Click += button15_Click;
+            // 
             // panel1
             // 
-            panel1.BackColor = Color.RoyalBlue;
+            panel1.BackColor = Color.FromArgb(128, 221, 236);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
+            panel1.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
+            panel1.ForeColor = SystemColors.ButtonHighlight;
             panel1.Location = new Point(2, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(1247, 186);
             panel1.TabIndex = 4;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(439, 48);
+            label4.Name = "label4";
+            label4.Size = new Size(128, 50);
+            label4.TabIndex = 5;
+            label4.Text = "label4";
+            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(828, 85);
+            label3.Location = new Point(828, 62);
             label3.Name = "label3";
             label3.Size = new Size(402, 50);
             label3.TabIndex = 4;
@@ -207,9 +220,9 @@
             // 
             pictureBox2.ErrorImage = null;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(17, 12);
+            pictureBox2.Location = new Point(3, 3);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(152, 109);
+            pictureBox2.Size = new Size(398, 109);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
@@ -219,7 +232,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(828, 35);
+            label2.Location = new Point(828, 6);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -248,7 +261,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.LightBlue;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(1260, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -283,5 +296,6 @@
         private PictureBox pictureBox1;
         private Button button3;
         private Button button4;
+        private Label label4;
     }
 }

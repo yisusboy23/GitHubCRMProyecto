@@ -28,29 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicoSesionClienteInterfaz));
             panel1 = new Panel();
+            label1 = new Label();
             label4 = new Label();
             label3 = new Label();
             button1 = new Button();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
-            label1 = new Label();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightBlue;
+            panel1.BackColor = Color.FromArgb(127, 212, 249);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(189, 57);
+            panel1.Location = new Point(348, 47);
             panel1.Name = "panel1";
             panel1.Size = new Size(423, 337);
             panel1.TabIndex = 10;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(100, 296);
+            label1.Name = "label1";
+            label1.Size = new Size(184, 21);
+            label1.TabIndex = 14;
+            label1.Text = "CREAR NUEVA CUENTA";
+            label1.Click += label1_Click;
             // 
             // label4
             // 
@@ -101,27 +115,29 @@
             textBox1.Size = new Size(351, 23);
             textBox1.TabIndex = 9;
             // 
-            // label1
+            // pictureBox2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(100, 296);
-            label1.Name = "label1";
-            label1.Size = new Size(184, 21);
-            label1.TabIndex = 14;
-            label1.Text = "CREAR NUEVA CUENTA";
-            label1.Click += label1_Click;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(12, 47);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(287, 167);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 11;
+            pictureBox2.TabStop = false;
             // 
             // InicoSesionClienteInterfaz
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox2);
             Controls.Add(panel1);
             Name = "InicoSesionClienteInterfaz";
             Text = "InicoSesionClienteInterfaz";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -134,5 +150,6 @@
         private TextBox textBox2;
         private TextBox textBox1;
         private Label label1;
+        private PictureBox pictureBox2;
     }
 }

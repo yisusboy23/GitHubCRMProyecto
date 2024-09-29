@@ -41,7 +41,7 @@ namespace VISTAS.MenuClienteVISTAS
 
         private void MenuClienteInterfaz_Load(object sender, EventArgs e)
         {
-            label1.Text = "Bienvenido, " + Sesion.NombreCliente;
+            label2.Text = "Bienvenido, " + Sesion.NombreCliente;
             pictureBox2_Click(null, e);
         }
 

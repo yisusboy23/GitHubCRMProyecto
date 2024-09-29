@@ -40,7 +40,7 @@
             button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(118, 329);
+            button2.Location = new Point(192, 329);
             button2.Name = "button2";
             button2.Size = new Size(59, 41);
             button2.TabIndex = 11;
@@ -51,7 +51,7 @@
             button1.BackgroundImage = (Image)resources.GetObject("button1.BackgroundImage");
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(263, 329);
+            button1.Location = new Point(289, 329);
             button1.Name = "button1";
             button1.Size = new Size(59, 41);
             button1.TabIndex = 10;

@@ -47,7 +47,7 @@ namespace VISTAS.MenuAdministradorVISTAS
         private void MenuAdministradorInterfaz_Load(object sender, EventArgs e)
         {
             pictureBox2_Click(null, e);
-            label1.Text = "Bienvenido, " + Sesion.NombreUsuario;
+            label4.Text =Sesion.NombreUsuario;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

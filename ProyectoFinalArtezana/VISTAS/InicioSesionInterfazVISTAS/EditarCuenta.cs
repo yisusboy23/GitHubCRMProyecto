@@ -24,7 +24,7 @@ namespace VISTAS.InicioSesionInterfazVISTAS
         {
 
             // Mostrar el nombre del cliente almacenado en la sesión
-            label4.Text = "Bienvenido, " + Sesion.NombreCliente;
+            label4.Text =Sesion.NombreCliente;
 
             // Si necesitas mostrar más detalles, puedes cargarlos aquí
             Cliente cliente = clienteBss.ObtenerClientePorIdBss(Sesion.IdClienteSeleccionado);
