@@ -245,9 +245,9 @@
             // 
             panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(4, 3);
+            panel1.Location = new Point(-5, -4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(908, 89);
+            panel1.Size = new Size(926, 105);
             panel1.TabIndex = 124;
             // 
             // label2
@@ -255,7 +255,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.Menu;
-            label2.Location = new Point(33, 20);
+            label2.Location = new Point(31, 30);
             label2.Name = "label2";
             label2.Size = new Size(248, 47);
             label2.TabIndex = 0;

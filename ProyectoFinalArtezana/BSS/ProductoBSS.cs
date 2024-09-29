@@ -45,5 +45,9 @@ namespace BSS
             return dal.ObtenerNombreProductoPorId(idProducto);
         }
 
+        public DataTable BuscarProductosPorNombre(string nombreProducto)
+        {
+            return dal.BuscarProductosPorNombre(nombreProducto);
+        }
     }
 }

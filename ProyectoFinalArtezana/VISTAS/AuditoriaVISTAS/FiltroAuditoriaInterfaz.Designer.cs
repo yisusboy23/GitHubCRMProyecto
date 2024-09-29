@@ -114,7 +114,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "creado", "actualizado", "eliminado", "inició sesión", "cerro sesión" });
+            comboBox1.Items.AddRange(new object[] { "creado", "actualizado", "eliminado", "inició sesión", "Cierre de sesión" });
             comboBox1.Location = new Point(33, 440);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(427, 23);

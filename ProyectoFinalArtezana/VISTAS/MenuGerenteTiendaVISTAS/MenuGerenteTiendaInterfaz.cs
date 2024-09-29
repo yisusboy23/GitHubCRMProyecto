@@ -25,6 +25,7 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
             InitializeComponent();
         }
         PermisoBSS permisosBss = new PermisoBSS(); // Instancia de PermisosDAL
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS();
 
         private void AbrirFormHija(Object FormHija)
         {
@@ -99,6 +100,8 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
             DialogResult result = MessageBox.Show("Esta seguro que desea cerrar la sesion?", "CERRAR SESION", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                string accion = "Cierre de sesión";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
                 InicioSesionInterfaz abrir = new InicioSesionInterfaz();
                 abrir.Show();
                 this.Hide();

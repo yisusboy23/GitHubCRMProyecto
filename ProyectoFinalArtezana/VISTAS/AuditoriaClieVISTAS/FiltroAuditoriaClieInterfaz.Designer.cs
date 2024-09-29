@@ -150,7 +150,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "realizó una compra de kits", "realizó una compra de productos", "canceló el carrito", "inició sesión", "cerro sesión" });
+            comboBox1.Items.AddRange(new object[] { "realizó una compra de kits", "realizó una compra de productos", "canceló el carrito", "inició sesión", "Cierre de sesión", "Queja registrada", "Producto", "Servicio", "Soporte", "Otro" });
             comboBox1.Location = new Point(33, 432);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(427, 23);

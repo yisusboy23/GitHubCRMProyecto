@@ -152,14 +152,43 @@ namespace VISTAS.ClienteVISTAS
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            if(textBox2.Text.Length < 6)
-    {
+            if (textBox2.Text.Length < 6)
+            {
                 errorProvider1.SetError(textBox2, "El nombre de usuario debe tener al menos 6 caracteres.");
             }
             else
             {
                 errorProvider1.Clear();
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string userName = textBox5.Text.Trim();
+
+            if (!string.IsNullOrEmpty(userName))
+            {
+                DataTable resultados = bss.BuscarClientePorUserName(userName);
+
+                if (resultados.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = resultados;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron clientes con ese UserName.");
+                    dataGridView1.DataSource = null;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un UserName para buscar.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bss.ListarClientesBss();
         }
     }
 }

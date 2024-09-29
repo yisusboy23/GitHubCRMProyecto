@@ -116,5 +116,24 @@ namespace VISTAS.PermisoVISTAS
                 }
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string nombrePermiso = textBox5.Text.Trim();
+            if (!string.IsNullOrEmpty(nombrePermiso))
+            {
+                DataTable resultados = bss.BuscarPermisosPorNombre(nombrePermiso);
+                dataGridView1.DataSource = resultados;
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un nombre de permiso.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bss.ListarPermisosBss();
+        }
     }
 }

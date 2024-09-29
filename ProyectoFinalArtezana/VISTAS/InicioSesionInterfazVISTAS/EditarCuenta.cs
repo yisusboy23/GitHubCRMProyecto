@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VISTAS.InicioSesionInterfazVISTAS
 {
@@ -22,9 +23,9 @@ namespace VISTAS.InicioSesionInterfazVISTAS
         ClienteBSS clienteBss = new ClienteBSS();
         private void EditarCuenta_Load(object sender, EventArgs e)
         {
-
+            textBox1.Validating += textBox1_Validating;
             // Mostrar el nombre del cliente almacenado en la sesión
-            label4.Text =Sesion.NombreCliente;
+            label4.Text = Sesion.NombreCliente;
 
             // Si necesitas mostrar más detalles, puedes cargarlos aquí
             Cliente cliente = clienteBss.ObtenerClientePorIdBss(Sesion.IdClienteSeleccionado);
@@ -51,6 +52,20 @@ namespace VISTAS.InicioSesionInterfazVISTAS
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            string email = textBox1.Text;
+            if (!email.EndsWith("@gmail.com") && !email.EndsWith("@hotmail.com") && !email.EndsWith("@yahoo.com"))
+            {
+                errorProvider1.SetError(textBox1, "El correo debe terminar con @gmail.com, @hotmail.com o @yahoo.com.");
+                e.Cancel = true; // Cancelar el evento si la validación falla
+            }
+            else
+            {
+                errorProvider1.SetError(textBox1, string.Empty); // Limpiar el error
             }
         }
     }

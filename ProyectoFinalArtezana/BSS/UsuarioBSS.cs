@@ -43,5 +43,12 @@ namespace BSS
         {
             return dal.ObtenerCredenciales(nombreUsuario, contrasena);
         }
+
+        public DataTable BuscarUsuariosPorUserName(string userName)
+        {
+            UsuariosDAL usuariosDAL = new UsuariosDAL();
+            return usuariosDAL.BuscarUsuariosPorUserName(userName);
+        }
+
     }
 }

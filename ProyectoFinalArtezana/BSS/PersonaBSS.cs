@@ -52,5 +52,10 @@ namespace BSS
             return dal.ObtenerCuentasPorPersona(idPersona);
         }
 
+        public DataTable BuscarPersonas(string filtro)
+        {
+            return dal.BuscarPersonas(filtro);
+        }
+
     }
 }

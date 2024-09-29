@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuClienteInterfaz));
             panel1 = new Panel();
+            label3 = new Label();
             pictureBox2 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
@@ -52,6 +53,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(128, 221, 236);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
@@ -61,6 +63,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1247, 186);
             panel1.TabIndex = 5;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(1039, 162);
+            label3.Name = "label3";
+            label3.Size = new Size(185, 21);
+            label3.TabIndex = 4;
+            label3.Text = "REPORTAR UNA QUEJA ";
+            label3.Click += label3_Click;
             // 
             // pictureBox2
             // 
@@ -78,7 +92,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(649, 62);
+            label2.Location = new Point(1062, 22);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -106,7 +120,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(192, 255, 192);
-            panel3.Location = new Point(334, 195);
+            panel3.Location = new Point(327, 188);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
             panel3.TabIndex = 8;
@@ -116,7 +130,7 @@
             panel2.AutoScroll = true;
             panel2.BackColor = Color.FromArgb(128, 221, 236);
             panel2.Controls.Add(flowLayoutPanel1);
-            panel2.Location = new Point(4, 192);
+            panel2.Location = new Point(4, 189);
             panel2.Name = "panel2";
             panel2.Size = new Size(324, 561);
             panel2.TabIndex = 7;
@@ -207,7 +221,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(1260, 771);
+            ClientSize = new Size(1241, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -238,5 +252,6 @@
         private Button button8;
         private Button button2;
         private Button button15;
+        private Label label3;
     }
 }

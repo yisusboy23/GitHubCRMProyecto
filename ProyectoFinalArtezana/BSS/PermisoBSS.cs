@@ -44,5 +44,10 @@ namespace BSS
             return dal.VerificarPermisoBloqueoDAL(nombrePermiso);
         }
 
+        public DataTable BuscarPermisosPorNombre(string nombrePermiso)
+        {
+            return dal.BuscarPermisosPorNombre(nombrePermiso);
+        }
+
     }
 }

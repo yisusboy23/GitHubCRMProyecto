@@ -190,5 +190,17 @@ namespace DAL
             return CONEXION.EjecutarDataTabla2(consulta, "CuentasPorPersona", parametros);
         }
 
+        public DataTable BuscarPersonas(string filtro)
+        {
+            string consulta = @"
+            SELECT IdPersona, Nombre, Apellido, Telefono, Correo, Edad, Sexo
+            FROM Persona
+            WHERE LOWER(Nombre) LIKE LOWER(@Filtro) OR LOWER(Apellido) LIKE LOWER(@Filtro)";
+
+            SqlParameter[] parametros = { new SqlParameter("@Filtro", "%" + filtro + "%") };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Persona", parametros);
+        }
+
     }
 }

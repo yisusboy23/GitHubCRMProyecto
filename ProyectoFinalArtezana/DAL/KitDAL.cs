@@ -109,5 +109,21 @@ namespace DAL
             return CONEXION.EjecutarDataTabla2(consulta, "DetallesKit", parametros);
         }
 
+        public DataTable BuscarKitsPorNombre(string nombre)
+        {
+            string consulta = @"
+        SELECT 
+            Id_Kit, Nombre, Descripcion, Precio, Cantidad, Estado, Fecha
+        FROM Kits
+        WHERE LOWER(Nombre) LIKE '%' + LOWER(@Nombre) + '%'";
+
+            SqlParameter[] parametros = new SqlParameter[]
+            {
+            new SqlParameter("@Nombre", nombre)
+            };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Kits", parametros);
+        }
+
     }
 }

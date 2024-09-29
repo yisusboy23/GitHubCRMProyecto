@@ -267,6 +267,7 @@
             button5.Size = new Size(25, 23);
             button5.TabIndex = 190;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // textBox5
             // 
@@ -284,6 +285,7 @@
             button7.Size = new Size(27, 23);
             button7.TabIndex = 188;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // DetalleCarritoKitInterfaz
             // 

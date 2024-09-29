@@ -1,4 +1,5 @@
-﻿using MODELOS;
+﻿using BSS;
+using MODELOS;
 using SistemasVentas.VISTA.InterfazGerenteVista;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace VISTAS.MenuAdministradorVISTAS
         {
             InitializeComponent();
         }
+        AuditoriaBSS auditoriaBss = new AuditoriaBSS();
 
         private void panel3_Paint(object sender, PaintEventArgs e)
         {
@@ -95,6 +97,10 @@ namespace VISTAS.MenuAdministradorVISTAS
             DialogResult result = MessageBox.Show("Esta seguro que desea cerrar la sesion?", "CERRAR SESION", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
+                string accion = "Cierre de sesión";
+                auditoriaBss.RegistrarAuditoria(Sesion.IdUsuarioSeleccionado, accion);
+
+
                 InicioSesionInterfaz abrir = new InicioSesionInterfaz();
                 abrir.Show();
                 this.Hide();

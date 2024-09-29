@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditarCuenta));
             label1 = new Label();
             textBox1 = new TextBox();
@@ -40,9 +41,11 @@
             label5 = new Label();
             panel2 = new Panel();
             pictureBox2 = new PictureBox();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -61,6 +64,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(284, 23);
             textBox1.TabIndex = 7;
+            textBox1.Validating += textBox1_Validating;
             // 
             // textBox2
             // 
@@ -155,6 +159,10 @@
             pictureBox2.TabIndex = 151;
             pictureBox2.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // EditarCuenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -173,6 +181,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -188,5 +197,6 @@
         private Label label5;
         private Panel panel2;
         private PictureBox pictureBox2;
+        private ErrorProvider errorProvider1;
     }
 }

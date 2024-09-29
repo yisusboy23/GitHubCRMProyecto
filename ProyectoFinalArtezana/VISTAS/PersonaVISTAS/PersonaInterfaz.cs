@@ -265,5 +265,25 @@ namespace VISTAS.AuditoriaClieVISTAS
                 MessageBox.Show("Por favor, selecciona un rol para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string filtro = textBox6.Text.Trim();
+
+            if (!string.IsNullOrEmpty(filtro))
+            {
+                DataTable resultado = BSS.BuscarPersonas(filtro);
+                dataGridView1.DataSource = resultado;  // Asumiendo que tienes un DataGridView llamado dgvResultados
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un nombre o apellido para buscar.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = BSS.ListarPersonasBss();
+        }
     }
 }

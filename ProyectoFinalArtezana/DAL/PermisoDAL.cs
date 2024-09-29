@@ -125,5 +125,19 @@ namespace DAL
             return estaBloqueado;
         }
 
+        public DataTable BuscarPermisosPorNombre(string nombrePermiso)
+        {
+            string consulta = @"
+            SELECT * 
+            FROM Permiso 
+            WHERE LOWER(Nombre) LIKE '%' + LOWER(@NombrePermiso) + '%'";
+
+            SqlParameter[] parametros = {
+            new SqlParameter("@NombrePermiso", nombrePermiso)
+        };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Permiso", parametros);
+        }
+
     }
 }

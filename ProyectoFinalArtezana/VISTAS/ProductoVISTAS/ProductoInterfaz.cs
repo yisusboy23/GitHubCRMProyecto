@@ -131,5 +131,23 @@ namespace VISTAS.ProductoVISTAS
             comboBox1.SelectedItem = dataGridView1.CurrentRow.Cells["Estado"].Value.ToString();
         }
 
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string nombreProducto = textBox5.Text.Trim();
+            if (!string.IsNullOrEmpty(nombreProducto))
+            {
+                DataTable resultados = bss.BuscarProductosPorNombre(nombreProducto);
+                dataGridView1.DataSource = resultados;
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un nombre de producto.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bss.ListarProductosBss();
+        }
     }
 }

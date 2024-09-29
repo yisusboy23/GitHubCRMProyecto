@@ -150,5 +150,21 @@ namespace DAL
             return usuario;
         }
 
+
+        public DataTable BuscarUsuariosPorUserName(string userName)
+        {
+            string consulta = @"
+        SELECT idUsuario, UserName, ci, Bloqueado, FechaBloq
+        FROM Usuarios
+        WHERE LOWER(UserName) LIKE LOWER(@UserName)";
+
+            SqlParameter[] parametros = {
+        new SqlParameter("@UserName", "%" + userName + "%")
+    };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Usuarios", parametros);
+        }
+
+
     }
 }

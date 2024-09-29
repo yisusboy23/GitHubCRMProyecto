@@ -144,7 +144,7 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -205,6 +205,25 @@ namespace VISTAS.DetalleCarritoProductoVISTAS
             detallesCarrito.Clear();
             dataGridView2.DataSource = null;
             textBox3.Text = "0.00";  // Reiniciar el total a 0
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string nombreProducto = textBox5.Text.Trim();
+            if (!string.IsNullOrEmpty(nombreProducto))
+            {
+                DataTable resultados = bssProducto.BuscarProductosPorNombre(nombreProducto);
+                dataGridView1.DataSource = resultados;
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un nombre de producto.");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bssProducto.ListarProductosBss();
         }
     }
 }

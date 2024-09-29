@@ -91,5 +91,21 @@ namespace DAL
             return nombreProducto;
         }
 
+        public DataTable BuscarProductosPorNombre(string nombreProducto)
+        {
+            string consulta = @"
+            SELECT * 
+            FROM Productos 
+            WHERE LOWER(Nombre) LIKE '%' + LOWER(@NombreProducto) + '%'";
+
+            SqlParameter[] parametros = {
+            new SqlParameter("@NombreProducto", nombreProducto)
+        };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Productos", parametros);
+        }
     }
+
+
 }
+

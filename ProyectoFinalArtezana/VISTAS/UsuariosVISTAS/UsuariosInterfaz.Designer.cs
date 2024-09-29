@@ -68,9 +68,9 @@
             // 
             panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(1, 1);
+            panel1.Location = new Point(0, -3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(912, 114);
+            panel1.Size = new Size(916, 114);
             panel1.TabIndex = 34;
             // 
             // label2
@@ -298,6 +298,7 @@
             button6.Size = new Size(25, 23);
             button6.TabIndex = 197;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // textBox6
             // 
@@ -315,6 +316,7 @@
             button7.Size = new Size(27, 23);
             button7.TabIndex = 195;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // panel2
             // 

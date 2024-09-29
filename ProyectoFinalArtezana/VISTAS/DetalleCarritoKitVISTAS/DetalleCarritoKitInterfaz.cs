@@ -132,7 +132,7 @@ namespace VISTAS.DetalleCarritoKitVISTAS
             }
         }
 
-       
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -212,6 +212,26 @@ namespace VISTAS.DetalleCarritoKitVISTAS
             {
                 MessageBox.Show("Por favor, selecciona un Kit para ver los detalles.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string nombreKit = textBox5.Text.Trim();
+
+            if (!string.IsNullOrEmpty(nombreKit))
+            {
+                DataTable resultados = bssKit.BuscarKitsPorNombre(nombreKit);
+                dataGridView1.DataSource = resultados;
+            }
+            else
+            {
+                MessageBox.Show("Por favor ingrese un nombre para la búsqueda.");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bssKit.ListarKitsBss();
         }
     }
 }

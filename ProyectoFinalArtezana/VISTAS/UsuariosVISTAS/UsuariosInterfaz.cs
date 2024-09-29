@@ -210,5 +210,26 @@ namespace VISTAS.UsuariosVISTAS
                 errorProvider1.SetError(textBox3, string.Empty); // Limpiar el error
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string userName = textBox6.Text.Trim();
+            DataTable resultados = bss.BuscarUsuariosPorUserName(userName);
+
+            if (resultados.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = resultados;
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron usuarios con ese nombre de usuario.", "Búsqueda de Usuarios");
+                dataGridView1.DataSource = null;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = bss.ListarUsuariosBss();
+        }
     }
 }

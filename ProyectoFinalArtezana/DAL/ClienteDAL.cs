@@ -169,6 +169,21 @@ namespace DAL
             auditoriaDal.InsertarAuditoria(auditoria);
         }
 
+
+        public DataTable BuscarClientePorUserName(string userName)
+        {
+            string consulta = @"
+            SELECT * 
+            FROM Cliente 
+            WHERE LOWER(UserName) LIKE LOWER(@UserName)";
+
+            SqlParameter[] parametros = {
+            new SqlParameter("@UserName", "%" + userName + "%")
+        };
+
+            return CONEXION.EjecutarDataTabla2(consulta, "Cliente", parametros);
+        }
+
     }
 
 }

@@ -56,7 +56,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(192, 255, 192);
-            panel3.Location = new Point(335, 195);
+            panel3.Location = new Point(328, 180);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
             panel3.TabIndex = 6;
@@ -66,7 +66,7 @@
             panel2.AutoScroll = true;
             panel2.BackColor = Color.FromArgb(127, 212, 249);
             panel2.Controls.Add(flowLayoutPanel1);
-            panel2.Location = new Point(5, 192);
+            panel2.Location = new Point(5, 186);
             panel2.Name = "panel2";
             panel2.Size = new Size(324, 561);
             panel2.TabIndex = 5;
@@ -200,7 +200,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(439, 48);
+            label4.Location = new Point(1082, 25);
             label4.Name = "label4";
             label4.Size = new Size(128, 50);
             label4.TabIndex = 5;
@@ -210,7 +210,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(828, 62);
+            label3.Location = new Point(838, 112);
             label3.Name = "label3";
             label3.Size = new Size(402, 50);
             label3.TabIndex = 4;
@@ -232,7 +232,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(828, 6);
+            label2.Location = new Point(678, 112);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -262,7 +262,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(1260, 771);
+            ClientSize = new Size(1241, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

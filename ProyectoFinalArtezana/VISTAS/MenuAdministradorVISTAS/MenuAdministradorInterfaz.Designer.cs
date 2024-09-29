@@ -69,13 +69,13 @@
             panel1.ForeColor = SystemColors.Control;
             panel1.Location = new Point(1, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1259, 197);
+            panel1.Size = new Size(1241, 197);
             panel1.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(481, 35);
+            label4.Location = new Point(1101, 0);
             label4.Name = "label4";
             label4.Size = new Size(128, 50);
             label4.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(915, 35);
+            label3.Location = new Point(903, 35);
             label3.Name = "label3";
             label3.Size = new Size(329, 50);
             label3.TabIndex = 4;
@@ -107,7 +107,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 26.2499962F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(764, 35);
+            label2.Location = new Point(752, 35);
             label2.Name = "label2";
             label2.Size = new Size(163, 50);
             label2.TabIndex = 2;
@@ -127,7 +127,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 88);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1253, 98);
+            pictureBox1.Size = new Size(1244, 98);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -297,7 +297,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(192, 255, 192);
-            panel3.Location = new Point(334, 195);
+            panel3.Location = new Point(328, 195);
             panel3.Name = "panel3";
             panel3.Size = new Size(914, 558);
             panel3.TabIndex = 3;
@@ -308,7 +308,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
-            ClientSize = new Size(1260, 771);
+            ClientSize = new Size(1242, 771);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);

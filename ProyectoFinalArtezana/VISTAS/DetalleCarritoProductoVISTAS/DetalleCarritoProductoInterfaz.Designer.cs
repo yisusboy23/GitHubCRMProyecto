@@ -238,6 +238,7 @@
             button6.Size = new Size(25, 23);
             button6.TabIndex = 188;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // textBox5
             // 
@@ -255,6 +256,7 @@
             button7.Size = new Size(27, 23);
             button7.TabIndex = 186;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // panel2
             // 

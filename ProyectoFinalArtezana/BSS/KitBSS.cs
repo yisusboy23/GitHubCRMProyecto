@@ -49,6 +49,11 @@ namespace BSS
             return dal.ObtenerDetallesKit(idKit);
         }
 
+        public DataTable BuscarKitsPorNombre(string nombre)
+        {
+            return dal.BuscarKitsPorNombre(nombre);
+        }
+
 
     }
 }

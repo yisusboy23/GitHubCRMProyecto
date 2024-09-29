@@ -56,5 +56,13 @@ namespace BSS
             dal.CambiarContraseña(idCliente, nuevaContraseña);
         }
 
+
+        ClienteDAL clienteDAL = new ClienteDAL();
+
+        public DataTable BuscarClientePorUserName(string userName)
+        {
+            return clienteDAL.BuscarClientePorUserName(userName);
+        }
+
     }
 }

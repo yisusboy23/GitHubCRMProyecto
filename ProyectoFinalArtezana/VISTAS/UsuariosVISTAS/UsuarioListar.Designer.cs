@@ -80,9 +80,9 @@
             // 
             panel1.BackColor = Color.FromArgb(128, 221, 236);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(2, -5);
+            panel1.Location = new Point(-6, -10);
             panel1.Name = "panel1";
-            panel1.Size = new Size(783, 100);
+            panel1.Size = new Size(800, 115);
             panel1.TabIndex = 41;
             // 
             // label2
