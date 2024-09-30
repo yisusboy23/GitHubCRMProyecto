@@ -202,5 +202,43 @@ namespace DAL
             return CONEXION.EjecutarDataTabla2(consulta, "Persona", parametros);
         }
 
+        // Método para filtrar los top clientes que más han comprado
+        public DataTable FiltrarTopClientes(DateTime? fechaInicio, DateTime? fechaFin)
+        {
+            string consulta = @"
+            SELECT 
+                C.UserName AS NombreCliente,  -- Se usa UserName para mostrar el nombre del cliente
+                COUNT(DISTINCT CA.Id_Carrito) AS TotalCarritos
+            FROM 
+                Carrito CA
+            INNER JOIN 
+                Cliente C ON CA.idCliente = C.idCliente  -- Asegurarse de que estamos usando el Id correcto
+            WHERE 
+                1=1"; // Base para agregar condiciones
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            // Filtros para rango de fechas
+            if (fechaInicio.HasValue)
+            {
+                consulta += " AND CA.Fecha >= @FechaInicio";
+                parametros.Add(new SqlParameter("@FechaInicio", fechaInicio.Value));
+            }
+
+            if (fechaFin.HasValue)
+            {
+                consulta += " AND CA.Fecha <= @FechaFin";
+                parametros.Add(new SqlParameter("@FechaFin", fechaFin.Value));
+            }
+
+            consulta += @"
+            GROUP BY 
+                C.UserName  -- Agrupar por UserName en vez de Nombre
+            ORDER BY 
+                TotalCarritos DESC"; // Ordenar por cantidad de carritos
+
+            // Ejecutar la consulta y devolver el resultado como DataTable
+            return CONEXION.EjecutarDataTabla2(consulta, "TopClientes", parametros.ToArray());
+        }
     }
 }

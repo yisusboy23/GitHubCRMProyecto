@@ -57,5 +57,12 @@ namespace BSS
             return dal.BuscarPersonas(filtro);
         }
 
+        // Método para obtener los top clientes
+        public DataTable ObtenerTopClientes(DateTime? fechaInicio, DateTime? fechaFin)
+        {
+            return dal.FiltrarTopClientes(fechaInicio, fechaFin);
+        }
+
+
     }
 }

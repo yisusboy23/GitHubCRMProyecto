@@ -15,6 +15,7 @@ using VISTAS.CarritoVISTAS;
 using VISTAS.InicioSesionInterfazVISTAS;
 using VISTAS.KitProductoVISTAS;
 using VISTAS.ProductoVISTAS;
+using VISTAS.ReportesVISTAS;
 
 namespace VISTAS.MenuGerenteTiendaVISTAS
 {
@@ -122,6 +123,16 @@ namespace VISTAS.MenuGerenteTiendaVISTAS
         private void button3_Click(object sender, EventArgs e)
         {
             AbrirFormHija(new AuditoriaClieInterfaz());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new ReporteVentasInterfaz());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new ReportesClientesInterfaz());
         }
     }
 }

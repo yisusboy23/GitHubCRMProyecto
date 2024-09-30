@@ -37,6 +37,7 @@
             checkBox1 = new CheckBox();
             dateTimePicker2 = new DateTimePicker();
             dateTimePicker1 = new DateTimePicker();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -79,7 +80,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(581, 138);
+            label4.Location = new Point(358, 147);
             label4.Name = "label4";
             label4.Size = new Size(99, 23);
             label4.TabIndex = 190;
@@ -89,7 +90,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(273, 138);
+            label3.Location = new Point(31, 147);
             label3.Name = "label3";
             label3.Size = new Size(123, 23);
             label3.TabIndex = 189;
@@ -99,7 +100,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Sitka Text", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(52, 124);
+            label1.Location = new Point(52, 117);
             label1.Name = "label1";
             label1.Size = new Size(174, 23);
             label1.TabIndex = 188;
@@ -113,20 +114,33 @@
             checkBox1.Size = new Size(15, 14);
             checkBox1.TabIndex = 187;
             checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(581, 165);
+            dateTimePicker2.Location = new Point(358, 173);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(285, 23);
             dateTimePicker2.TabIndex = 186;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(273, 165);
+            dateTimePicker1.Location = new Point(31, 173);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(274, 23);
             dateTimePicker1.TabIndex = 185;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(127, 212, 249);
+            button1.Font = new Font("Sitka Text", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(778, 157);
+            button1.Name = "button1";
+            button1.Size = new Size(124, 39);
+            button1.TabIndex = 198;
+            button1.Text = "BUSCAR";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // ReportesClientesInterfaz
             // 
@@ -134,6 +148,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 192);
             ClientSize = new Size(914, 558);
+            Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(panel1);
             Controls.Add(label3);
@@ -145,6 +160,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ReportesClientesInterfaz";
             Text = "ReportesClientesInterfaz";
+            Load += ReportesClientesInterfaz_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -163,5 +179,6 @@
         private CheckBox checkBox1;
         private DateTimePicker dateTimePicker2;
         private DateTimePicker dateTimePicker1;
+        private Button button1;
     }
 }

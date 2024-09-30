@@ -104,8 +104,53 @@ namespace DAL
 
             return CONEXION.EjecutarDataTabla2(consulta, "Productos", parametros);
         }
+        // Método para filtrar productos más vendidos por rango de fechas
+        public DataTable FiltrarProductosMasVendidos(DateTime? fechaInicio, DateTime? fechaFin, string nombreProducto = null)
+        {
+            string consulta = @"
+            SELECT 
+                P.Nombre AS NombreProducto,
+                SUM(DCP.Cantidad) AS TotalVendidos
+            FROM 
+                DetalleCarritoProducto DCP
+            INNER JOIN 
+                Productos P ON DCP.Id_Producto = P.Id_Producto
+            INNER JOIN 
+                Carrito C ON DCP.Id_Carrito = C.Id_Carrito
+            WHERE 
+                1=1"; // Base para agregar condiciones
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            // Filtros para rango de fechas
+            if (fechaInicio.HasValue)
+            {
+                consulta += " AND C.Fecha >= @FechaInicio";
+                parametros.Add(new SqlParameter("@FechaInicio", fechaInicio.Value));
+            }
+
+            if (fechaFin.HasValue)
+            {
+                consulta += " AND C.Fecha <= @FechaFin";
+                parametros.Add(new SqlParameter("@FechaFin", fechaFin.Value));
+            }
+
+            // Filtro para nombre del producto
+            if (!string.IsNullOrEmpty(nombreProducto))
+            {
+                consulta += " AND P.Nombre LIKE '%' + @NombreProducto + '%'";
+                parametros.Add(new SqlParameter("@NombreProducto", nombreProducto));
+            }
+
+            consulta += @"
+            GROUP BY 
+                P.Nombre
+            ORDER BY 
+                TotalVendidos DESC"; // Ordenar por cantidad vendida
+
+            // Ejecutar la consulta y devolver el resultado como DataTable
+            return CONEXION.EjecutarDataTabla2(consulta, "ProductosMasVendidos", parametros.ToArray());
+        }
     }
-
-
 }
 

@@ -39,6 +39,8 @@
             button3 = new Button();
             button4 = new Button();
             button15 = new Button();
+            button5 = new Button();
+            button7 = new Button();
             panel1 = new Panel();
             label4 = new Label();
             label3 = new Label();
@@ -80,6 +82,8 @@
             flowLayoutPanel1.Controls.Add(button3);
             flowLayoutPanel1.Controls.Add(button4);
             flowLayoutPanel1.Controls.Add(button15);
+            flowLayoutPanel1.Controls.Add(button5);
+            flowLayoutPanel1.Controls.Add(button7);
             flowLayoutPanel1.Location = new Point(14, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(274, 549);
@@ -180,6 +184,32 @@
             button15.Text = "CERRAR SESION";
             button15.UseVisualStyleBackColor = true;
             button15.Click += button15_Click;
+            // 
+            // button5
+            // 
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.Location = new Point(3, 295);
+            button5.Name = "button5";
+            button5.Size = new Size(254, 36);
+            button5.TabIndex = 17;
+            button5.Text = "REPORTE DE VENTAS";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
+            // button7
+            // 
+            button7.FlatAppearance.BorderSize = 0;
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Sitka Text", 11.249999F, FontStyle.Bold, GraphicsUnit.Point);
+            button7.Location = new Point(3, 337);
+            button7.Name = "button7";
+            button7.Size = new Size(254, 36);
+            button7.TabIndex = 18;
+            button7.Text = "REPORTE DE CLIENTES ";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // panel1
             // 
@@ -297,5 +327,7 @@
         private Button button3;
         private Button button4;
         private Label label4;
+        private Button button5;
+        private Button button7;
     }
 }

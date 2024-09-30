@@ -49,5 +49,9 @@ namespace BSS
         {
             return dal.BuscarProductosPorNombre(nombreProducto);
         }
+        public DataTable FiltrarProductosMasVendidos(DateTime? fechaInicio, DateTime? fechaFin)
+        {
+            return dal.FiltrarProductosMasVendidos(fechaInicio, fechaFin);
+        }
     }
 }
